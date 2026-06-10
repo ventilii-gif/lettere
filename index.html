@@ -11,31 +11,30 @@
   --primary:#1565c0;--primary-d:#0d47a1;--primary-l:#eef3fb;
   --text:#1a1a2e;--muted:#6b7280;--border:#e0e4ed;
   --radius:12px;
-  --ca:#e53935;--cb:#1565c0;--cc:#2e7d32;--cd:#f57c00;--ce:#7b1fa2;
+  --ca:#e53935;--cb:#1565c0;--cc:#00897b;--cd:#f57c00;--ce:#7b1fa2;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{background:var(--bg);color:var(--text);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   font-size:clamp(15px,2.3vw,16.5px);line-height:1.6}
 
-/* ===== Header ===== */
-header{background:var(--surface);border-bottom:1px solid var(--border);
-  padding:.7rem 1rem;position:sticky;top:0;z-index:10;
-  display:flex;align-items:center;gap:.6rem}
-header h1{font-size:clamp(1rem,3.6vw,1.3rem);color:var(--text);
-  font-weight:700;letter-spacing:-.01em}
-
-/* ===== Nav ===== */
-nav.main{background:var(--surface);border-bottom:1px solid var(--border);
-  position:sticky;top:52px;z-index:5;overflow-x:auto;display:flex;gap:.35rem;
-  padding:.5rem .7rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+/* ===== Topbar (header + nav fusi) ===== */
+#topbar{background:var(--surface);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:10}
+#topbar h1{font-size:clamp(.95rem,3.2vw,1.2rem);color:var(--text);
+  font-weight:700;letter-spacing:-.01em;padding:.55rem 1rem .45rem;
+  border-bottom:1px solid var(--border)}
+nav.main{overflow-x:auto;display:flex;gap:.35rem;
+  padding:.45rem .7rem;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 nav.main button{flex:0 0 auto;background:var(--surface2);border:1px solid var(--border);
-  border-radius:999px;padding:.4rem .85rem;font-size:.84em;color:var(--muted);
-  cursor:pointer;white-space:nowrap;font-family:inherit;min-height:36px;
+  border-radius:999px;padding:.38rem .82rem;font-size:.83em;color:var(--muted);
+  cursor:pointer;white-space:nowrap;font-family:inherit;min-height:34px;
+  display:inline-flex;align-items:center;gap:.35rem;
   transition:background .15s,border-color .15s,color .15s}
 nav.main button:hover:not(.active){background:var(--primary-l);color:var(--text)}
 nav.main button.active{background:var(--primary);border-color:var(--primary);
   color:#fff;font-weight:600}
+.sw{width:10px;height:10px;border-radius:3px;flex-shrink:0;display:inline-block}
 
 /* ===== Layout ===== */
 main{padding:1.1rem 1rem 2.5rem;max-width:960px;margin:0 auto}
@@ -58,8 +57,8 @@ section.scene.active{display:block}
 .formula{background:var(--primary-l);border-left:3px solid var(--primary);
   padding:.6rem .9rem;margin:.5rem 0;border-radius:0 8px 8px 0;
   font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.08em;
-  overflow-x:auto;white-space:nowrap;line-height:1.9}
-.tip{background:#eaf6ec;border-left:3px solid #2e7d32;padding:.5rem .9rem;
+  overflow-x:auto;white-space:normal;line-height:1.9}
+.tip{background:#e0f4f1;border-left:3px solid #00897b;padding:.5rem .9rem;
   margin:.55rem 0;border-radius:0 8px 8px 0;font-size:.9em}
 .warn{background:#fef6e6;border-left:3px solid #f9a825;padding:.5rem .9rem;
   margin:.55rem 0;border-radius:0 8px 8px 0;font-size:.9em}
@@ -90,7 +89,7 @@ section.scene.active{display:block}
   transition:transform .3s,opacity .3s,background .3s}
 .term.a{background:#fde8e8;border-color:#e53935;color:#b71c1c}
 .term.b{background:#e8f0fd;border-color:#1565c0;color:#0d47a1}
-.term.c{background:#e8f5e9;border-color:#2e7d32;color:#1b5e20}
+.term.c{background:#e0f4f1;border-color:#00897b;color:#00695c}
 .term.d{background:#fff3e0;border-color:#f57c00;color:#e65100}
 .term.e{background:#f3e5f5;border-color:#7b1fa2;color:#6a1b9a}
 .term.op{background:none;border:none;color:var(--muted);font-size:1.05em;
@@ -126,15 +125,15 @@ section.scene.active{display:block}
   50%{background:#ffe9a3;border-color:#f57f17;box-shadow:0 0 0 6px rgba(249,168,37,0)}
 }
 @keyframes blinkGreen{
-  0%,100%{background:#dff3e1;border-color:#2e7d32;box-shadow:0 0 0 0 rgba(46,125,50,.5)}
-  50%{background:#bfe6c4;border-color:#1b5e20;box-shadow:0 0 0 6px rgba(46,125,50,0)}
+  0%,100%{background:#d0f0ec;border-color:#00897b;box-shadow:0 0 0 0 rgba(0,137,123,.5)}
+  50%{background:#a5ddd7;border-color:#00695c;box-shadow:0 0 0 6px rgba(0,137,123,0)}
 }
 @keyframes blinkRed{
   0%,100%{background:#fde0e0;border-color:#e53935;box-shadow:0 0 0 0 rgba(229,57,53,.5)}
   50%{background:#f9c4c4;border-color:#b71c1c;box-shadow:0 0 0 6px rgba(229,57,53,0)}
 }
 .blink{animation:blinkFactor 1s ease-in-out infinite;border:2px solid #f9a825;border-radius:6px;padding:0 .14em}
-.blink-g{animation:blinkGreen 1s ease-in-out infinite;border:2px solid #2e7d32;border-radius:6px;padding:0 .14em}
+.blink-g{animation:blinkGreen 1s ease-in-out infinite;border:2px solid #00897b;border-radius:6px;padding:0 .14em}
 .blink-r{animation:blinkRed 1s ease-in-out infinite;border:2px solid #e53935;border-radius:6px;padding:0 .14em}
 .factor-badge{display:inline-block;background:var(--primary);color:#fff;border-radius:6px;
   padding:.12rem .5rem;font-size:.8em;font-weight:700;margin:.15rem 0}
@@ -186,6 +185,7 @@ section.scene.active{display:block}
   display:flex;align-items:center;justify-content:center}
 .area-cell.hdr{background:var(--primary);color:#fff;font-size:.86em}
 .area-cell.empty{background:transparent;border-color:transparent}
+.area-cell.neg{background:#fde8e8;border-color:#e53935;color:#b71c1c}
 @keyframes cellPop{
   0%{transform:scale(.6);opacity:0}
   70%{transform:scale(1.06)}
@@ -236,8 +236,8 @@ section.scene.active{display:block}
   transition:background .12s,border-color .12s}
 .quiz-btn:not(:disabled):hover{background:var(--primary-l);border-color:var(--primary)}
 .quiz-btn:disabled{cursor:default}
-.quiz-btn.correct{background:#d4edd6!important;border-color:#388e3c!important;
-  color:#1b5e20;font-weight:600}
+.quiz-btn.correct{background:#d0f0ec!important;border-color:#00897b!important;
+  color:#00695c;font-weight:600}
 .quiz-btn.wrong{background:#fbd8d8!important;border-color:#c62828!important;color:#b71c1c}
 .quiz-exp{background:var(--surface2);border:1px solid var(--border);border-radius:8px;
   padding:.55rem .8rem;font-size:.88em;margin-bottom:.55rem;
@@ -255,23 +255,24 @@ section.scene.active{display:block}
   .term{font-size:.93em;min-width:38px;padding:.26rem .48rem}
   .area-cell{font-size:.8em}
   .demo-expr{font-size:1.1em}
+  .map-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  table{font-size:.8em}
 }
 </style>
 </head>
 <body>
 
-<header>
+<div id="topbar">
   <h1>× Prodotti in Algebra &middot; Matematica</h1>
-</header>
-
-<nav class="main" id="mainNav">
-  <button class="active" onclick="goTo('home',this)">🏠 Home</button>
-  <button onclick="goTo('monomi',this)">🔵 Monomi &times; Monomi</button>
-  <button onclick="goTo('monopoli',this)">🟡 Monomio &times; Polinomio</button>
-  <button onclick="goTo('polipoli',this)">🟢 Polinomio &times; Polinomio</button>
-  <button onclick="goTo('notevoli',this)">⭐ Prodotti Notevoli</button>
-  <button onclick="goTo('scompo',this)">🧩 Scomposizione</button>
-</nav>
+  <nav class="main" id="mainNav">
+    <button class="active" onclick="goTo('home',this)">🏠 Home</button>
+    <button onclick="goTo('monomi',this)"><span class="sw" style="background:#e53935"></span>Monomi &times; Monomi</button>
+    <button onclick="goTo('monopoli',this)"><span class="sw" style="background:#f57c00"></span>Monomio &times; Polinomio</button>
+    <button onclick="goTo('polipoli',this)"><span class="sw" style="background:#00897b"></span>Polinomio &times; Polinomio</button>
+    <button onclick="goTo('notevoli',this)"><span class="sw" style="background:#7b1fa2"></span>Prodotti Notevoli</button>
+    <button onclick="goTo('scompo',this)"><span class="sw" style="background:#1565c0"></span>Scomposizione</button>
+  </nav>
+</div>
 
 <main>
 
@@ -283,27 +284,27 @@ section.scene.active{display:block}
     <p class="lead">Animazioni interattive passo per passo sui prodotti tra espressioni algebriche. Scegli un argomento per iniziare.</p>
     <div class="home-grid">
       <button class="home-card" onclick="goToNav('monomi')">
-        <span class="ico">🔵</span>
+        <span class="ico"><span class="sw" style="background:#e53935;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Monomi</span>
         <strong>Monomi &times; Monomi</strong>
         <span>Coefficienti e parti letterali: come si moltiplicano</span>
       </button>
       <button class="home-card" onclick="goToNav('monopoli')">
-        <span class="ico">🟡</span>
+        <span class="ico"><span class="sw" style="background:#f57c00;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Mono×Poli</span>
         <strong>Monomio &times; Polinomio</strong>
         <span>La propriet&agrave; distributiva in azione</span>
       </button>
       <button class="home-card" onclick="goToNav('polipoli')">
-        <span class="ico">🟢</span>
+        <span class="ico"><span class="sw" style="background:#00897b;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Poli×Poli</span>
         <strong>Polinomio &times; Polinomio</strong>
         <span>Ogni termine per ogni termine &mdash; il modello ad area</span>
       </button>
       <button class="home-card" onclick="goToNav('notevoli')">
-        <span class="ico">⭐</span>
+        <span class="ico"><span class="sw" style="background:#7b1fa2;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Notevoli</span>
         <strong>Prodotti Notevoli</strong>
         <span>Somma&times;differenza, quadrati, cubi, falso quadrato</span>
       </button>
       <button class="home-card" onclick="goToNav('scompo')">
-        <span class="ico">🧩</span>
+        <span class="ico"><span class="sw" style="background:#1565c0;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Scomposizione</span>
         <strong>Scomposizione</strong>
         <span>Raccoglimenti e prodotti notevoli &ldquo;al contrario&rdquo;, animati</span>
       </button>
@@ -313,59 +314,47 @@ section.scene.active{display:block}
   <div class="card">
     <h2>Mappa concettuale</h2>
     <p class="lead">Come si collegano gli argomenti:</p>
-    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem">
-      <svg viewBox="0 0 620 220" style="width:100%;height:auto;display:block" role="img" aria-label="mappa concettuale prodotti">
+    <div class="map-scroll" style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem">
+      <svg viewBox="0 0 640 210" style="min-width:520px;width:100%;height:auto;display:block" role="img" aria-label="mappa concettuale prodotti">
         <defs>
-          <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#888"/></marker>
-          <marker id="arr-rev" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#7b1fa2"/></marker>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#888"/></marker>
+          <marker id="arr-rev" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#7b1fa2"/></marker>
         </defs>
-
+        <!-- ── Nodi ── -->
         <!-- col 1: Monomio -->
-        <rect x="8" y="84" width="96" height="36" rx="8" fill="#fde8e8" stroke="#e53935" stroke-width="1.5"/>
-        <text x="56" y="107" text-anchor="middle" font-size="11" fill="#b71c1c" font-weight="700">Monomio</text>
-
-        <!-- col 2: Mono×Mono (top) + Mono×Poli (bottom) -->
-        <rect x="140" y="30" width="112" height="36" rx="8" fill="#e8f0fd" stroke="#1565c0" stroke-width="1.5"/>
-        <text x="196" y="53" text-anchor="middle" font-size="10.5" fill="#0d47a1" font-weight="700">Mono &times; Mono</text>
-
-        <rect x="140" y="138" width="112" height="36" rx="8" fill="#fff3e0" stroke="#f57c00" stroke-width="1.5"/>
-        <text x="196" y="158" text-anchor="middle" font-size="10" fill="#e65100" font-weight="700">Mono &times;</text>
-        <text x="196" y="170" text-anchor="middle" font-size="10" fill="#e65100" font-weight="700">Polinomio</text>
-
+        <rect x="8" y="84" width="110" height="42" rx="9" fill="#fde8e8" stroke="#e53935" stroke-width="2"/>
+        <text x="63" y="110" text-anchor="middle" font-size="14" fill="#b71c1c" font-weight="700">Monomio</text>
+        <!-- col 2 top: Mono×Mono -->
+        <rect x="152" y="20" width="128" height="42" rx="9" fill="#e8f0fd" stroke="#1565c0" stroke-width="2"/>
+        <text x="216" y="46" text-anchor="middle" font-size="13" fill="#0d47a1" font-weight="700">Mono × Mono</text>
+        <!-- col 2 bot: Mono×Poli -->
+        <rect x="152" y="148" width="128" height="42" rx="9" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
+        <text x="216" y="168" text-anchor="middle" font-size="13" fill="#e65100" font-weight="700">Mono ×</text>
+        <text x="216" y="183" text-anchor="middle" font-size="13" fill="#e65100" font-weight="700">Polinomio</text>
         <!-- col 3: Poli×Poli -->
-        <rect x="300" y="84" width="112" height="36" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
-        <text x="356" y="107" text-anchor="middle" font-size="10.5" fill="#1b5e20" font-weight="700">Poli &times; Poli</text>
-
-        <!-- col 4: Prodotti Notevoli (top) + Scomposizione (bottom) -->
-        <rect x="460" y="30" width="118" height="36" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="1.5"/>
-        <text x="519" y="50" text-anchor="middle" font-size="10" fill="#6a1b9a" font-weight="700">Prodotti</text>
-        <text x="519" y="62" text-anchor="middle" font-size="10" fill="#6a1b9a" font-weight="700">Notevoli</text>
-
-        <rect x="460" y="148" width="118" height="36" rx="8" fill="#e8f0fd" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="5,3"/>
-        <text x="519" y="170" text-anchor="middle" font-size="10" fill="#0d47a1" font-weight="700">Scomposizione</text>
-
-        <!-- frecce in avanti (grigio) -->
-        <!-- Monomio → Mono×Mono -->
-        <line x1="104" y1="95" x2="138" y2="62" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Monomio → Mono×Poli -->
-        <line x1="104" y1="107" x2="138" y2="148" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Mono×Mono → Poli×Poli -->
-        <line x1="252" y1="55" x2="298" y2="90" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Mono×Poli → Poli×Poli -->
-        <line x1="252" y1="150" x2="298" y2="114" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
-        <!-- Poli×Poli → Prodotti Notevoli -->
-        <line x1="412" y1="95" x2="458" y2="62" stroke="#888" stroke-width="1.5" marker-end="url(#arr)"/>
-
-        <!-- freccia inversa tratteggiata (viola): Prodotti Notevoli → Scomposizione -->
-        <line x1="519" y1="66" x2="519" y2="146" stroke="#7b1fa2" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arr-rev)"/>
-        <!-- etichetta "inversa" -->
-        <text x="527" y="112" font-size="9" fill="#7b1fa2" font-style="italic">inversa</text>
-
-        <!-- etichetta "casi speciali" sulla freccia Poli×Poli → Notevoli -->
-        <text x="428" y="72" font-size="8.5" fill="#555" font-style="italic">casi speciali</text>
+        <rect x="318" y="84" width="128" height="42" rx="9" fill="#e0f4f1" stroke="#00897b" stroke-width="2"/>
+        <text x="382" y="110" text-anchor="middle" font-size="13" fill="#00695c" font-weight="700">Poli × Poli</text>
+        <!-- col 4 top: Prodotti Notevoli -->
+        <rect x="484" y="20" width="148" height="42" rx="9" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
+        <text x="558" y="40" text-anchor="middle" font-size="13" fill="#6a1b9a" font-weight="700">Prodotti</text>
+        <text x="558" y="55" text-anchor="middle" font-size="13" fill="#6a1b9a" font-weight="700">Notevoli</text>
+        <!-- col 4 bot: Scomposizione -->
+        <rect x="484" y="148" width="148" height="42" rx="9" fill="#e8f0fd" stroke="#1565c0" stroke-width="2" stroke-dasharray="6,3"/>
+        <text x="558" y="174" text-anchor="middle" font-size="13" fill="#0d47a1" font-weight="700">Scomposizione</text>
+        <!-- ── Frecce avanti ── -->
+        <line x1="118" y1="96" x2="150" y2="55" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
+        <line x1="118" y1="114" x2="150" y2="162" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
+        <line x1="280" y1="52" x2="316" y2="92" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
+        <line x1="280" y1="162" x2="316" y2="118" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
+        <line x1="446" y1="97" x2="482" y2="55" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
+        <!-- ── Freccia inversa tratteggiata ── -->
+        <line x1="558" y1="62" x2="558" y2="146" stroke="#7b1fa2" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arr-rev)"/>
+        <!-- Label frecce -->
+        <text x="450" y="68" font-size="11" fill="#555" font-style="italic">casi speciali</text>
+        <text x="563" y="108" font-size="11" fill="#7b1fa2" font-style="italic">inversa</text>
       </svg>
     </div>
-    <p style="font-size:.8em;color:var(--muted);margin-top:.4rem">La freccia tratteggiata indica che la scomposizione è l&apos;operazione <em>inversa</em> dei prodotti.</p>
+    <p style="font-size:.8em;color:var(--muted);margin-top:.4rem">La freccia tratteggiata indica che la scomposizione è l&apos;operazione <em>inversa</em> dei prodotti. Scorri se necessario.</p>
   </div>
 </section>
 
@@ -400,7 +389,7 @@ section.scene.active{display:block}
   </div>
 
   <div class="card">
-    <h2>🧮 Calcolatore interattivo</h2>
+    <h2>Calcolatore interattivo</h2>
     <p class="lead">Inserisci due monomi (es: <code>3x^2</code>, <code>-2x^3</code>) e vedi il risultato animato.</p>
     <div class="ctrl-row">
       <label>Primo&nbsp;<input type="text" id="m1in" value="3x^2" oninput="updateMonomioCalc()"></label>
@@ -537,6 +526,44 @@ section.scene.active{display:block}
   </div>
 
   <div class="notable-card" data-group="quadrati">
+    <h3>Prova geometrica di (a+b)²</h3>
+    <p style="font-size:.88em;margin:.35rem 0 .6rem">Il quadrato di lato <em>(a+b)</em> si suddivide in <strong>4 regioni</strong>: capisci visivamente da dove nasce il doppio prodotto.</p>
+    <div id="geoProof" style="margin:.5rem 0">
+      <svg viewBox="0 0 260 240" style="width:min(260px,100%);display:block;margin:0 auto" role="img" aria-label="prova geometrica quadrato del binomio">
+        <defs>
+          <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" stroke="#1565c0" stroke-width="1" opacity=".25"/>
+          </pattern>
+        </defs>
+        <!-- quadrato grande -->
+        <rect x="30" y="20" width="200" height="200" fill="none" stroke="#888" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <!-- a² in alto a sinistra -->
+        <rect x="30" y="20" width="130" height="130" fill="#fde8e8" stroke="#e53935" stroke-width="2" id="gp0" style="opacity:0;transition:opacity .5s"/>
+        <text x="95" y="90" text-anchor="middle" font-size="22" fill="#b71c1c" font-weight="700" id="gt0" style="opacity:0;transition:opacity .5s">a²</text>
+        <!-- b² in basso a destra -->
+        <rect x="160" y="150" width="70" height="70" fill="#e0f4f1" stroke="#00897b" stroke-width="2" id="gp1" style="opacity:0;transition:opacity .5s .3s"/>
+        <text x="195" y="192" text-anchor="middle" font-size="18" fill="#00695c" font-weight="700" id="gt1" style="opacity:0;transition:opacity .5s .3s">b²</text>
+        <!-- ab top-right -->
+        <rect x="160" y="20" width="70" height="130" fill="url(#hatch)" stroke="#f57c00" stroke-width="2" id="gp2" style="opacity:0;transition:opacity .5s .6s"/>
+        <text x="195" y="90" text-anchor="middle" font-size="17" fill="#e65100" font-weight="700" id="gt2" style="opacity:0;transition:opacity .5s .6s">ab</text>
+        <!-- ab bottom-left -->
+        <rect x="30" y="150" width="130" height="70" fill="url(#hatch)" stroke="#f57c00" stroke-width="2" id="gp3" style="opacity:0;transition:opacity .5s .9s"/>
+        <text x="95" y="192" text-anchor="middle" font-size="17" fill="#e65100" font-weight="700" id="gt3" style="opacity:0;transition:opacity .5s .9s">ab</text>
+        <!-- dimensioni -->
+        <text x="95" y="14" text-anchor="middle" font-size="13" fill="#888" font-style="italic">a</text>
+        <text x="195" y="14" text-anchor="middle" font-size="13" fill="#888" font-style="italic">b</text>
+        <text x="18" y="90" text-anchor="middle" font-size="13" fill="#888" font-style="italic">a</text>
+        <text x="18" y="190" text-anchor="middle" font-size="13" fill="#888" font-style="italic">b</text>
+      </svg>
+    </div>
+    <div id="geoNote" style="font-size:.85em;color:var(--muted);text-align:center;min-height:1.4em;margin:.3rem 0"></div>
+    <div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap">
+      <button class="btn sec" onclick="geoStep()" id="geoBtn">▶ Mostra le regioni una a una</button>
+      <button class="btn sec" onclick="geoReset()">↺</button>
+    </div>
+  </div>
+
+  <div class="notable-card" data-group="quadrati">
     <h3>3. Quadrato del binomio &mdash; Differenza</h3>
     <div class="formula">(a &minus; b)&sup2; = a&sup2; &minus; 2ab + b&sup2;</div>
     <p style="font-size:.88em;margin:.35rem 0">Come il precedente ma il doppio prodotto ha il segno <strong>meno</strong>.</p>
@@ -584,8 +611,18 @@ section.scene.active{display:block}
     <button class="btn" style="margin-top:.6rem" onclick="animateNotevole(7,this)">▶ Mostra sviluppo</button>
   </div>
 
+  <div class="notable-card" data-group="errori">
+    <h3>Errori comuni nei cubi e nelle somme/diff di cubi</h3>
+    <div class="err">❌ Cubo della somma: (a+b)³ &ne; a³ + b³ &nbsp;— mancano i termini centrali!</div>
+    <div class="formula">(a+b)³ = a³ + <span style="color:#e53935">3a²b + 3ab²</span> + b³</div>
+    <div class="err" style="margin-top:.5rem">❌ Somma di cubi: sbagliare il segno di ab nel secondo fattore<br>
+      (a+b)(a² <span style="color:#e53935">+</span> ab + b²) &ne; a³+b³ &nbsp;— deve essere <strong>meno ab</strong>!</div>
+    <div class="formula">(a+b)(a² <span style="color:#e53935">&minus; ab</span> + b²) = a³ + b³</div>
+    <div class="tip" style="margin-top:.5rem">Trucco mnemonico per la somma/diff di cubi: il <strong>secondo fattore ha sempre il segno di ab opposto</strong> a quello del primo fattore. (a<strong>+</strong>b)(a²<strong>&minus;</strong>ab+b²) e (a<strong>&minus;</strong>b)(a²<strong>+</strong>ab+b²).</div>
+  </div>
+
   <div class="card" style="margin-top:.8rem">
-    <h2>📌 Tabella riassuntiva</h2>
+    <h2>Tabella riassuntiva</h2>
     <div style="overflow-x:auto">
     <table style="width:100%;border-collapse:collapse;font-size:.88em">
       <thead>
@@ -642,7 +679,7 @@ section.scene.active{display:block}
 
   <!-- Riconoscimento schede -->
   <div class="card">
-    <h2>🔎 Come riconoscere il metodo giusto</h2>
+    <h2>Come riconoscere il metodo giusto</h2>
     <p class="lead">Impara a &ldquo;leggere&rdquo; il polinomio prima di scomporlo.</p>
 
     <h3>1. Raccoglimento totale</h3>
@@ -674,17 +711,73 @@ section.scene.active{display:block}
 
   <!-- Diagramma decisionale -->
   <div class="card">
-    <h2>🗺️ Schema decisionale</h2>
-    <p class="lead">Quale strada prendere in base a quanti termini ci sono:</p>
-    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem">
-      <ul class="steps-list">
-        <li><strong>Sempre per primo:</strong> c&apos;&egrave; un fattore comune a tutti i termini? &rarr; <em>raccoglimento totale</em>.</li>
-        <li><strong>2 termini:</strong> differenza di quadrati A&sup2;&minus;B&sup2;, oppure somma/differenza di cubi A&sup3;&plusmn;B&sup3;.</li>
-        <li><strong>3 termini:</strong> trinomio quadrato perfetto, oppure trinomio caratteristico (somma-prodotto).</li>
-        <li><strong>4 termini:</strong> raccoglimento parziale a gruppi.</li>
-        <li><strong>Sempre per ultimo:</strong> controlla se ogni fattore &egrave; ancora scomponibile.</li>
-      </ul>
+    <h2>Schema decisionale interattivo</h2>
+    <p class="lead">Clicca su un nodo per vedere quale metodo usare.</p>
+    <div class="map-scroll" style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem .5rem">
+      <svg id="dtree" viewBox="0 0 560 310" style="min-width:480px;width:100%;height:auto;display:block" role="img">
+        <defs>
+          <marker id="darr" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#1565c0"/></marker>
+        </defs>
+        <!-- ── linee ── -->
+        <!-- START → fattore comune -->
+        <line x1="280" y1="38" x2="280" y2="68" stroke="#1565c0" stroke-width="1.5" marker-end="url(#darr)"/>
+        <!-- fattore comune → SÌ (sx) -->
+        <line x1="230" y1="90" x2="130" y2="120" stroke="#00897b" stroke-width="1.5" marker-end="url(#darr)"/>
+        <!-- fattore comune → NO (dx) -->
+        <line x1="330" y1="90" x2="430" y2="120" stroke="#e53935" stroke-width="1.5" marker-end="url(#darr)"/>
+        <!-- NO → quanti termini -->
+        <line x1="430" y1="150" x2="430" y2="178" stroke="#1565c0" stroke-width="1.5" marker-end="url(#darr)"/>
+        <!-- quanti termini → 2 -->
+        <line x1="385" y1="200" x2="180" y2="238" stroke="#888" stroke-width="1.5" marker-end="url(#darr)"/>
+        <!-- quanti termini → 3 -->
+        <line x1="430" y1="210" x2="430" y2="238" stroke="#888" stroke-width="1.5" marker-end="url(#darr)"/>
+        <!-- quanti termini → 4 -->
+        <line x1="475" y1="200" x2="530" y2="238" stroke="#888" stroke-width="1.5" marker-end="url(#darr)"/>
+        <!-- label sì/no -->
+        <text x="168" y="112" font-size="11" fill="#00897b" font-weight="700">Sì</text>
+        <text x="442" y="112" font-size="11" fill="#e53935" font-weight="700">No</text>
+        <text x="370" y="222" font-size="10" fill="#555">2</text>
+        <text x="434" y="222" font-size="10" fill="#555">3</text>
+        <text x="492" y="222" font-size="10" fill="#555">4</text>
+
+        <!-- ── nodi cliccabili ── -->
+        <!-- START -->
+        <rect x="200" y="10" width="160" height="28" rx="8" fill="var(--primary)" id="dn-start" class="dtree-node" style="cursor:pointer"/>
+        <text x="280" y="29" text-anchor="middle" font-size="12" fill="#fff" font-weight="700" pointer-events="none">Hai un polinomio da scomporre</text>
+
+        <!-- Fattore comune? -->
+        <rect x="195" y="68" width="170" height="28" rx="8" fill="#e8f0fd" stroke="#1565c0" stroke-width="2" id="dn-fc" class="dtree-node" style="cursor:pointer"/>
+        <text x="280" y="87" text-anchor="middle" font-size="12" fill="#0d47a1" font-weight="700" pointer-events="none">Fattore comune a tutti?</text>
+
+        <!-- SÌ → raccoglimento totale -->
+        <rect x="46" y="118" width="168" height="38" rx="8" fill="#d0f0ec" stroke="#00897b" stroke-width="2" id="dn-rt" class="dtree-node" style="cursor:pointer"/>
+        <text x="130" y="134" text-anchor="middle" font-size="11" fill="#00695c" font-weight="700" pointer-events="none">Raccoglimento totale</text>
+        <text x="130" y="148" text-anchor="middle" font-size="10" fill="#00695c" pointer-events="none">poi riapplica lo schema</text>
+
+        <!-- Quanti termini -->
+        <rect x="345" y="178" width="170" height="28" rx="8" fill="#e8f0fd" stroke="#1565c0" stroke-width="2" id="dn-qt" class="dtree-node" style="cursor:pointer"/>
+        <text x="430" y="197" text-anchor="middle" font-size="12" fill="#0d47a1" font-weight="700" pointer-events="none">Quanti termini?</text>
+
+        <!-- 2 termini -->
+        <rect x="80" y="238" width="190" height="50" rx="8" fill="#fff3e0" stroke="#f57c00" stroke-width="2" id="dn-2t" class="dtree-node" style="cursor:pointer"/>
+        <text x="175" y="256" text-anchor="middle" font-size="11" fill="#e65100" font-weight="700" pointer-events="none">2 termini</text>
+        <text x="175" y="270" text-anchor="middle" font-size="10" fill="#e65100" pointer-events="none">A²−B² o A³±B³</text>
+        <text x="175" y="282" text-anchor="middle" font-size="9.5" fill="#e65100" pointer-events="none">(diff. quadrati / cubi)</text>
+
+        <!-- 3 termini -->
+        <rect x="345" y="238" width="170" height="50" rx="8" fill="#fde8e8" stroke="#e53935" stroke-width="2" id="dn-3t" class="dtree-node" style="cursor:pointer"/>
+        <text x="430" y="256" text-anchor="middle" font-size="11" fill="#b71c1c" font-weight="700" pointer-events="none">3 termini</text>
+        <text x="430" y="270" text-anchor="middle" font-size="10" fill="#b71c1c" pointer-events="none">quad. perfetto</text>
+        <text x="430" y="282" text-anchor="middle" font-size="9.5" fill="#b71c1c" pointer-events="none">o somma-prodotto</text>
+
+        <!-- 4 termini -->
+        <rect x="482" y="238" width="72" height="50" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" id="dn-4t" class="dtree-node" style="cursor:pointer"/>
+        <text x="518" y="256" text-anchor="middle" font-size="11" fill="#6a1b9a" font-weight="700" pointer-events="none">4 termini</text>
+        <text x="518" y="270" text-anchor="middle" font-size="10" fill="#6a1b9a" pointer-events="none">raccoglim.</text>
+        <text x="518" y="282" text-anchor="middle" font-size="9.5" fill="#6a1b9a" pointer-events="none">parziale</text>
+      </svg>
     </div>
+    <div id="dtreeInfo" style="min-height:3.2em;background:var(--primary-l);border-left:3px solid var(--primary);border-radius:0 8px 8px 0;padding:.55rem .9rem;margin-top:.6rem;font-size:.9em;display:none"></div>
   </div>
 <div id="sq-scompo" class="sq-widget card" style="margin-top:.2rem"></div>
 
@@ -706,7 +799,7 @@ function goTo(id, btn) {
   if (id === 'monopoli') { initMpDemo(); }
   if (id === 'polipoli') { initPpDemo(); }
   if (id === 'notevoli') { updateN(0); updateN(1); }
-  if (id === 'scompo') { initScompo(); }
+  if (id === 'scompo') { initScompo(); setTimeout(initDtree, 50); }
   if (id !== 'home') { initSQ(id); }
 }
 function goToNav(id) {
@@ -987,7 +1080,7 @@ const PP_EX = [
   {
     p1: ['2x', '+1'], p2: ['x', '&minus;4'],
     label: '(2x + 1)(x &minus; 4)',
-    cells: [['2x²', '&minus;8x'], ['x', '&minus;4']],
+    cells: [['2x²', {v:'&minus;8x',neg:true}], ['x', {v:'&minus;4',neg:true}]],
     partial: ['2x²', '&minus;8x', 'x', '&minus;4'],
     similar: '&minus;8x + x = <strong>&minus;7x</strong>',
     result: '2x² &minus; 7x &minus; 4'
@@ -995,7 +1088,7 @@ const PP_EX = [
   {
     p1: ['x', '+y'], p2: ['x', '&minus;y', '+2'],
     label: '(x + y)(x &minus; y + 2)',
-    cells: [['x²', '&minus;xy', '2x'], ['xy', '&minus;y²', '2y']],
+    cells: [['x²', {v:'&minus;xy',neg:true}, '2x'], ['xy', {v:'&minus;y²',neg:true}, '2y']],
     partial: ['x²', '&minus;xy', '2x', 'xy', '&minus;y²', '2y'],
     similar: '&minus;xy + xy = <strong>0</strong> (si cancellano!)',
     result: 'x² &minus; y² + 2x + 2y'
@@ -1026,7 +1119,10 @@ function renderPpDemo() {
     g += `<div class="area-cell hdr">${rt}</div>`;
     ex.cells[ri].forEach((cell, ci) => {
       const d = ppLit ? `animation-delay:${(ri * nc + ci) * 0.1}s` : '';
-      g += `<div class="area-cell${ppLit ? ' lit' : ''}" style="${d}">${cell}</div>`;
+      const isNeg = cell && typeof cell === 'object' && cell.neg;
+      const val = isNeg ? cell.v : cell;
+      const negCls = (isNeg && ppLit) ? ' neg' : '';
+      g += `<div class="area-cell${ppLit ? ' lit' : ''}${negCls}" style="${d}">${val}</div>`;
     });
   });
   g += '</div>';
@@ -1670,6 +1766,74 @@ function resetSQ(sid) {
   const qs = SQ[sid];
   sqState[sid] = { idx: 0, answers: new Array(qs.length).fill(null) };
   renderSQ(sid);
+}
+
+/* ===================================================================
+   PROVA GEOMETRICA (a+b)²
+=================================================================== */
+let geoPhase = 0;
+const GEO_NOTES = [
+  'Il quadrato grande ha lato (a+b): area = (a+b)².',
+  'Regione rossa: a × a = <strong>a²</strong>.',
+  'Regione teal: b × b = <strong>b²</strong>.',
+  'Regione arancione: a × b = <strong>ab</strong> (ce ne sono <em>due</em>: ecco da dove viene il <strong>2ab</strong>!)',
+  'Totale: a² + ab + ab + b² = <strong>a² + 2ab + b²</strong> — il falso quadrato mancava proprio queste due rettangoli!'
+];
+function geoStep() {
+  if (geoPhase > 4) { geoReset(); return; }
+  const ids = ['gp0','gp1','gp2','gp3'];
+  const tids = ['gt0','gt1','gt2','gt3'];
+  // show all up to geoPhase-1
+  for (let i = 0; i < 4; i++) {
+    const show = geoPhase > i;
+    ['gp','gt'].forEach((p,j) => {
+      const el = document.getElementById(p+i);
+      if (el) el.style.opacity = show ? 1 : 0;
+    });
+  }
+  document.getElementById('geoNote').innerHTML = GEO_NOTES[geoPhase] || '';
+  document.getElementById('geoBtn').textContent =
+    geoPhase >= 4 ? '↺ Ricomincia' : `▶ Passo ${geoPhase + 1} di 4`;
+  geoPhase++;
+}
+function geoReset() {
+  geoPhase = 0;
+  for (let i = 0; i < 4; i++) {
+    ['gp','gt'].forEach(p => {
+      const el = document.getElementById(p+i);
+      if (el) el.style.opacity = 0;
+    });
+  }
+  document.getElementById('geoNote').innerHTML = '';
+  document.getElementById('geoBtn').textContent = '▶ Mostra le regioni una a una';
+}
+
+/* ===================================================================
+   DECISION TREE INTERATTIVO
+=================================================================== */
+const DTREE_INFO = {
+  'dn-start': 'Inizia sempre da qui: guarda il polinomio nel suo insieme prima di scegliere il metodo.',
+  'dn-fc':    '🔍 <strong>Fattore comune?</strong> Guarda se c\'è un numero e/o lettera presente in <em>ogni</em> termine. Se sì, raccoglilo sempre per primo!',
+  'dn-rt':    '✅ <strong>Raccoglimento totale</strong>: metti in evidenza il fattore comune. Es: 6x²+9x = <strong>3x</strong>(2x+3). Poi controlla se la parentesi è ancora scomponibile.',
+  'dn-qt':    '🔢 <strong>Quanti termini</strong> rimangono dopo aver raccolto il fattore comune? Clicca sulle foglie per vedere il metodo.',
+  'dn-2t':    '✦ <strong>2 termini</strong>: controlla se è A²−B² (differenza di quadrati) o A³±B³ (somma/differenza di cubi). La <em>somma</em> di quadrati A²+B² non si scompone!',
+  'dn-3t':    '✦ <strong>3 termini</strong>: (1) è A²±2AB+B²? → quadrato perfetto (A±B)². (2) è x²+sx+p? → cerca due numeri con somma s e prodotto p.',
+  'dn-4t':    '✦ <strong>4 termini</strong>: raggruppa a due a due, raccogli da ogni coppia, poi raccogli il binomio comune. Es: ax+ay+bx+by → a(x+y)+b(x+y) → (x+y)(a+b).'
+};
+function initDtree() {
+  document.querySelectorAll('.dtree-node').forEach(el => {
+    el.addEventListener('click', () => {
+      const info = document.getElementById('dtreeInfo');
+      const msg = DTREE_INFO[el.id];
+      if (!msg) return;
+      // highlight selected
+      document.querySelectorAll('.dtree-node').forEach(n => n.style.filter = '');
+      el.style.filter = 'drop-shadow(0 0 6px rgba(21,101,192,.7))';
+      info.innerHTML = msg;
+      info.style.display = 'block';
+      info.style.animation = 'fadeSlideUp .3s both';
+    });
+  });
 }
 
 /* ===== Init ===== */
