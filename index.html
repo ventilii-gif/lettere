@@ -390,7 +390,16 @@ section.scene.active{display:block}
 
   <div class="card">
     <h2>La regola dei segni</h2>
-    <p>Quando moltiplichi i coefficienti, il segno del risultato segue una regola precisa: <strong>segni uguali danno &laquo;+&raquo;, segni diversi danno &laquo;&minus;&raquo;</strong>.</p>
+    <p>Conviene trattare ogni coefficiente come due informazioni separate: il suo <strong>segno</strong> e il suo <strong>valore assoluto</strong> (il numero senza segno). Poi si moltiplicano <em>separatamente</em>.</p>
+    <div class="formula" style="text-align:center">
+      &minus;3 &nbsp;=&nbsp; <span style="color:#b71c1c">segno (&minus;)</span> &nbsp;&times;&nbsp; <span style="color:var(--primary-d)">valore assoluto |3|</span>
+    </div>
+    <ul class="steps-list" style="margin:.5rem 0">
+      <li>Moltiplica i <strong>valori assoluti</strong> tra loro: |a| &middot; |b| (semplice moltiplicazione tra numeri positivi).</li>
+      <li>Determina il <strong>segno</strong> a parte con la regola qui sotto.</li>
+      <li>Unisci: <em>segno</em> davanti al <em>valore assoluto</em> del prodotto.</li>
+    </ul>
+    <h3>Il segno: tabella</h3>
     <div style="overflow-x:auto">
       <table style="border-collapse:collapse;margin:.6rem auto;font-family:'Cambria Math',Georgia,serif">
         <tr>
@@ -416,8 +425,17 @@ section.scene.active{display:block}
       (+) &middot; (&minus;) = <span style="color:#b71c1c">&minus;</span> &nbsp;&nbsp;
       (&minus;) &middot; (+) = <span style="color:#b71c1c">&minus;</span>
     </div>
-    <div class="tip">💡 In verde i casi che danno segno <strong>positivo</strong> (segni concordi), in rosso quelli <strong>negativi</strong> (segni discordi). Esempi: (&minus;3x²)&middot;(&minus;2x) = <strong>+6x³</strong>; &nbsp; (&minus;4a)&middot;(3a) = <strong>&minus;12a²</strong>.</div>
-    <div class="warn">⚠️ Nel <strong>prodotto</strong> conta la coppia di segni. Ma attento agli esponenti: (&minus;2)³ = &minus;8 (esponente dispari → resta negativo), mentre (&minus;2)² = +4 (esponente pari → diventa positivo).</div>
+    <div class="tip">💡 <strong>Segni concordi</strong> (uguali) &rarr; risultato <span style="color:#00695c;font-weight:700">positivo</span>; &nbsp;<strong>segni discordi</strong> (diversi) &rarr; risultato <span style="color:#b71c1c;font-weight:700">negativo</span>.</div>
+    <h3>Esempio svolto</h3>
+    <div class="demo-wrap">
+      <div style="font-family:'Cambria Math',Georgia,serif;font-size:1.05em;line-height:2">
+        (<span style="color:#b71c1c">&minus;</span>3x²) &middot; (<span style="color:#b71c1c">&minus;</span>2x)<br>
+        &nbsp;&nbsp;→ <strong>valori assoluti</strong>: 3 &middot; 2 = <strong>6</strong>, &nbsp; parte letterale x²&middot;x = x³<br>
+        &nbsp;&nbsp;→ <strong>segni</strong>: (<span style="color:#b71c1c">&minus;</span>)&middot;(<span style="color:#b71c1c">&minus;</span>) = <span style="color:#00695c;font-weight:700">+</span> &nbsp;(concordi)<br>
+        &nbsp;&nbsp;→ risultato: <span style="color:#00695c">+</span>6x³
+      </div>
+    </div>
+    <div class="warn">⚠️ La regola dei segni vale per il <strong>prodotto</strong> tra i coefficienti. Con le potenze di una base negativa conta invece l'esponente: (&minus;2)³ = &minus;8 (esponente dispari → negativo), (&minus;2)² = +4 (esponente pari → positivo).</div>
   </div>
 
   <div class="card">
