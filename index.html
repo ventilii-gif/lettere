@@ -1775,9 +1775,17 @@ function renderSQ(sid) {
     optsHtml += `<button class="${cls}" ${reviewing ? 'disabled' : ''} onclick="answerSQ('${sid}',${origIdx})">${q.opts[origIdx]}</button>`;
   });
 
-  const expHtml = reviewing
-    ? `<div class="quiz-exp" style="animation:fadeSlideUp .3s both">${given === q.ans ? '✅' : '❌'} ${q.exp}</div>`
-    : '';
+  let expHtml = '';
+  if (reviewing) {
+    const ok = given === q.ans;
+    const praise = ['Bravo! 🎉', 'Perfetto! 👏', 'Esatto, ottimo lavoro!', 'Ottimo! Ci sei. 💪', 'Proprio così! ⭐', 'Grande, risposta giusta!'];
+    const cheer = ['Non ti scoraggiare, ci sei quasi! 💪', 'Nessun problema, si impara anche così. 🌱', 'Capita a tutti: guarda la spiegazione e riprova!', 'Quasi! Rileggi il passaggio qui sotto. 🔍', 'Tranquillo, ora capiamo insieme il perché.'];
+    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
+    const msg = ok ? pick(praise) : pick(cheer);
+    const icon = ok ? '✅' : '💡';
+    expHtml = `<div class="quiz-exp" style="animation:fadeSlideUp .3s both">
+      <strong>${icon} ${msg}</strong><br>${q.exp}</div>`;
+  }
 
   const hasPrev = st.idx > 0;
   const hasNext = st.idx < qs.length - 1;
