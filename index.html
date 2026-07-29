@@ -389,6 +389,38 @@ section.scene.active{display:block}
   </div>
 
   <div class="card">
+    <h2>La regola dei segni</h2>
+    <p>Quando moltiplichi i coefficienti, il segno del risultato segue una regola precisa: <strong>segni uguali danno &laquo;+&raquo;, segni diversi danno &laquo;&minus;&raquo;</strong>.</p>
+    <div style="overflow-x:auto">
+      <table style="border-collapse:collapse;margin:.6rem auto;font-family:'Cambria Math',Georgia,serif">
+        <tr>
+          <td style="width:52px;height:44px;border:1px solid var(--border)"></td>
+          <td style="width:52px;text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">+</td>
+          <td style="width:52px;text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">&minus;</td>
+        </tr>
+        <tr>
+          <td style="text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">+</td>
+          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#e0f4f1;color:#00695c;border:1.5px solid #00897b">+</td>
+          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#fde8e8;color:#b71c1c;border:1.5px solid #e53935">&minus;</td>
+        </tr>
+        <tr>
+          <td style="text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">&minus;</td>
+          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#fde8e8;color:#b71c1c;border:1.5px solid #e53935">&minus;</td>
+          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#e0f4f1;color:#00695c;border:1.5px solid #00897b">+</td>
+        </tr>
+      </table>
+    </div>
+    <div class="formula" style="text-align:center">
+      (+) &middot; (+) = <span style="color:#00695c">+</span> &nbsp;&nbsp;
+      (&minus;) &middot; (&minus;) = <span style="color:#00695c">+</span> &nbsp;&nbsp;
+      (+) &middot; (&minus;) = <span style="color:#b71c1c">&minus;</span> &nbsp;&nbsp;
+      (&minus;) &middot; (+) = <span style="color:#b71c1c">&minus;</span>
+    </div>
+    <div class="tip">💡 In verde i casi che danno segno <strong>positivo</strong> (segni concordi), in rosso quelli <strong>negativi</strong> (segni discordi). Esempi: (&minus;3x²)&middot;(&minus;2x) = <strong>+6x³</strong>; &nbsp; (&minus;4a)&middot;(3a) = <strong>&minus;12a²</strong>.</div>
+    <div class="warn">⚠️ Nel <strong>prodotto</strong> conta la coppia di segni. Ma attento agli esponenti: (&minus;2)³ = &minus;8 (esponente dispari → resta negativo), mentre (&minus;2)² = +4 (esponente pari → diventa positivo).</div>
+  </div>
+
+  <div class="card">
     <h2>Calcolatore interattivo</h2>
     <p class="lead">Inserisci due monomi (es: <code>3x^2</code>, <code>-2x^3</code>) e vedi il risultato animato.</p>
     <div class="ctrl-row">
