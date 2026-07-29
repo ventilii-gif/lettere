@@ -1736,12 +1736,24 @@ const SQ = {
 
 const sqState = {};
 
+function shuffled(n) {
+  const arr = Array.from({ length: n }, (_, i) => i);
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+function buildOrders(qs) {
+  // per ogni domanda, un ordine casuale delle opzioni
+  return qs.map(q => shuffled(q.opts.length));
+}
 function initSQ(sid) {
   const qs = SQ[sid];
   if (!qs) return;
   const el = document.getElementById('sq-' + sid);
   if (!el) return;
-  if (!sqState[sid]) sqState[sid] = { idx: 0, answers: new Array(qs.length).fill(null) };
+  if (!sqState[sid]) sqState[sid] = { idx: 0, answers: new Array(qs.length).fill(null), orders: buildOrders(qs) };
   renderSQ(sid);
 }
 
@@ -1755,11 +1767,12 @@ function renderSQ(sid) {
   const answered = st.answers.filter(a => a !== null).length;
   const pct = Math.round(st.idx / qs.length * 100);
 
+  const order = st.orders[st.idx];
   let optsHtml = '';
-  q.opts.forEach((o, i) => {
+  order.forEach(origIdx => {
     let cls = 'quiz-btn';
-    if (reviewing) cls += i === q.ans ? ' correct' : (i === given ? ' wrong' : '');
-    optsHtml += `<button class="${cls}" ${reviewing ? 'disabled' : ''} onclick="answerSQ('${sid}',${i})">${o}</button>`;
+    if (reviewing) cls += origIdx === q.ans ? ' correct' : (origIdx === given ? ' wrong' : '');
+    optsHtml += `<button class="${cls}" ${reviewing ? 'disabled' : ''} onclick="answerSQ('${sid}',${origIdx})">${q.opts[origIdx]}</button>`;
   });
 
   const expHtml = reviewing
@@ -1814,7 +1827,7 @@ function nextSQ(sid) {
 }
 function resetSQ(sid) {
   const qs = SQ[sid];
-  sqState[sid] = { idx: 0, answers: new Array(qs.length).fill(null) };
+  sqState[sid] = { idx: 0, answers: new Array(qs.length).fill(null), orders: buildOrders(qs) };
   renderSQ(sid);
 }
 
