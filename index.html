@@ -721,19 +721,35 @@ const SQ = {
     {q:'Calcola (−2x³)·(5x²).', opts:['−10x⁵','10x⁵','−10x⁶','−7x⁵'], ans:0, exp:'(−2)·5=−10; 3+2=5 → −10x⁵.'},
     {q:'Calcola 15x⁶ : 3x².', opts:['5x⁴','5x³','12x⁴','5x⁸'], ans:0, exp:'15:3=5; 6−2=4 → 5x⁴.'},
     {q:'Quanto vale (3x²y)²?', opts:['9x⁴y²','6x⁴y²','9x²y','3x⁴y²'], ans:0, exp:'3²=9; x:4, y:2 → 9x⁴y².'},
-    {q:'TEORIA: due monomi si sommano solo se…', opts:['Hanno la stessa parte letterale','Hanno lo stesso coefficiente','Hanno lo stesso segno','Hanno grado diverso'], ans:0, exp:'Solo monomi simili (stessa parte letterale).'}
+    {q:'TEORIA: due monomi si sommano solo se…', opts:['Hanno la stessa parte letterale','Hanno lo stesso coefficiente','Hanno lo stesso segno','Hanno grado diverso'], ans:0, exp:'Solo monomi simili (stessa parte letterale).'},
+    {q:'Calcola (−3a²b)·(−2ab³).', opts:['6a³b⁴','−6a³b⁴','6a²b³','5a³b⁴'], ans:0, exp:'(−3)·(−2)=6; a:2+1=3, b:1+3=4 → 6a³b⁴.'},
+    {q:'Calcola a⁷b⁴ : a³b².', opts:['a⁴b²','a⁴b²c','a³b²','a¹⁰b⁶'], ans:0, exp:'Sottraggo gli esponenti: a:7−3=4, b:4−2=2 → a⁴b².'},
+    {q:'Quanto vale (−2x)³?', opts:['−8x³','8x³','−6x³','−8x'], ans:0, exp:'(−2)³=−8 (esponente dispari → negativo); x³ → −8x³.'},
+    {q:'TEORIA: qual è il grado del monomio 4x³y²?', opts:['5','3','2','6'], ans:0, exp:'Il grado è la somma degli esponenti: 3+2=5.'}
   ],
   monopoli:[
     {q:'Svolgi 2x(x + 3).', opts:['2x² + 6x','2x² + 3','2x + 6x','2x² + 6'], ans:0, exp:'2x·x=2x²; 2x·3=6x.'},
     {q:'Svolgi −3a(2a − 4).', opts:['−6a² + 12a','−6a² − 12a','6a² − 12a','−6a + 12'], ans:0, exp:'−3a·2a=−6a²; −3a·(−4)=+12a.'},
     {q:'TEORIA: monomio × polinomio significa…', opts:['Moltiplicarlo per ogni termine','Sommarlo a ogni termine','Solo per il primo termine','Dividerlo per ogni termine'], ans:0, exp:'Distributiva: m(a+b+c)=ma+mb+mc.'},
-    {q:'Svolgi x²(x² − 2x + 5).', opts:['x⁴ − 2x³ + 5x²','x⁴ − 2x² + 5x','x³ − 2x² + 5','x⁴ + 2x³ + 5x²'], ans:0, exp:'x⁴; −2x³; +5x².'}
+    {q:'Svolgi x²(x² − 2x + 5).', opts:['x⁴ − 2x³ + 5x²','x⁴ − 2x² + 5x','x³ − 2x² + 5','x⁴ + 2x³ + 5x²'], ans:0, exp:'x⁴; −2x³; +5x².'},
+    {q:'Svolgi 5(2x − 3).', opts:['10x − 15','10x − 3','7x − 15','10x + 15'], ans:0, exp:'5·2x=10x; 5·(−3)=−15 → 10x−15.'},
+    {q:'Svolgi −x(x² + x − 1).', opts:['−x³ − x² + x','−x³ + x² − x','x³ + x² − x','−x³ − x² − x'], ans:0, exp:'−x·x²=−x³; −x·x=−x²; −x·(−1)=+x.'},
+    {q:'Svolgi 2xy(3x − y).', opts:['6x²y − 2xy²','6x²y − 2y²','6xy − 2xy²','5x²y − 2xy²'], ans:0, exp:'2xy·3x=6x²y; 2xy·(−y)=−2xy².'},
+    {q:'Svolgi 3a²(a² − 2a).', opts:['3a⁴ − 6a³','3a⁴ − 6a²','3a⁴ − 2a','a⁴ − 6a³'], ans:0, exp:'3a²·a²=3a⁴; 3a²·(−2a)=−6a³.'},
+    {q:'TEORIA: moltiplicando un monomio per un polinomio di 3 termini, quanti termini ha (in genere) il risultato?', opts:['3','1','2','6'], ans:0, exp:'Un prodotto per ogni termine: 3 termini.'},
+    {q:'Svolgi −4(2a − 3b + 1).', opts:['−8a + 12b − 4','−8a − 12b − 4','−8a + 12b + 4','8a + 12b − 4'], ans:0, exp:'−4·2a=−8a; −4·(−3b)=+12b; −4·1=−4.'}
   ],
   polipoli:[
     {q:'Svolgi (x + 2)(x + 5).', opts:['x² + 7x + 10','x² + 10x + 7','x² + 7x + 7','x² + 10'], ans:0, exp:'x²; 5x+2x=7x; 10.'},
     {q:'Svolgi (x − 3)(x + 4).', opts:['x² + x − 12','x² − x − 12','x² + 7x − 12','x² − 12'], ans:0, exp:'x²; −3x+4x=x; −12.'},
     {q:'Quanti prodotti dà (a+b+c)(x+y)?', opts:['6','5','3','4'], ans:0, exp:'3 × 2 = 6 prodotti.'},
-    {q:'TEORIA: i termini simili, alla fine…', opts:['Si sommano tra loro','Si moltiplicano','Restano separati','Si eliminano'], ans:0, exp:'Si sommano i termini con la stessa parte letterale.'}
+    {q:'TEORIA: i termini simili, alla fine…', opts:['Si sommano tra loro','Si moltiplicano','Restano separati','Si eliminano'], ans:0, exp:'Si sommano i termini con la stessa parte letterale.'},
+    {q:'Svolgi (2x + 3)(x + 1).', opts:['2x² + 5x + 3','2x² + 3x + 3','2x² + 5x + 1','2x² + 2x + 3'], ans:0, exp:'2x²; 2x+3x=5x; 3.'},
+    {q:'Svolgi (x − 2)(x − 5).', opts:['x² − 7x + 10','x² + 7x + 10','x² − 3x + 10','x² − 7x − 10'], ans:0, exp:'x²; −2x−5x=−7x; +10.'},
+    {q:'Svolgi (x + 4)(2x − 1).', opts:['2x² + 7x − 4','2x² − 7x − 4','2x² + 7x + 4','2x² + 9x − 4'], ans:0, exp:'2x²; −x+8x=7x; −4.'},
+    {q:'TEORIA: (a+b)(c+d) dà quanti prodotti parziali?', opts:['4','2','3','6'], ans:0, exp:'2 termini × 2 termini = 4 prodotti.'},
+    {q:'TEORIA: il prodotto di due binomi di primo grado è di grado…', opts:['2','1','3','4'], ans:0, exp:'x·x = x²: il risultato è di secondo grado.'},
+    {q:'Svolgi (x + 1)(x + 6).', opts:['x² + 7x + 6','x² + 6x + 7','x² + 7x + 7','x² + 6'], ans:0, exp:'x²; x+6x=7x; 6.'}
   ],
   notevoli:[
     {q:'(x + 6)(x − 6) = ?', opts:['x² − 36','x² + 36','x² − 12x + 36','x² − 6'], ans:0, exp:'x²−6²=x²−36.'},
@@ -741,7 +757,11 @@ const SQ = {
     {q:'(2a − 1)² = ?', opts:['4a² − 4a + 1','4a² + 1','4a² − 2a + 1','2a² − 4a + 1'], ans:0, exp:'(2a)²−2·2a·1+1.'},
     {q:'(a + b + c)² contiene il termine…', opts:['2ab','ab','3ab','a²b'], ans:0, exp:'Doppi prodotti 2ab, 2ac, 2bc.'},
     {q:'x³ − 27 = ?', opts:['(x − 3)(x² + 3x + 9)','(x + 3)(x² − 3x + 9)','(x − 3)³','(x − 3)(x² − 9)'], ans:0, exp:'Differenza di cubi (a=x, b=3).'},
-    {q:'TEORIA: nel quadrato del binomio il termine centrale è…', opts:['Il doppio prodotto','La somma dei quadrati','La differenza dei quadrati','Il prodotto dei quadrati'], ans:0, exp:'(a±b)²=a²±2ab+b².'}
+    {q:'TEORIA: nel quadrato del binomio il termine centrale è…', opts:['Il doppio prodotto','La somma dei quadrati','La differenza dei quadrati','Il prodotto dei quadrati'], ans:0, exp:'(a±b)²=a²±2ab+b².'},
+    {q:'(3x + 2)² = ?', opts:['9x² + 12x + 4','9x² + 4','9x² + 6x + 4','6x² + 12x + 4'], ans:0, exp:'(3x)²+2·3x·2+2²=9x²+12x+4.'},
+    {q:'Scrivi come prodotto: x³ + 1', opts:['(x + 1)(x² − x + 1)','(x + 1)(x² + x + 1)','(x + 1)³','(x + 1)(x² − 1)'], ans:0, exp:'Somma di cubi (a=x, b=1): (x+1)(x²−x+1).'},
+    {q:'(x − 5)(x + 5) = ?', opts:['x² − 25','x² + 25','x² − 10x + 25','x² − 5'], ans:0, exp:'Differenza di quadrati: x²−25.'},
+    {q:'TEORIA: in (a − b)² il termine centrale ha segno…', opts:['meno (−2ab)','più (+2ab)','nullo','+b²'], ans:0, exp:'(a−b)²=a²−2ab+b²: il doppio prodotto è −2ab.'}
   ],
   divisione:[
     {q:'Dividendo = …', opts:['Divisore·Quoziente + Resto','Divisore + Quoziente','Quoziente·Resto','Divisore·Resto'], ans:0, exp:'Relazione fondamentale della divisione.'},
@@ -749,7 +769,11 @@ const SQ = {
     {q:'Il resto di P(x):(x−k) è…', opts:['P(k)','P(0)','P(1)','k'], ans:0, exp:'Regola del resto: resto = P(k).'},
     {q:'Se P(3) = 0, allora (x − 3)…', opts:['divide esattamente P(x)','ha resto 3','non è un divisore','raddoppia P(x)'], ans:0, exp:'P(k)=0 → resto 0 → divisore esatto.'},
     {q:'(x²+2x−3):(x−1) con Ruffini (k=1): resto?', opts:['0','−3','2','1'], ans:0, exp:'P(1)=1+2−3=0.'},
-    {q:'TEORIA: Ruffini serve per dividere per…', opts:['un binomio (x − k)','qualsiasi polinomio','un monomio','un numero'], ans:0, exp:'Divisore binomio di primo grado (x − k).'}
+    {q:'TEORIA: Ruffini serve per dividere per…', opts:['un binomio (x − k)','qualsiasi polinomio','un monomio','un numero'], ans:0, exp:'Divisore binomio di primo grado (x − k).'},
+    {q:'Resto di (x² + 1) : (x − 1)?', opts:['2','0','1','−1'], ans:0, exp:'Regola del resto: P(1)=1+1=2.'},
+    {q:'Quoziente di (x² − 4) : (x − 2)?', opts:['x + 2','x − 2','x + 4','x² + 2'], ans:0, exp:'Ruffini k=2: 1; 2; 0 → quoziente x+2, resto 0.'},
+    {q:'Per dividere per (x − 4) con Ruffini, k =', opts:['4','−4','1','0'], ans:0, exp:'x−4 = x−(4) → k=4.'},
+    {q:'TEORIA: dividendo per un binomio (x−k), il grado del quoziente è…', opts:['uno in meno del dividendo','uguale al dividendo','uno in più','il doppio'], ans:0, exp:'Dividendo per un binomio di 1° grado: il quoziente cala di un grado.'}
   ]
 };
 const sqState = {};
