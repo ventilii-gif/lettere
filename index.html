@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffffff">
-<title>Prodotti in Algebra · Matematica</title>
+<title>Calcolo Letterale · Matematica</title>
 <style>
 :root{
   --bg:#f7f8fa;--surface:#fff;--surface2:#f9fafc;
@@ -53,7 +53,7 @@ section.scene.active{display:block}
 .card p{margin:.35rem 0;color:var(--text)}
 .lead{color:var(--muted);font-size:.92em;margin:.1rem 0 .7rem}
 
-/* ===== Formulas ===== */
+/* ===== Formule / box ===== */
 .formula{background:var(--primary-l);border-left:3px solid var(--primary);
   padding:.6rem .9rem;margin:.5rem 0;border-radius:0 8px 8px 0;
   font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.08em;
@@ -64,9 +64,12 @@ section.scene.active{display:block}
   margin:.55rem 0;border-radius:0 8px 8px 0;font-size:.9em}
 .err{background:#fde8e8;border-left:3px solid #e53935;padding:.5rem .9rem;
   margin:.55rem 0;border-radius:0 8px 8px 0;font-size:.9em}
+.hist{background:#fbf7ef;border:1px solid #e8dcc4;border-left:4px solid #b8860b;
+  padding:.8rem 1rem;border-radius:0 10px 10px 0;margin:.7rem 0;font-size:.92em}
+.hist h3{color:#8a6d1a;margin:.1rem 0 .35rem}
 
 /* ===== Home grid ===== */
-.home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.75rem;margin-top:.8rem}
+.home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.75rem;margin-top:.8rem}
 .home-card{background:var(--surface);border:1px solid var(--border);
   border-radius:var(--radius);padding:.95rem 1rem;cursor:pointer;text-align:left;
   font-size:1em;font-family:inherit;color:inherit;
@@ -74,1836 +77,838 @@ section.scene.active{display:block}
   transition:border-color .18s,box-shadow .18s,transform .14s}
 .home-card:hover{border-color:var(--primary);
   box-shadow:0 4px 14px rgba(21,101,192,.12);transform:translateY(-2px)}
-.home-card .ico{font-size:1.7em;display:block;margin-bottom:.32rem}
+.home-card .ico{display:flex;align-items:center;gap:.4rem;margin-bottom:.32rem;font-weight:700}
 .home-card strong{color:var(--primary-d);display:block;margin-bottom:.12rem;font-size:.97em}
-.home-card span{color:var(--muted);font-size:.85em}
+.home-card span.d{color:var(--muted);font-size:.85em;display:block}
 
-/* ===== Algebra term chips ===== */
-.term-row{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;
-  margin:.7rem 0;min-height:44px}
+/* ===== Chip termini ===== */
+.term-row{display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;margin:.7rem 0;min-height:44px}
 .term{display:inline-flex;align-items:center;justify-content:center;
-  min-width:48px;padding:.32rem .65rem;border-radius:8px;
+  min-width:44px;padding:.3rem .6rem;border-radius:8px;
   font-family:"Cambria Math","STIX Two Math",Georgia,serif;
-  font-size:1.1em;font-weight:700;line-height:1.2;
-  border:2px solid transparent;
-  transition:transform .3s,opacity .3s,background .3s}
+  font-size:1.1em;font-weight:700;line-height:1.2;border:2px solid transparent}
 .term.a{background:#fde8e8;border-color:#e53935;color:#b71c1c}
 .term.b{background:#e8f0fd;border-color:#1565c0;color:#0d47a1}
 .term.c{background:#e0f4f1;border-color:#00897b;color:#00695c}
 .term.d{background:#fff3e0;border-color:#f57c00;color:#e65100}
 .term.e{background:#f3e5f5;border-color:#7b1fa2;color:#6a1b9a}
-.term.op{background:none;border:none;color:var(--muted);font-size:1.05em;
-  font-family:sans-serif;min-width:20px;font-weight:400;padding:.2rem .1rem}
-.term.eq{background:none;border:none;color:var(--text);font-size:1.2em;
-  font-family:sans-serif;min-width:22px;font-weight:700;padding:.2rem .2rem}
-.term sup{align-self:flex-start;font-size:.68em;line-height:1;margin-top:-.1em}
+.term.op{background:none;border:none;color:var(--muted);font-size:1.05em;font-family:sans-serif;min-width:18px;font-weight:400;padding:.2rem .1rem}
+.term.eq{background:none;border:none;color:var(--text);font-size:1.2em;font-family:sans-serif;min-width:20px;font-weight:700;padding:.2rem .2rem}
 
-/* ===== Animations ===== */
-@keyframes popIn{
-  0%{transform:scale(.35);opacity:0}
-  60%{transform:scale(1.1)}
-  100%{transform:scale(1);opacity:1}
-}
-@keyframes pulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(21,101,192,.5)}
-  50%{box-shadow:0 0 0 8px rgba(21,101,192,0)}
-}
-@keyframes fadeSlideUp{
-  from{opacity:0;transform:translateY(8px)}
-  to{opacity:1;transform:translateY(0)}
-}
-@keyframes arrowBounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-3px)}
-}
+/* ===== Animazioni ===== */
+@keyframes popIn{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulseHi{0%,100%{box-shadow:0 0 0 0 rgba(245,124,0,.5)}50%{box-shadow:0 0 0 6px rgba(245,124,0,0)}}
 .pop{animation:popIn .38s cubic-bezier(.34,1.56,.64,1) both}
-.pulse{animation:pulse .7s ease-out}
 
-/* ===== Scomposizione: evidenziatori lampeggianti ===== */
-@keyframes blinkFactor{
-  0%,100%{background:#fff8d6;border-color:#f9a825;box-shadow:0 0 0 0 rgba(249,168,37,.55)}
-  50%{background:#ffe9a3;border-color:#f57f17;box-shadow:0 0 0 6px rgba(249,168,37,0)}
-}
-@keyframes blinkGreen{
-  0%,100%{background:#d0f0ec;border-color:#00897b;box-shadow:0 0 0 0 rgba(0,137,123,.5)}
-  50%{background:#a5ddd7;border-color:#00695c;box-shadow:0 0 0 6px rgba(0,137,123,0)}
-}
-@keyframes blinkRed{
-  0%,100%{background:#fde0e0;border-color:#e53935;box-shadow:0 0 0 0 rgba(229,57,53,.5)}
-  50%{background:#f9c4c4;border-color:#b71c1c;box-shadow:0 0 0 6px rgba(229,57,53,0)}
-}
-.blink{animation:blinkFactor 1s ease-in-out infinite;border:2px solid #f9a825;border-radius:6px;padding:0 .14em}
-.blink-g{animation:blinkGreen 1s ease-in-out infinite;border:2px solid #00897b;border-radius:6px;padding:0 .14em}
-.blink-r{animation:blinkRed 1s ease-in-out infinite;border:2px solid #e53935;border-radius:6px;padding:0 .14em}
-.factor-badge{display:inline-block;background:var(--primary);color:#fff;border-radius:6px;
-  padding:.12rem .5rem;font-size:.8em;font-weight:700;margin:.15rem 0}
-.scompo-stage{font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.32em;
-  text-align:center;margin:.6rem 0;line-height:2;min-height:2.4em;
-  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.15em}
-.scompo-note{font-size:.88em;color:var(--muted);text-align:center;min-height:1.4em;
-  margin:.2rem 0 .5rem;transition:opacity .3s}
-.method-pill{display:inline-flex;align-items:center;gap:.3rem;background:var(--primary-l);
-  border:1px solid var(--primary);color:var(--primary-d);border-radius:999px;
-  padding:.18rem .6rem;font-size:.8em;font-weight:600;margin:.1rem 0}
+/* ===== Tab interni ===== */
+.tab-row{display:flex;gap:.38rem;flex-wrap:wrap;margin:.5rem 0 .9rem}
+.tab-btn{background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+  padding:.36rem .78rem;font-size:.85em;cursor:pointer;font-family:inherit;color:var(--muted);
+  transition:background .12s,color .12s}
+.tab-btn.active{background:var(--primary-l);border-color:var(--primary);color:var(--primary-d);font-weight:600}
+.subpane{display:none}
+.subpane.active{display:block}
 
-/* ===== Step area ===== */
-.step-area{background:var(--surface2);border:1px solid var(--border);
-  border-radius:10px;padding:.9rem 1rem;margin:.6rem 0}
-.step-title{font-size:.72em;font-weight:700;letter-spacing:.07em;
-  color:var(--muted);text-transform:uppercase;margin-bottom:.45rem}
-
-/* ===== Controls ===== */
-.ctrl-row{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin:.6rem 0}
-.ctrl-row label{font-size:.88em;color:var(--muted);display:flex;align-items:center;gap:.4rem}
-.ctrl-row input[type=text]{border:1px solid var(--border);border-radius:8px;
-  padding:.38rem .6rem;font-size:.95em;width:90px;font-family:"Cambria Math",Georgia,serif;
-  color:var(--text);background:var(--surface)}
+/* ===== Controlli ===== */
 .btn{background:var(--primary);border:none;color:#fff;border-radius:8px;
-  padding:.45rem .9rem;font-size:.89em;cursor:pointer;font-family:inherit;
-  font-weight:600;transition:background .15s}
+  padding:.45rem .9rem;font-size:.89em;cursor:pointer;font-family:inherit;font-weight:600;transition:background .15s}
 .btn:hover{background:var(--primary-d)}
 .btn.sec{background:var(--surface2);border:1px solid var(--border);color:var(--primary-d)}
 .btn.sec:hover{background:var(--primary-l)}
+.btn:disabled{opacity:.4;cursor:default}
 
 /* ===== Steps list ===== */
 .steps-list{list-style:none;counter-reset:step;margin:.5rem 0}
 .steps-list li{counter-increment:step;display:flex;gap:.65rem;align-items:flex-start;
-  padding:.42rem 0;border-bottom:1px solid var(--border);font-size:.9em;
-  transition:opacity .35s}
+  padding:.42rem 0;border-bottom:1px solid var(--border);font-size:.9em}
 .steps-list li:last-child{border-bottom:none}
 .steps-list li::before{content:counter(step);background:var(--primary);color:#fff;
   border-radius:50%;width:20px;height:20px;display:inline-flex;align-items:center;
   justify-content:center;font-size:.74em;font-weight:700;flex-shrink:0;margin-top:.15rem}
 
-/* ===== Area model grid ===== */
-.area-grid{display:grid;gap:4px;margin:.7rem 0}
-.area-cell{background:var(--primary-l);border:1.5px solid var(--primary);
-  border-radius:6px;padding:.4rem .45rem;text-align:center;
-  font-family:"Cambria Math","STIX Two Math",Georgia,serif;
-  font-size:.95em;font-weight:700;color:var(--primary-d);
-  transition:background .3s;min-height:44px;
-  display:flex;align-items:center;justify-content:center}
-.area-cell.hdr{background:var(--primary);color:#fff;font-size:.86em}
-.area-cell.empty{background:transparent;border-color:transparent}
-.area-cell.neg{background:#fde8e8;border-color:#e53935;color:#b71c1c}
-@keyframes cellPop{
-  0%{transform:scale(.6);opacity:0}
-  70%{transform:scale(1.06)}
-  100%{transform:scale(1);opacity:1}
-}
-.area-cell.lit{animation:cellPop .32s cubic-bezier(.34,1.56,.64,1) both}
+/* ===== Simulazione passo-passo ===== */
+.sim-box{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:1rem;margin:.6rem 0}
+.sim-badge{display:inline-block;background:var(--primary);color:#fff;border-radius:999px;
+  padding:.12rem .6rem;font-size:.74em;font-weight:700;letter-spacing:.04em;margin-bottom:.5rem}
+.sim-stage{font-family:"Cambria Math","STIX Two Math",Georgia,serif;font-size:1.32em;
+  text-align:center;min-height:2.6em;display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:.18em;line-height:1.8}
+.sim-note{font-size:.9em;color:var(--text);text-align:center;min-height:2.4em;
+  margin:.5rem auto 0;max-width:620px;transition:opacity .3s}
+.sim-note b{color:var(--primary-d)}
+.sim-bar-wrap{background:#e3e7ef;border-radius:999px;height:5px;margin:.7rem 0 .1rem;overflow:hidden}
+.sim-bar{background:var(--primary);height:100%;border-radius:999px;transition:width .35s ease}
+.sim-ctrl{display:flex;gap:.5rem;margin-top:.7rem;flex-wrap:wrap;align-items:center}
+.sim-count{font-size:.8em;color:var(--muted);margin-left:auto}
+.hl{background:#fff3bf;border-radius:4px;padding:0 .16em;box-shadow:0 0 0 1.5px #f2cc0c;animation:pulseHi 1.4s ease-in-out infinite}
+.hl-g{background:#d0f0ec;border-radius:4px;padding:0 .16em;box-shadow:0 0 0 1.5px #00897b}
+.hl-r{background:#fde8e8;border-radius:4px;padding:0 .16em;box-shadow:0 0 0 1.5px #e53935}
+.hl-b{background:#e8f0fd;border-radius:4px;padding:0 .16em;box-shadow:0 0 0 1.5px #1565c0}
 
-/* ===== Tab row ===== */
-.tab-row{display:flex;gap:.38rem;flex-wrap:wrap;margin:.5rem 0 .9rem}
-.tab-btn{background:var(--surface2);border:1px solid var(--border);border-radius:8px;
-  padding:.32rem .72rem;font-size:.83em;cursor:pointer;font-family:inherit;color:var(--muted);
-  transition:background .12s,color .12s}
-.tab-btn.active{background:var(--primary-l);border-color:var(--primary);
-  color:var(--primary-d);font-weight:600}
+/* ===== Griglia divisione / Ruffini ===== */
+.longdiv{font-family:"Cambria Math",Georgia,"Courier New",monospace;font-size:1.05em;
+  display:inline-block;text-align:left;margin:.3rem auto;white-space:pre}
+.ruffini-grid{display:inline-grid;gap:2px;margin:.4rem auto;justify-content:center}
+.rf-cell{min-width:42px;min-height:38px;display:flex;align-items:center;justify-content:center;
+  font-family:"Cambria Math",Georgia,serif;font-weight:700;font-size:1.02em;
+  border:1px solid var(--border);background:var(--surface);border-radius:5px}
+.rf-cell.root{background:#fff3e0;border-color:#f57c00;color:#e65100}
+.rf-cell.coef{background:#e8f0fd;border-color:#1565c0;color:#0d47a1}
+.rf-cell.carry{background:#f3e5f5;border-color:#7b1fa2;color:#6a1b9a}
+.rf-cell.res{background:#e0f4f1;border-color:#00897b;color:#00695c}
+.rf-cell.blank{background:transparent;border-color:transparent}
+.rf-cell.now{box-shadow:0 0 0 3px rgba(245,124,0,.5);animation:pulseHi 1.4s ease-in-out infinite}
 
-/* ===== Notable product cards ===== */
-.notable-card{background:var(--surface);border:2px solid var(--border);
-  border-radius:var(--radius);padding:1.05rem 1.15rem;margin-bottom:.9rem;
-  transition:border-color .2s}
-.notable-card:hover{border-color:var(--primary)}
-.notable-card h3{font-size:1em;font-weight:700;color:var(--primary-d);margin-bottom:.4rem}
-
-/* ===== Slider ===== */
-.slider-row{display:flex;align-items:center;gap:.5rem;font-size:.87em;margin:.25rem 0}
-.slider-row input[type=range]{flex:1;accent-color:var(--primary);min-width:80px}
-.slider-row .val{min-width:1.6em;font-weight:700;color:var(--primary-d);text-align:right}
-
-/* ===== Demo wrap ===== */
-.demo-wrap{background:var(--surface2);border:1px solid var(--border);
-  border-radius:10px;padding:1rem;margin:.6rem 0}
-.demo-expr{font-family:"Cambria Math","STIX Two Math",Georgia,serif;
-  font-size:1.3em;text-align:center;margin:.45rem 0;
-  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.22rem}
+/* ===== Esercizi ===== */
+.ex-card{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;margin:.5rem 0}
+.ex-q{font-family:"Cambria Math",Georgia,serif;font-weight:600;margin-bottom:.3rem}
+.ex-sol{display:none;margin-top:.4rem;padding-top:.4rem;border-top:1px dashed var(--border);font-size:.92em;animation:fadeSlideUp .3s both}
+.ex-sol.show{display:block}
 
 /* ===== Quiz ===== */
-.quiz-hd{display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:.4rem;font-size:.83em;color:var(--muted)}
-.quiz-bar-wrap{background:#e3e7ef;border-radius:999px;height:6px;
-  margin-bottom:.9rem;overflow:hidden}
-.quiz-bar-fill{background:var(--primary);height:100%;border-radius:999px;
-  transition:width .4s cubic-bezier(.4,0,.2,1)}
-.quiz-q{font-weight:600;margin:.2rem 0 .75rem;line-height:1.45;font-size:.98em;
-  font-family:"Cambria Math","STIX Two Math",Georgia,serif}
+.quiz-bar-wrap{background:#e3e7ef;border-radius:999px;height:6px;margin-bottom:.9rem;overflow:hidden}
+.quiz-bar-fill{background:var(--primary);height:100%;border-radius:999px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.quiz-q{font-weight:600;margin:.2rem 0 .75rem;line-height:1.45;font-size:.98em;font-family:"Cambria Math",Georgia,serif}
 .quiz-opts{display:grid;gap:.38rem;margin-bottom:.45rem}
 .quiz-btn{background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;
-  padding:.5rem .85rem;text-align:left;cursor:pointer;font-size:.87em;
-  font-family:"Cambria Math","STIX Two Math",Georgia,serif;color:var(--text);line-height:1.4;
+  padding:.5rem .85rem;text-align:left;cursor:pointer;font-size:.9em;
+  font-family:"Cambria Math",Georgia,serif;color:var(--text);line-height:1.4;
   transition:background .12s,border-color .12s}
 .quiz-btn:not(:disabled):hover{background:var(--primary-l);border-color:var(--primary)}
 .quiz-btn:disabled{cursor:default}
-.quiz-btn.correct{background:#d0f0ec!important;border-color:#00897b!important;
-  color:#00695c;font-weight:600}
+.quiz-btn.correct{background:#d0f0ec!important;border-color:#00897b!important;color:#00695c;font-weight:600}
 .quiz-btn.wrong{background:#fbd8d8!important;border-color:#c62828!important;color:#b71c1c}
 .quiz-exp{background:var(--surface2);border:1px solid var(--border);border-radius:8px;
-  padding:.55rem .8rem;font-size:.88em;margin-bottom:.55rem;
-  animation:fadeSlideUp .3s ease}
-.score-box{text-align:center;padding:1.5rem 1rem}
-.score-box .big{font-size:2.6em;font-weight:700;color:var(--primary-d);line-height:1}
-.score-box p{color:var(--muted);margin:.35rem 0}
-
-/* ===== Distrib arrows ===== */
-.distrib-container{position:relative;margin:.3rem 0}
-.arrow-canvas{display:block;width:100%;overflow:visible}
+  padding:.55rem .8rem;font-size:.88em;margin-bottom:.55rem;animation:fadeSlideUp .3s ease}
 
 /* ===== Responsive ===== */
 @media(max-width:600px){
-  .term{font-size:.93em;min-width:38px;padding:.26rem .48rem}
-  .area-cell{font-size:.8em}
-  .demo-expr{font-size:1.1em}
-  .map-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  table{font-size:.8em}
+  .term{font-size:.95em;min-width:36px;padding:.24rem .46rem}
+  .sim-stage{font-size:1.12em}
+  table{font-size:.82em}
 }
 </style>
 </head>
 <body>
 
 <div id="topbar">
-  <h1>× Prodotti in Algebra &middot; Matematica</h1>
+  <h1>Calcolo Letterale &middot; Matematica</h1>
   <nav class="main" id="mainNav">
-    <button class="active" onclick="goTo('home',this)">🏠 Home</button>
-    <button onclick="goTo('monomi',this)"><span class="sw" style="background:#e53935"></span>Monomi &times; Monomi</button>
-    <button onclick="goTo('monopoli',this)"><span class="sw" style="background:#f57c00"></span>Monomio &times; Polinomio</button>
-    <button onclick="goTo('polipoli',this)"><span class="sw" style="background:#00897b"></span>Polinomio &times; Polinomio</button>
+    <button class="active" onclick="goTo('home',this)">🏠 Presentazione</button>
+    <button onclick="goTo('monomi',this)"><span class="sw" style="background:#e53935"></span>Monomi</button>
+    <button onclick="goTo('monopoli',this)"><span class="sw" style="background:#f57c00"></span>Monomio × Polinomio</button>
+    <button onclick="goTo('polipoli',this)"><span class="sw" style="background:#00897b"></span>Polinomio × Polinomio</button>
     <button onclick="goTo('notevoli',this)"><span class="sw" style="background:#7b1fa2"></span>Prodotti Notevoli</button>
-    <button onclick="goTo('scompo',this)"><span class="sw" style="background:#1565c0"></span>Scomposizione</button>
+    <button onclick="goTo('divisione',this)"><span class="sw" style="background:#1565c0"></span>Divisione tra Polinomi</button>
   </nav>
 </div>
 
 <main>
 
-<!-- ===================== HOME ===================== -->
+<!-- ===================== PRESENTAZIONE ===================== -->
 <section class="scene active" id="home">
-  <p class="sec-label">Algebra &middot; Prodotti</p>
+  <p class="sec-label">Benvenuto</p>
   <div class="card">
-    <h2>Impara a moltiplicare in algebra</h2>
-    <p class="lead">Animazioni interattive passo per passo sui prodotti tra espressioni algebriche. Scegli un argomento per iniziare.</p>
+    <h2>Il calcolo letterale: giocare con le lettere</h2>
+    <p class="lead">Un percorso interattivo per imparare a calcolare con le espressioni algebriche: monomi, polinomi e le operazioni tra loro.</p>
+    <p>In matematica, quando al posto dei numeri usiamo le <strong>lettere</strong>, possiamo scrivere regole valide per <em>infiniti</em> casi in una sola riga. Imparare a maneggiare queste espressioni &mdash; sommarle, moltiplicarle, dividerle &mdash; &egrave; la base di tutta l&apos;algebra che incontrerai negli anni.</p>
+    <p>Non serve sapere nulla in anticipo: ogni argomento parte da zero, con una <strong>simulazione animata</strong> che mostra ogni passaggio, poi esercizi svolti e un mini-quiz per mettersi alla prova.</p>
+  </div>
+
+  <div class="card">
+    <h2>Che cosa imparerai</h2>
     <div class="home-grid">
       <button class="home-card" onclick="goToNav('monomi')">
-        <span class="ico"><span class="sw" style="background:#e53935;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Monomi</span>
-        <strong>Monomi &times; Monomi</strong>
-        <span>Coefficienti e parti letterali: come si moltiplicano</span>
+        <span class="ico"><span class="sw" style="background:#e53935;width:16px;height:16px;border-radius:4px"></span>Monomi</span>
+        <span class="d">Somma e differenza, prodotto e divisione, potenze</span>
       </button>
       <button class="home-card" onclick="goToNav('monopoli')">
-        <span class="ico"><span class="sw" style="background:#f57c00;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Mono×Poli</span>
-        <strong>Monomio &times; Polinomio</strong>
-        <span>La propriet&agrave; distributiva in azione</span>
+        <span class="ico"><span class="sw" style="background:#f57c00;width:16px;height:16px;border-radius:4px"></span>Monomio × Polinomio</span>
+        <span class="d">La moltiplicazione &ldquo;distribuita&rdquo; su ogni termine</span>
       </button>
       <button class="home-card" onclick="goToNav('polipoli')">
-        <span class="ico"><span class="sw" style="background:#00897b;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Poli×Poli</span>
-        <strong>Polinomio &times; Polinomio</strong>
-        <span>Ogni termine per ogni termine &mdash; il modello ad area</span>
+        <span class="ico"><span class="sw" style="background:#00897b;width:16px;height:16px;border-radius:4px"></span>Polinomio × Polinomio</span>
+        <span class="d">Ogni termine per ogni termine</span>
       </button>
       <button class="home-card" onclick="goToNav('notevoli')">
-        <span class="ico"><span class="sw" style="background:#7b1fa2;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Notevoli</span>
-        <strong>Prodotti Notevoli</strong>
-        <span>Somma&times;differenza, quadrati, cubi, falso quadrato</span>
+        <span class="ico"><span class="sw" style="background:#7b1fa2;width:16px;height:16px;border-radius:4px"></span>Prodotti Notevoli</span>
+        <span class="d">Quadrati di binomi e trinomi, differenza di quadrati, cubi</span>
       </button>
-      <button class="home-card" onclick="goToNav('scompo')">
-        <span class="ico"><span class="sw" style="background:#1565c0;width:18px;height:18px;border-radius:5px;margin-right:.3rem"></span>Scomposizione</span>
-        <strong>Scomposizione</strong>
-        <span>Raccoglimenti e prodotti notevoli &ldquo;al contrario&rdquo;, animati</span>
+      <button class="home-card" onclick="goToNav('divisione')">
+        <span class="ico"><span class="sw" style="background:#1565c0;width:16px;height:16px;border-radius:4px"></span>Divisione tra Polinomi</span>
+        <span class="d">Divisione lunga, regola di Ruffini, regola del resto</span>
       </button>
-
     </div>
   </div>
+
   <div class="card">
-    <h2>Mappa concettuale</h2>
-    <p class="lead">Come si collegano gli argomenti:</p>
-    <div class="map-scroll" style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1rem">
-      <svg viewBox="0 0 640 210" style="min-width:520px;width:100%;height:auto;display:block" role="img" aria-label="mappa concettuale prodotti">
-        <defs>
-          <marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#888"/></marker>
-          <marker id="arr-rev" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto"><path d="M0,0 L0,7 L8,3.5 z" fill="#7b1fa2"/></marker>
-        </defs>
-        <!-- ── Nodi ── -->
-        <!-- col 1: Monomio -->
-        <rect x="8" y="84" width="110" height="42" rx="9" fill="#fde8e8" stroke="#e53935" stroke-width="2"/>
-        <text x="63" y="110" text-anchor="middle" font-size="14" fill="#b71c1c" font-weight="700">Monomio</text>
-        <!-- col 2 top: Mono×Mono -->
-        <rect x="152" y="20" width="128" height="42" rx="9" fill="#e8f0fd" stroke="#1565c0" stroke-width="2"/>
-        <text x="216" y="46" text-anchor="middle" font-size="13" fill="#0d47a1" font-weight="700">Mono × Mono</text>
-        <!-- col 2 bot: Mono×Poli -->
-        <rect x="152" y="148" width="128" height="42" rx="9" fill="#fff3e0" stroke="#f57c00" stroke-width="2"/>
-        <text x="216" y="168" text-anchor="middle" font-size="13" fill="#e65100" font-weight="700">Mono ×</text>
-        <text x="216" y="183" text-anchor="middle" font-size="13" fill="#e65100" font-weight="700">Polinomio</text>
-        <!-- col 3: Poli×Poli -->
-        <rect x="318" y="84" width="128" height="42" rx="9" fill="#e0f4f1" stroke="#00897b" stroke-width="2"/>
-        <text x="382" y="110" text-anchor="middle" font-size="13" fill="#00695c" font-weight="700">Poli × Poli</text>
-        <!-- col 4 top: Prodotti Notevoli -->
-        <rect x="484" y="20" width="148" height="42" rx="9" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2"/>
-        <text x="558" y="40" text-anchor="middle" font-size="13" fill="#6a1b9a" font-weight="700">Prodotti</text>
-        <text x="558" y="55" text-anchor="middle" font-size="13" fill="#6a1b9a" font-weight="700">Notevoli</text>
-        <!-- col 4 bot: Scomposizione -->
-        <rect x="484" y="148" width="148" height="42" rx="9" fill="#e8f0fd" stroke="#1565c0" stroke-width="2" stroke-dasharray="6,3"/>
-        <text x="558" y="174" text-anchor="middle" font-size="13" fill="#0d47a1" font-weight="700">Scomposizione</text>
-        <!-- ── Frecce avanti ── -->
-        <line x1="118" y1="96" x2="150" y2="55" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
-        <line x1="118" y1="114" x2="150" y2="162" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
-        <line x1="280" y1="52" x2="316" y2="92" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
-        <line x1="280" y1="162" x2="316" y2="118" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
-        <line x1="446" y1="97" x2="482" y2="55" stroke="#888" stroke-width="1.8" marker-end="url(#arr)"/>
-        <!-- ── Freccia inversa tratteggiata ── -->
-        <line x1="558" y1="62" x2="558" y2="146" stroke="#7b1fa2" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arr-rev)"/>
-        <!-- Label frecce -->
-        <text x="450" y="68" font-size="11" fill="#555" font-style="italic">casi speciali</text>
-        <text x="563" y="108" font-size="11" fill="#7b1fa2" font-style="italic">inversa</text>
-      </svg>
+    <h2>Come funziona ogni sezione</h2>
+    <ul class="steps-list">
+      <li><strong>Teoria essenziale</strong> &mdash; la regola spiegata in modo semplice.</li>
+      <li><strong>Simulazione animata</strong> &mdash; premi &ldquo;Avanti&rdquo; e osserva il procedimento svilupparsi un passo alla volta.</li>
+      <li><strong>Esercizi svolti</strong> &mdash; prova tu, poi scopri la soluzione.</li>
+      <li><strong>Mini-quiz</strong> &mdash; domande con risposta a scelta multipla per verificare cosa hai imparato.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="hist">
+      <h3>📜 Una nota storica</h3>
+      <p>L&apos;idea di usare le lettere nei calcoli &egrave; sorprendentemente recente. Il matematico persiano <strong>al-Khw&#257;rizm&#299;</strong> (IX secolo) scrisse un&apos;opera intitolata <em>al-jabr</em> &mdash; da cui la parola &ldquo;algebra&rdquo; &mdash; ma i suoi problemi erano ancora espressi a parole.</p>
+      <p>Bisogna aspettare il francese <strong>Fran&ccedil;ois Vi&egrave;te</strong> (fine del &lsquo;500) perch&eacute; le lettere entrino stabilmente nei calcoli: fu lui a usare le vocali per le quantit&agrave; sconosciute e le consonanti per quelle note. Pochi decenni dopo <strong>Ren&eacute; Descartes</strong> (Cartesio) introdusse la scrittura che usiamo ancora oggi, con le ultime lettere dell&apos;alfabeto (x, y, z) per le incognite e gli esponenti scritti in alto.</p>
+      <p>Quando scrivi <em>x&sup2;</em> o raccogli un fattore comune, stai usando un linguaggio costruito nell&apos;arco di oltre mille anni.</p>
     </div>
-    <p style="font-size:.8em;color:var(--muted);margin-top:.4rem">La freccia tratteggiata indica che la scomposizione è l&apos;operazione <em>inversa</em> dei prodotti. Scorri se necessario.</p>
   </div>
 </section>
 
-<!-- ===================== MONOMI x MONOMI ===================== -->
+<!-- ===================== MONOMI ===================== -->
 <section class="scene" id="monomi">
-  <p class="sec-label">Prodotto tra monomi</p>
+  <p class="sec-label">I monomi</p>
   <div class="card">
-    <h2>Cos&apos;&egrave; un monomio?</h2>
-    <p>Un <strong>monomio</strong> &egrave; un prodotto tra un numero (il <em>coefficiente</em>) e una o pi&ugrave; lettere con esponente (la <em>parte letterale</em>).</p>
+    <h2>Che cos&apos;&egrave; un monomio?</h2>
+    <p>Un <strong>monomio</strong> &egrave; il prodotto tra un numero (il <em>coefficiente</em>) e una o pi&ugrave; lettere con esponente (la <em>parte letterale</em>).</p>
     <div class="formula">3x&sup2;y &nbsp;&nbsp; coefficiente: <strong>3</strong> &nbsp;&nbsp; parte letterale: <strong>x&sup2;y</strong> &nbsp;&nbsp; grado: <strong>3</strong></div>
-    <div class="tip">💡 Il <strong>grado</strong> di un monomio &egrave; la somma di tutti gli esponenti. Es: 3x&sup2;y ha grado 2+1=<strong>3</strong>.</div>
-  </div>
+    <div class="tip">💡 Il <strong>grado</strong> di un monomio &egrave; la somma degli esponenti delle lettere: 3x&sup2;y ha grado 2+1=<strong>3</strong>.</div>
+    <div class="tab-row" id="monomiTabs">
+      <button class="tab-btn active" onclick="showSub('mono','somma',this)">Somma e differenza</button>
+      <button class="tab-btn" onclick="showSub('mono','prod',this)">Prodotto e divisione</button>
+      <button class="tab-btn" onclick="showSub('mono','pot',this)">Potenze</button>
+    </div>
 
-  <div class="card">
-    <h2>Regola del prodotto</h2>
-    <div class="formula">(a &middot; x<sup>n</sup> &middot; y<sup>m</sup>) &middot; (b &middot; x<sup>p</sup> &middot; y<sup>q</sup>) = (a&middot;b) &middot; x<sup>n+p</sup> &middot; y<sup>m+q</sup></div>
-    <ul class="steps-list" style="margin-top:.6rem">
-      <li>Moltiplica i <strong>coefficienti</strong> tra loro</li>
-      <li>Per ogni lettera <strong>somma gli esponenti</strong></li>
-      <li>Scrivi il risultato in forma ridotta</li>
-    </ul>
-    <div class="tab-row" id="monomioTabs">
-      <button class="tab-btn active" onclick="setMonomioEx(0,this)">3x&sup2; &times; 2x&sup3;</button>
-      <button class="tab-btn" onclick="setMonomioEx(1,this)">5a&sup2;b &times; (&minus;2ab&sup3;)</button>
-      <button class="tab-btn" onclick="setMonomioEx(2,this)">&minus;4x&sup3;y&sup2; &times; 3xy&sup4;</button>
-    </div>
-    <div id="monomioDemo"></div>
-    <div style="display:flex;gap:.5rem;margin-top:.65rem;flex-wrap:wrap">
-      <button class="btn" onclick="animateMonomio()">▶ Passo successivo</button>
-      <button class="btn sec" onclick="setMonomioEx(curMonomioEx,null)">↺ Ricomincia</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>La regola dei segni</h2>
-    <p>Conviene trattare ogni coefficiente come due informazioni separate: il suo <strong>segno</strong> e il suo <strong>valore assoluto</strong> (il numero senza segno). Poi si moltiplicano <em>separatamente</em>.</p>
-    <div class="formula" style="text-align:center">
-      &minus;3 &nbsp;=&nbsp; <span style="color:#b71c1c">segno (&minus;)</span> &nbsp;&times;&nbsp; <span style="color:var(--primary-d)">valore assoluto |3|</span>
-    </div>
-    <ul class="steps-list" style="margin:.5rem 0">
-      <li>Moltiplica i <strong>valori assoluti</strong> tra loro: |a| &middot; |b| (semplice moltiplicazione tra numeri positivi).</li>
-      <li>Determina il <strong>segno</strong> a parte con la regola qui sotto.</li>
-      <li>Unisci: <em>segno</em> davanti al <em>valore assoluto</em> del prodotto.</li>
-    </ul>
-    <h3>Il segno: tabella</h3>
-    <div style="overflow-x:auto">
-      <table style="border-collapse:collapse;margin:.6rem auto;font-family:'Cambria Math',Georgia,serif">
-        <tr>
-          <td style="width:52px;height:44px;border:1px solid var(--border)"></td>
-          <td style="width:52px;text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">+</td>
-          <td style="width:52px;text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">&minus;</td>
-        </tr>
-        <tr>
-          <td style="text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">+</td>
-          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#e0f4f1;color:#00695c;border:1.5px solid #00897b">+</td>
-          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#fde8e8;color:#b71c1c;border:1.5px solid #e53935">&minus;</td>
-        </tr>
-        <tr>
-          <td style="text-align:center;font-weight:700;background:var(--primary);color:#fff;border:1px solid var(--primary)">&minus;</td>
-          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#fde8e8;color:#b71c1c;border:1.5px solid #e53935">&minus;</td>
-          <td style="text-align:center;font-weight:700;font-size:1.3em;background:#e0f4f1;color:#00695c;border:1.5px solid #00897b">+</td>
-        </tr>
-      </table>
-    </div>
-    <div class="formula" style="text-align:center">
-      (+) &middot; (+) = <span style="color:#00695c">+</span> &nbsp;&nbsp;
-      (&minus;) &middot; (&minus;) = <span style="color:#00695c">+</span> &nbsp;&nbsp;
-      (+) &middot; (&minus;) = <span style="color:#b71c1c">&minus;</span> &nbsp;&nbsp;
-      (&minus;) &middot; (+) = <span style="color:#b71c1c">&minus;</span>
-    </div>
-    <div class="tip">💡 <strong>Segni concordi</strong> (uguali) &rarr; risultato <span style="color:#00695c;font-weight:700">positivo</span>; &nbsp;<strong>segni discordi</strong> (diversi) &rarr; risultato <span style="color:#b71c1c;font-weight:700">negativo</span>.</div>
-    <h3>Esempio svolto</h3>
-    <div class="demo-wrap">
-      <div style="font-family:'Cambria Math',Georgia,serif;font-size:1.05em;line-height:2">
-        (<span style="color:#b71c1c">&minus;</span>3x²) &middot; (<span style="color:#b71c1c">&minus;</span>2x)<br>
-        &nbsp;&nbsp;→ <strong>valori assoluti</strong>: 3 &middot; 2 = <strong>6</strong>, &nbsp; parte letterale x²&middot;x = x³<br>
-        &nbsp;&nbsp;→ <strong>segni</strong>: (<span style="color:#b71c1c">&minus;</span>)&middot;(<span style="color:#b71c1c">&minus;</span>) = <span style="color:#00695c;font-weight:700">+</span> &nbsp;(concordi)<br>
-        &nbsp;&nbsp;→ risultato: <span style="color:#00695c">+</span>6x³
+    <!-- SOTTO-PANE: SOMMA/DIFFERENZA -->
+    <div class="subpane active" id="mono-somma">
+      <h3>Somma e differenza di monomi</h3>
+      <p>Si possono sommare o sottrarre <strong>solo monomi simili</strong>, cio&egrave; con la <em>stessa parte letterale</em>. Si sommano (o sottraggono) i coefficienti e si tiene la parte letterale invariata.</p>
+      <div class="formula">3x&sup2;y + 5x&sup2;y = (3+5)x&sup2;y = 8x&sup2;y</div>
+      <div class="err">❌ 3x&sup2; + 2x <strong>non</strong> si sommano: le parti letterali sono diverse. Restano cos&igrave; come sono.</div>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-monosomma"></div>
+        <div class="sim-note" id="note-monosomma"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-monosomma"></div></div>
+        <div class="sim-ctrl">
+          <button class="btn sec" onclick="simPrev('monosomma')">← Indietro</button>
+          <button class="btn" onclick="simNext('monosomma')">Avanti →</button>
+          <button class="btn sec" onclick="simReset('monosomma')">↺</button>
+          <span class="sim-count" id="cnt-monosomma"></span>
+        </div>
       </div>
     </div>
-    <div class="warn">⚠️ La regola dei segni vale per il <strong>prodotto</strong> tra i coefficienti. Con le potenze di una base negativa conta invece l'esponente: (&minus;2)³ = &minus;8 (esponente dispari → negativo), (&minus;2)² = +4 (esponente pari → positivo).</div>
+
+    <!-- SOTTO-PANE: PRODOTTO/DIVISIONE -->
+    <div class="subpane" id="mono-prod">
+      <h3>Prodotto e divisione di monomi</h3>
+      <p><strong>Prodotto:</strong> si moltiplicano i coefficienti e si <em>sommano</em> gli esponenti delle lettere uguali.</p>
+      <div class="formula">3x&sup2; &middot; 2x&sup3; = (3&middot;2)&middot;x<sup>2+3</sup> = 6x&#8309;</div>
+      <p><strong>Divisione:</strong> si dividono i coefficienti e si <em>sottraggono</em> gli esponenti delle lettere uguali.</p>
+      <div class="formula">6x&#8309; : 2x&sup2; = (6:2)&middot;x<sup>5-2</sup> = 3x&sup3;</div>
+      <div class="tip">💡 La divisione &egrave; possibile solo se ogni esponente del divisore non supera quello del dividendo (altrimenti resta al denominatore).</div>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-monoprod"></div>
+        <div class="sim-note" id="note-monoprod"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-monoprod"></div></div>
+        <div class="sim-ctrl">
+          <button class="btn sec" onclick="simPrev('monoprod')">← Indietro</button>
+          <button class="btn" onclick="simNext('monoprod')">Avanti →</button>
+          <button class="btn sec" onclick="simReset('monoprod')">↺</button>
+          <span class="sim-count" id="cnt-monoprod"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOTTO-PANE: POTENZE -->
+    <div class="subpane" id="mono-pot">
+      <h3>Potenza di un monomio</h3>
+      <p>Per elevare un monomio a potenza si eleva il <strong>coefficiente</strong> e si <em>moltiplica</em> ogni esponente della parte letterale per l&apos;esponente della potenza.</p>
+      <div class="formula">(2x&sup2;y)&sup3; = 2&sup3; &middot; x<sup>2&middot;3</sup> &middot; y<sup>1&middot;3</sup> = 8x&#8310;y&sup3;</div>
+      <div class="warn">⚠️ Attento al segno: (&minus;2x)&sup2; = +4x&sup2; (esponente pari), mentre (&minus;2x)&sup3; = &minus;8x&sup3; (esponente dispari).</div>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-monopot"></div>
+        <div class="sim-note" id="note-monopot"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-monopot"></div></div>
+        <div class="sim-ctrl">
+          <button class="btn sec" onclick="simPrev('monopot')">← Indietro</button>
+          <button class="btn" onclick="simNext('monopot')">Avanti →</button>
+          <button class="btn sec" onclick="simReset('monopot')">↺</button>
+          <span class="sim-count" id="cnt-monopot"></span>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="card">
-    <h2>Calcolatore interattivo</h2>
-    <p class="lead">Inserisci due monomi (es: <code>3x^2</code>, <code>-2x^3</code>) e vedi il risultato animato.</p>
-    <div class="ctrl-row">
-      <label>Primo&nbsp;<input type="text" id="m1in" value="3x^2" oninput="updateMonomioCalc()"></label>
-      <span class="term op" style="font-size:1.3em">&times;</span>
-      <label>Secondo&nbsp;<input type="text" id="m2in" value="2x^3" oninput="updateMonomioCalc()"></label>
-    </div>
-    <div id="monomioCalcOut" class="demo-wrap"></div>
+    <h2>Esercizi svolti</h2>
+    <div id="ex-monomi"></div>
   </div>
-<div id="sq-monomi" class="sq-widget card" style="margin-top:.2rem"></div>
 
+  <div id="sq-monomi" class="card"></div>
 </section>
 
 <!-- ===================== MONOMIO x POLINOMIO ===================== -->
 <section class="scene" id="monopoli">
-  <p class="sec-label">Propriet&agrave; distributiva</p>
+  <p class="sec-label">Monomio per polinomio</p>
   <div class="card">
-    <h2>Monomio &times; Polinomio</h2>
-    <p>Si usa la <strong>propriet&agrave; distributiva</strong>: il monomio &ldquo;distribuisce&rdquo; la moltiplicazione su ogni termine del polinomio.</p>
+    <h2>La propriet&agrave; distributiva</h2>
+    <p>Un polinomio &egrave; una <strong>somma di monomi</strong>. Per moltiplicare un monomio per un polinomio si moltiplica il monomio per <em>ogni</em> termine, uno alla volta.</p>
     <div class="formula">m &middot; (a + b + c) = m&middot;a + m&middot;b + m&middot;c</div>
-    <div class="tip">📦 Immagina il monomio come un corriere: consegna la moltiplicazione a <em>ogni</em> termine del polinomio, uno per uno.</div>
-  </div>
-
-  <div class="card">
-    <h2>Animazione passo per passo</h2>
-    <div class="tab-row" id="mpTabs">
-      <button class="tab-btn active" onclick="setMpEx(0,this)">2x(3x+4)</button>
-      <button class="tab-btn" onclick="setMpEx(1,this)">&minus;3a&sup2;(2a&minus;5)</button>
-      <button class="tab-btn" onclick="setMpEx(2,this)">x&sup2;(x&sup2;&minus;3x+1)</button>
-    </div>
-    <div id="mpDemo"></div>
-    <div id="mpArrows" style="margin:.3rem 0"></div>
-    <div style="display:flex;gap:.5rem;margin-top:.6rem">
-      <button class="btn" onclick="animateMp()">▶ Avanti</button>
-      <button class="btn sec" onclick="resetMp()">↺ Ricomincia</button>
+    <div class="tip">📦 Immagina il monomio come un corriere che consegna la moltiplicazione a ogni termine del polinomio.</div>
+    <div class="sim-box">
+      <span class="sim-badge">SIMULAZIONE</span>
+      <div class="sim-stage" id="sim-mp"></div>
+      <div class="sim-note" id="note-mp"></div>
+      <div class="sim-bar-wrap"><div class="sim-bar" id="bar-mp"></div></div>
+      <div class="sim-ctrl">
+        <button class="btn sec" onclick="simPrev('mp')">← Indietro</button>
+        <button class="btn" onclick="simNext('mp')">Avanti →</button>
+        <button class="btn sec" onclick="simReset('mp')">↺</button>
+        <span class="sim-count" id="cnt-mp"></span>
+      </div>
     </div>
   </div>
-
-  <div class="card">
-    <h2>Raccoglimento: la distributiva al contrario</h2>
-    <p>Raccogliere un fattore comune &egrave; esattamente l&apos;operazione inversa della distributiva.</p>
-    <div class="formula">6x&sup3; + 4x&sup2; &minus; 2x &nbsp;=&nbsp; 2x(3x&sup2; + 2x &minus; 1)</div>
-    <div class="tip">💡 Per raccogliere, trova il MCD tra i coefficienti e il fattore letterale con l&apos;esponente pi&ugrave; basso.</div>
-  </div>
-  <div id="sq-monopoli" class="sq-widget card" style="margin-top:.2rem"></div>
+  <div class="card"><h2>Esercizi svolti</h2><div id="ex-monopoli"></div></div>
+  <div id="sq-monopoli" class="card"></div>
 </section>
 
 <!-- ===================== POLINOMIO x POLINOMIO ===================== -->
 <section class="scene" id="polipoli">
-  <p class="sec-label">Prodotto tra polinomi</p>
+  <p class="sec-label">Polinomio per polinomio</p>
   <div class="card">
-    <h2>Polinomio &times; Polinomio</h2>
-    <p>Si applica la distributiva <em>pi&ugrave; volte</em>: ogni termine del primo polinomio moltiplica ogni termine del secondo.</p>
+    <h2>Ogni termine per ogni termine</h2>
+    <p>Si applica la distributiva pi&ugrave; volte: <strong>ogni</strong> termine del primo polinomio moltiplica <strong>ogni</strong> termine del secondo. Alla fine si sommano i termini simili.</p>
     <div class="formula">(a + b)(c + d) = a&middot;c + a&middot;d + b&middot;c + b&middot;d</div>
-    <div class="tip">💡 Se il primo ha <strong>n</strong> termini e il secondo <strong>m</strong>, ottieni <strong>n &times; m</strong> prodotti parziali. Poi sommi i termini simili.</div>
-  </div>
-
-  <div class="card">
-    <h2>Modello ad area (tabella)</h2>
-    <p class="lead">La tabella garantisce di non dimenticare nessun termine. Righe = termini del primo; colonne = termini del secondo.</p>
-    <div class="tab-row" id="ppTabs">
-      <button class="tab-btn active" onclick="setPpEx(0,this)">(x+2)(x+3)</button>
-      <button class="tab-btn" onclick="setPpEx(1,this)">(2x+1)(x&minus;4)</button>
-      <button class="tab-btn" onclick="setPpEx(2,this)">(x+y)(x&minus;y+2)</button>
+    <div class="tip">💡 Se il primo ha <strong>n</strong> termini e il secondo <strong>m</strong>, ottieni <strong>n&times;m</strong> prodotti parziali.</div>
+    <div class="sim-box">
+      <span class="sim-badge">SIMULAZIONE</span>
+      <div class="sim-stage" id="sim-pp"></div>
+      <div class="sim-note" id="note-pp"></div>
+      <div class="sim-bar-wrap"><div class="sim-bar" id="bar-pp"></div></div>
+      <div class="sim-ctrl">
+        <button class="btn sec" onclick="simPrev('pp')">← Indietro</button>
+        <button class="btn" onclick="simNext('pp')">Avanti →</button>
+        <button class="btn sec" onclick="simReset('pp')">↺</button>
+        <span class="sim-count" id="cnt-pp"></span>
+      </div>
     </div>
-    <div id="ppAreaModel"></div>
-    <button class="btn" style="margin-top:.6rem" onclick="animatePp()">▶ Illumina le celle</button>
   </div>
-
-  <div class="card">
-    <h2>Raccolta dei termini simili</h2>
-    <p>Dopo il prodotto somma i <strong>termini simili</strong> (stessa parte letterale).</p>
-    <div class="formula">3x&sup2; + <span style="color:#e53935">2x + 4x</span> + 3 = 3x&sup2; + <span style="color:#e53935">6x</span> + 3</div>
-    <div class="warn">⚠️ Si sommano <strong>solo</strong> termini con la stessa parte letterale: 3x&sup2; e 2x <em>non</em> si possono sommare.</div>
-  </div>
-  <div id="sq-polipoli" class="sq-widget card" style="margin-top:.2rem"></div>
+  <div class="card"><h2>Esercizi svolti</h2><div id="ex-polipoli"></div></div>
+  <div id="sq-polipoli" class="card"></div>
 </section>
 
 <!-- ===================== PRODOTTI NOTEVOLI ===================== -->
 <section class="scene" id="notevoli">
   <p class="sec-label">Prodotti notevoli</p>
   <div class="card">
-    <h2>Cosa sono i prodotti notevoli?</h2>
-    <p>Moltiplicazioni tra polinomi cos&igrave; frequenti che conviene memorizzarne il risultato. Riconoscerli permette di calcolare velocemente senza sviluppare tutto.</p>
-    <div class="tab-row" id="notTab">
-      <button class="tab-btn active" onclick="showNotGroup('all',this)">Tutti</button>
-      <button class="tab-btn" onclick="showNotGroup('quadrati',this)">Quadrati</button>
-      <button class="tab-btn" onclick="showNotGroup('cubi',this)">Cubi</button>
-      <button class="tab-btn" onclick="showNotGroup('errori',this)">Errori comuni</button>
+    <h2>Che cosa sono</h2>
+    <p>Alcune moltiplicazioni tra polinomi sono cos&igrave; frequenti che conviene <strong>memorizzarne il risultato</strong>. Riconoscerle permette di calcolare al volo, senza svolgere tutto.</p>
+    <div class="tab-row" id="notTabs">
+      <button class="tab-btn active" onclick="showSub('not','dq',this)">Differenza di quadrati</button>
+      <button class="tab-btn" onclick="showSub('not','qb',this)">Quadrato del binomio</button>
+      <button class="tab-btn" onclick="showSub('not','qt',this)">Quadrato del trinomio</button>
+      <button class="tab-btn" onclick="showSub('not','cubi',this)">Somma/differenza di cubi</button>
     </div>
-  </div>
 
-  <div class="notable-card" data-group="quadrati">
-    <h3>1. Somma &times; Differenza &rarr; Differenza di quadrati</h3>
-    <div class="formula">(a + b)(a &minus; b) = a&sup2; &minus; b&sup2;</div>
-    <p style="font-size:.88em;margin:.35rem 0">I termini in <em>ab</em> si annullano; rimangono solo i quadrati.</p>
-    <div id="nDemo0"></div>
-    <div style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:.6rem">
-      <button class="btn" onclick="animateNotevole(0,this)">▶ Mostra sviluppo</button>
-      <div class="slider-row" style="flex:1;min-width:200px">
-        <span style="color:var(--muted)">a=</span>
-        <input type="range" min="1" max="9" value="3" id="na0" oninput="updateN(0)">
-        <span class="val" id="nv0a">3</span>
-        <span style="color:var(--muted);margin-left:.5rem">b=</span>
-        <input type="range" min="1" max="9" value="2" id="nb0" oninput="updateN(0)">
-        <span class="val" id="nv0b">2</span>
+    <div class="subpane active" id="not-dq">
+      <h3>Somma per differenza &rarr; differenza di quadrati</h3>
+      <div class="formula">(a + b)(a &minus; b) = a&sup2; &minus; b&sup2;</div>
+      <p>I due termini con <em>ab</em> hanno segni opposti e si annullano: restano solo i quadrati.</p>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-dq"></div><div class="sim-note" id="note-dq"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-dq"></div></div>
+        <div class="sim-ctrl"><button class="btn sec" onclick="simPrev('dq')">← Indietro</button><button class="btn" onclick="simNext('dq')">Avanti →</button><button class="btn sec" onclick="simReset('dq')">↺</button><span class="sim-count" id="cnt-dq"></span></div>
       </div>
     </div>
-    <div id="nNum0" class="tip" style="display:none;margin-top:.45rem"></div>
-  </div>
 
-  <div class="notable-card" data-group="quadrati">
-    <h3>2. Quadrato del binomio &mdash; Somma</h3>
-    <div class="formula">(a + b)&sup2; = a&sup2; + 2ab + b&sup2;</div>
-    <p style="font-size:.88em;margin:.35rem 0">Quadrato del primo + <strong>doppio prodotto</strong> + quadrato del secondo.</p>
-    <div id="nDemo1"></div>
-    <div style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-top:.6rem">
-      <button class="btn" onclick="animateNotevole(1,this)">▶ Mostra sviluppo</button>
-      <div class="slider-row" style="flex:1;min-width:200px">
-        <span style="color:var(--muted)">a=</span>
-        <input type="range" min="1" max="9" value="4" id="na1" oninput="updateN(1)">
-        <span class="val" id="nv1a">4</span>
-        <span style="color:var(--muted);margin-left:.5rem">b=</span>
-        <input type="range" min="1" max="9" value="3" id="nb1" oninput="updateN(1)">
-        <span class="val" id="nv1b">3</span>
+    <div class="subpane" id="not-qb">
+      <h3>Quadrato di un binomio</h3>
+      <div class="formula">(a + b)&sup2; = a&sup2; + 2ab + b&sup2;<br>(a &minus; b)&sup2; = a&sup2; &minus; 2ab + b&sup2;</div>
+      <p>Quadrato del primo + <strong>doppio prodotto</strong> + quadrato del secondo.</p>
+      <div class="err">❌ Errore comune (falso quadrato): (a+b)&sup2; &ne; a&sup2; + b&sup2;. Manca il <strong>2ab</strong>!</div>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-qb"></div><div class="sim-note" id="note-qb"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-qb"></div></div>
+        <div class="sim-ctrl"><button class="btn sec" onclick="simPrev('qb')">← Indietro</button><button class="btn" onclick="simNext('qb')">Avanti →</button><button class="btn sec" onclick="simReset('qb')">↺</button><span class="sim-count" id="cnt-qb"></span></div>
       </div>
     </div>
-    <div id="nNum1" class="tip" style="display:none;margin-top:.45rem"></div>
-  </div>
 
-  <div class="notable-card" data-group="quadrati">
-    <h3>Prova geometrica di (a+b)²</h3>
-    <p style="font-size:.88em;margin:.35rem 0 .6rem">Il quadrato di lato <em>(a+b)</em> si suddivide in <strong>4 regioni</strong>: capisci visivamente da dove nasce il doppio prodotto.</p>
-    <div id="geoProof" style="margin:.5rem 0">
-      <svg viewBox="0 0 260 240" style="width:min(260px,100%);display:block;margin:0 auto" role="img" aria-label="prova geometrica quadrato del binomio">
-        <defs>
-          <pattern id="hatch" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="6" stroke="#1565c0" stroke-width="1" opacity=".25"/>
-          </pattern>
-        </defs>
-        <!-- quadrato grande -->
-        <rect x="30" y="20" width="200" height="200" fill="none" stroke="#888" stroke-width="1.5" stroke-dasharray="4,3"/>
-        <!-- a² in alto a sinistra -->
-        <rect x="30" y="20" width="130" height="130" fill="#fde8e8" stroke="#e53935" stroke-width="2" id="gp0" style="opacity:0;transition:opacity .5s"/>
-        <text x="95" y="90" text-anchor="middle" font-size="22" fill="#b71c1c" font-weight="700" id="gt0" style="opacity:0;transition:opacity .5s">a²</text>
-        <!-- b² in basso a destra -->
-        <rect x="160" y="150" width="70" height="70" fill="#e0f4f1" stroke="#00897b" stroke-width="2" id="gp1" style="opacity:0;transition:opacity .5s .3s"/>
-        <text x="195" y="192" text-anchor="middle" font-size="18" fill="#00695c" font-weight="700" id="gt1" style="opacity:0;transition:opacity .5s .3s">b²</text>
-        <!-- ab top-right -->
-        <rect x="160" y="20" width="70" height="130" fill="url(#hatch)" stroke="#f57c00" stroke-width="2" id="gp2" style="opacity:0;transition:opacity .5s .6s"/>
-        <text x="195" y="90" text-anchor="middle" font-size="17" fill="#e65100" font-weight="700" id="gt2" style="opacity:0;transition:opacity .5s .6s">ab</text>
-        <!-- ab bottom-left -->
-        <rect x="30" y="150" width="130" height="70" fill="url(#hatch)" stroke="#f57c00" stroke-width="2" id="gp3" style="opacity:0;transition:opacity .5s .9s"/>
-        <text x="95" y="192" text-anchor="middle" font-size="17" fill="#e65100" font-weight="700" id="gt3" style="opacity:0;transition:opacity .5s .9s">ab</text>
-        <!-- dimensioni -->
-        <text x="95" y="14" text-anchor="middle" font-size="13" fill="#888" font-style="italic">a</text>
-        <text x="195" y="14" text-anchor="middle" font-size="13" fill="#888" font-style="italic">b</text>
-        <text x="18" y="90" text-anchor="middle" font-size="13" fill="#888" font-style="italic">a</text>
-        <text x="18" y="190" text-anchor="middle" font-size="13" fill="#888" font-style="italic">b</text>
-      </svg>
+    <div class="subpane" id="not-qt">
+      <h3>Quadrato di un trinomio</h3>
+      <div class="formula">(a + b + c)&sup2; = a&sup2; + b&sup2; + c&sup2; + 2ab + 2ac + 2bc</div>
+      <p>I tre quadrati pi&ugrave; il <strong>doppio prodotto di ogni coppia</strong> di termini.</p>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-qt"></div><div class="sim-note" id="note-qt"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-qt"></div></div>
+        <div class="sim-ctrl"><button class="btn sec" onclick="simPrev('qt')">← Indietro</button><button class="btn" onclick="simNext('qt')">Avanti →</button><button class="btn sec" onclick="simReset('qt')">↺</button><span class="sim-count" id="cnt-qt"></span></div>
+      </div>
     </div>
-    <div id="geoNote" style="font-size:.85em;color:var(--muted);text-align:center;min-height:1.4em;margin:.3rem 0"></div>
-    <div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap">
-      <button class="btn sec" onclick="geoStep()" id="geoBtn">▶ Mostra le regioni una a una</button>
-      <button class="btn sec" onclick="geoReset()">↺</button>
+
+    <div class="subpane" id="not-cubi">
+      <h3>Somma e differenza di cubi</h3>
+      <div class="formula">a&sup3; + b&sup3; = (a + b)(a&sup2; &minus; ab + b&sup2;)<br>a&sup3; &minus; b&sup3; = (a &minus; b)(a&sup2; + ab + b&sup2;)</div>
+      <div class="tip">💡 Nel secondo fattore il segno di <em>ab</em> &egrave; <strong>opposto</strong> a quello del primo fattore.</div>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-cubi"></div><div class="sim-note" id="note-cubi"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-cubi"></div></div>
+        <div class="sim-ctrl"><button class="btn sec" onclick="simPrev('cubi')">← Indietro</button><button class="btn" onclick="simNext('cubi')">Avanti →</button><button class="btn sec" onclick="simReset('cubi')">↺</button><span class="sim-count" id="cnt-cubi"></span></div>
+      </div>
     </div>
   </div>
 
-  <div class="notable-card" data-group="quadrati">
-    <h3>3. Quadrato del binomio &mdash; Differenza</h3>
-    <div class="formula">(a &minus; b)&sup2; = a&sup2; &minus; 2ab + b&sup2;</div>
-    <p style="font-size:.88em;margin:.35rem 0">Come il precedente ma il doppio prodotto ha il segno <strong>meno</strong>.</p>
-    <div id="nDemo2"></div>
-    <button class="btn" style="margin-top:.6rem" onclick="animateNotevole(2,this)">▶ Mostra sviluppo</button>
-  </div>
-
-  <div class="notable-card" data-group="errori">
-    <h3>4. Il &ldquo;Falso Quadrato&rdquo; &mdash; errore da evitare!</h3>
-    <div class="err">❌ SBAGLIATO: &nbsp;(a + b)&sup2; &ne; a&sup2; + b&sup2;</div>
-    <div class="formula">(a + b)&sup2; = a&sup2; + <span style="color:#e53935">2ab</span> + b&sup2;</div>
-    <p style="font-size:.88em;margin:.35rem 0">L&apos;errore pi&ugrave; comune &egrave; dimenticare il <strong style="color:#e53935">doppio prodotto 2ab</strong>. Non si pu&ograve; &ldquo;quadrare lettera per lettera&rdquo;!</p>
-    <div id="nDemo3"></div>
-    <button class="btn" style="margin-top:.6rem" onclick="animateNotevole(3,this)">▶ Confronta corretto vs sbagliato</button>
-  </div>
-
-  <div class="notable-card" data-group="cubi">
-    <h3>5. Cubo del binomio &mdash; Somma</h3>
-    <div class="formula">(a + b)&sup3; = a&sup3; + 3a&sup2;b + 3ab&sup2; + b&sup3;</div>
-    <p style="font-size:.88em;margin:.35rem 0">I coefficienti 1, 3, 3, 1 vengono dal <strong>triangolo di Tartaglia</strong>.</p>
-    <div id="nDemo4"></div>
-    <button class="btn" style="margin-top:.6rem" onclick="animateNotevole(4,this)">▶ Mostra sviluppo</button>
-  </div>
-
-  <div class="notable-card" data-group="cubi">
-    <h3>6. Cubo del binomio &mdash; Differenza</h3>
-    <div class="formula">(a &minus; b)&sup3; = a&sup3; &minus; 3a&sup2;b + 3ab&sup2; &minus; b&sup3;</div>
-    <div id="nDemo5"></div>
-    <button class="btn" style="margin-top:.6rem" onclick="animateNotevole(5,this)">▶ Mostra sviluppo</button>
-  </div>
-
-  <div class="notable-card" data-group="cubi">
-    <h3>7. Somma di cubi</h3>
-    <div class="formula">(a + b)(a&sup2; &minus; ab + b&sup2;) = a&sup3; + b&sup3;</div>
-    <p style="font-size:.88em;margin:.35rem 0">Attenzione al segno di <em>ab</em>: &egrave; <strong>meno</strong>.</p>
-    <div id="nDemo6"></div>
-    <button class="btn" style="margin-top:.6rem" onclick="animateNotevole(6,this)">▶ Mostra sviluppo</button>
-  </div>
-
-  <div class="notable-card" data-group="cubi">
-    <h3>8. Differenza di cubi</h3>
-    <div class="formula">(a &minus; b)(a&sup2; + ab + b&sup2;) = a&sup3; &minus; b&sup3;</div>
-    <p style="font-size:.88em;margin:.35rem 0">Qui il secondo fattore ha tutti i segni <strong>positivi</strong>.</p>
-    <div id="nDemo7"></div>
-    <button class="btn" style="margin-top:.6rem" onclick="animateNotevole(7,this)">▶ Mostra sviluppo</button>
-  </div>
-
-  <div class="notable-card" data-group="errori">
-    <h3>Errori comuni nei cubi e nelle somme/diff di cubi</h3>
-    <div class="err">❌ Cubo della somma: (a+b)³ &ne; a³ + b³ &nbsp;— mancano i termini centrali!</div>
-    <div class="formula">(a+b)³ = a³ + <span style="color:#e53935">3a²b + 3ab²</span> + b³</div>
-    <div class="err" style="margin-top:.5rem">❌ Somma di cubi: sbagliare il segno di ab nel secondo fattore<br>
-      (a+b)(a² <span style="color:#e53935">+</span> ab + b²) &ne; a³+b³ &nbsp;— deve essere <strong>meno ab</strong>!</div>
-    <div class="formula">(a+b)(a² <span style="color:#e53935">&minus; ab</span> + b²) = a³ + b³</div>
-    <div class="tip" style="margin-top:.5rem">Trucco mnemonico per la somma/diff di cubi: il <strong>secondo fattore ha sempre il segno di ab opposto</strong> a quello del primo fattore. (a<strong>+</strong>b)(a²<strong>&minus;</strong>ab+b²) e (a<strong>&minus;</strong>b)(a²<strong>+</strong>ab+b²).</div>
-  </div>
-
-  <div class="card" style="margin-top:.8rem">
-    <h2>Tabella riassuntiva</h2>
+  <div class="card"><h2>Tabella riassuntiva</h2>
     <div style="overflow-x:auto">
-    <table style="width:100%;border-collapse:collapse;font-size:.88em">
-      <thead>
-        <tr style="background:var(--primary);color:#fff">
-          <th style="padding:.5rem .7rem;text-align:left;border-radius:8px 0 0 0">Nome</th>
-          <th style="padding:.5rem .7rem;text-align:left">Espressione</th>
-          <th style="padding:.5rem .7rem;text-align:left;border-radius:0 8px 0 0">Risultato</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr style="background:var(--surface2)"><td style="padding:.45rem .7rem">Diff. di quadrati</td><td style="font-family:Georgia,serif">(a+b)(a&minus;b)</td><td style="font-family:Georgia,serif">a&sup2;&minus;b&sup2;</td></tr>
-        <tr><td style="padding:.45rem .7rem">Quadrato somma</td><td style="font-family:Georgia,serif">(a+b)&sup2;</td><td style="font-family:Georgia,serif">a&sup2;+2ab+b&sup2;</td></tr>
-        <tr style="background:var(--surface2)"><td style="padding:.45rem .7rem">Quadrato diff.</td><td style="font-family:Georgia,serif">(a&minus;b)&sup2;</td><td style="font-family:Georgia,serif">a&sup2;&minus;2ab+b&sup2;</td></tr>
-        <tr><td style="padding:.45rem .7rem">Cubo somma</td><td style="font-family:Georgia,serif">(a+b)&sup3;</td><td style="font-family:Georgia,serif">a&sup3;+3a&sup2;b+3ab&sup2;+b&sup3;</td></tr>
-        <tr style="background:var(--surface2)"><td style="padding:.45rem .7rem">Cubo diff.</td><td style="font-family:Georgia,serif">(a&minus;b)&sup3;</td><td style="font-family:Georgia,serif">a&sup3;&minus;3a&sup2;b+3ab&sup2;&minus;b&sup3;</td></tr>
-        <tr><td style="padding:.45rem .7rem">Somma cubi</td><td style="font-family:Georgia,serif">(a+b)(a&sup2;&minus;ab+b&sup2;)</td><td style="font-family:Georgia,serif">a&sup3;+b&sup3;</td></tr>
-        <tr style="background:var(--surface2)"><td style="padding:.45rem .7rem">Diff. cubi</td><td style="font-family:Georgia,serif">(a&minus;b)(a&sup2;+ab+b&sup2;)</td><td style="font-family:Georgia,serif">a&sup3;&minus;b&sup3;</td></tr>
-      </tbody>
-    </table>
+      <table style="width:100%;border-collapse:collapse;font-size:.9em">
+        <thead><tr style="background:var(--primary);color:#fff">
+          <th style="padding:.5rem .7rem;text-align:left;border-radius:8px 0 0 0">Espressione</th>
+          <th style="padding:.5rem .7rem;text-align:left;border-radius:0 8px 0 0">Risultato</th></tr></thead>
+        <tbody>
+          <tr style="background:var(--surface2)"><td style="padding:.45rem .7rem;font-family:Georgia,serif">(a+b)(a&minus;b)</td><td style="font-family:Georgia,serif">a&sup2;&minus;b&sup2;</td></tr>
+          <tr><td style="padding:.45rem .7rem;font-family:Georgia,serif">(a+b)&sup2;</td><td style="font-family:Georgia,serif">a&sup2;+2ab+b&sup2;</td></tr>
+          <tr style="background:var(--surface2)"><td style="padding:.45rem .7rem;font-family:Georgia,serif">(a&minus;b)&sup2;</td><td style="font-family:Georgia,serif">a&sup2;&minus;2ab+b&sup2;</td></tr>
+          <tr><td style="padding:.45rem .7rem;font-family:Georgia,serif">(a+b+c)&sup2;</td><td style="font-family:Georgia,serif">a&sup2;+b&sup2;+c&sup2;+2ab+2ac+2bc</td></tr>
+          <tr style="background:var(--surface2)"><td style="padding:.45rem .7rem;font-family:Georgia,serif">a&sup3;+b&sup3;</td><td style="font-family:Georgia,serif">(a+b)(a&sup2;&minus;ab+b&sup2;)</td></tr>
+          <tr><td style="padding:.45rem .7rem;font-family:Georgia,serif">a&sup3;&minus;b&sup3;</td><td style="font-family:Georgia,serif">(a&minus;b)(a&sup2;+ab+b&sup2;)</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <div id="sq-notevoli" class="sq-widget card" style="margin-top:.2rem"></div>
+  <div class="card"><h2>Esercizi svolti</h2><div id="ex-notevoli"></div></div>
+  <div id="sq-notevoli" class="card"></div>
 </section>
 
-<!-- ===================== SCOMPOSIZIONE ===================== -->
-<section class="scene" id="scompo">
-  <p class="sec-label">Scomposizione in fattori</p>
+<!-- ===================== DIVISIONE TRA POLINOMI ===================== -->
+<section class="scene" id="divisione">
+  <p class="sec-label">Divisione tra polinomi</p>
   <div class="card">
-    <h2>Scomporre = i prodotti al contrario</h2>
-    <p>Scomporre un polinomio significa scriverlo come <strong>prodotto</strong> di fattori pi&ugrave; semplici. &Egrave; l&apos;operazione <em>inversa</em> di tutto quello che hai imparato finora.</p>
-    <div class="formula">6x&sup2; + 4x &nbsp;<span style="color:var(--primary)">&rarr;</span>&nbsp; 2x &middot; (3x + 2)</div>
-    <div class="tip">🔑 <strong>Strategia generale</strong>, sempre in quest&apos;ordine:<br>1) Raccoglimento <strong>totale</strong> (fattore comune a tutti) &rarr; 2) Riconosci un <strong>prodotto notevole</strong> &rarr; 3) Raccoglimento <strong>parziale</strong> (a gruppi) &rarr; 4) Trinomio caratteristico.</div>
-    <div class="tab-row" id="scompoTabs"></div>
-  </div>
-
-  <!-- Player animato -->
-  <div class="card">
-    <h2 id="scompoTitle">Raccoglimento totale</h2>
-    <div class="method-pill" id="scompoPill">🧩 metodo</div>
-    <p class="lead" id="scompoDesc"></p>
-    <div class="demo-wrap">
-      <div class="scompo-stage" id="scompoStage"></div>
-      <div class="scompo-note" id="scompoNote"></div>
+    <h2>Dividere un polinomio per un altro</h2>
+    <p>Come per i numeri interi, dividendo due polinomi si ottengono un <strong>quoziente</strong> e un <strong>resto</strong>, legati dalla relazione fondamentale:</p>
+    <div class="formula">Dividendo = Divisore &middot; Quoziente + Resto</div>
+    <div class="tab-row" id="divTabs">
+      <button class="tab-btn active" onclick="showSub('div','lunga',this)">Divisione lunga</button>
+      <button class="tab-btn" onclick="showSub('div','ruffini',this)">Regola di Ruffini</button>
+      <button class="tab-btn" onclick="showSub('div','resto',this)">Regola del resto</button>
     </div>
-    <ul class="steps-list" id="scompoSteps" style="margin:.4rem 0"></ul>
-    <div style="display:flex;gap:.5rem;margin-top:.55rem;flex-wrap:wrap">
-      <button class="btn" id="scompoNext" onclick="scompoStepNext()">▶ Passo successivo</button>
-      <button class="btn sec" onclick="scompoReset()">↺ Ricomincia</button>
+
+    <div class="subpane active" id="div-lunga">
+      <h3>La divisione lunga</h3>
+      <p>Si ordinano i polinomi secondo le potenze decrescenti, poi si ripete: <em>dividi il primo termine, moltiplica, sottrai, abbassa</em>.</p>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-lunga" style="min-height:5em"></div>
+        <div class="sim-note" id="note-lunga"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-lunga"></div></div>
+        <div class="sim-ctrl"><button class="btn sec" onclick="simPrev('lunga')">← Indietro</button><button class="btn" onclick="simNext('lunga')">Avanti →</button><button class="btn sec" onclick="simReset('lunga')">↺</button><span class="sim-count" id="cnt-lunga"></span></div>
+      </div>
+    </div>
+
+    <div class="subpane" id="div-ruffini">
+      <h3>La regola di Ruffini</h3>
+      <p>Una scorciatoia per dividere un polinomio per un binomio del tipo <strong>(x &minus; k)</strong>. Si lavora solo con i coefficienti in uno schema a griglia.</p>
+      <div class="tip">💡 Il divisore deve essere <strong>x &minus; k</strong>: per (x + 2) si usa k = &minus;2, perch&eacute; x + 2 = x &minus; (&minus;2).</div>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-ruffini" style="min-height:5em"></div>
+        <div class="sim-note" id="note-ruffini"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-ruffini"></div></div>
+        <div class="sim-ctrl"><button class="btn sec" onclick="simPrev('ruffini')">← Indietro</button><button class="btn" onclick="simNext('ruffini')">Avanti →</button><button class="btn sec" onclick="simReset('ruffini')">↺</button><span class="sim-count" id="cnt-ruffini"></span></div>
+      </div>
+    </div>
+
+    <div class="subpane" id="div-resto">
+      <h3>La regola del resto</h3>
+      <p>Il <strong>resto</strong> della divisione di un polinomio P(x) per il binomio (x &minus; k) &egrave; semplicemente il valore <strong>P(k)</strong>: basta sostituire!</p>
+      <div class="formula">Resto di P(x) : (x &minus; k) = P(k)</div>
+      <div class="tip">✔ Se P(k) = 0, allora (x &minus; k) &egrave; un <strong>divisore esatto</strong> di P(x) (regola del divisore, o &ldquo;di Ruffini&rdquo;).</div>
+      <div class="sim-box">
+        <span class="sim-badge">SIMULAZIONE</span>
+        <div class="sim-stage" id="sim-resto"></div>
+        <div class="sim-note" id="note-resto"></div>
+        <div class="sim-bar-wrap"><div class="sim-bar" id="bar-resto"></div></div>
+        <div class="sim-ctrl"><button class="btn sec" onclick="simPrev('resto')">← Indietro</button><button class="btn" onclick="simNext('resto')">Avanti →</button><button class="btn sec" onclick="simReset('resto')">↺</button><span class="sim-count" id="cnt-resto"></span></div>
+      </div>
     </div>
   </div>
-
-  <!-- Riconoscimento schede -->
-  <div class="card">
-    <h2>Come riconoscere il metodo giusto</h2>
-    <p class="lead">Impara a &ldquo;leggere&rdquo; il polinomio prima di scomporlo.</p>
-
-    <h3>1. Raccoglimento totale</h3>
-    <p style="font-size:.9em">C&apos;&egrave; un fattore (numero e/o lettera) presente in <strong>ogni</strong> termine? Mettilo in evidenza.</p>
-    <div class="formula">15a&sup3; &minus; 10a&sup2; + 5a = <span style="color:#f57f17">5a</span>(3a&sup2; &minus; 2a + 1)</div>
-
-    <h3>2. Raccoglimento parziale (a gruppi)</h3>
-    <p style="font-size:.9em">4 termini senza fattore comune a tutti? Raggruppa a due a due, poi raccogli il binomio comune.</p>
-    <div class="formula">ax + ay + bx + by = a(x+y) + b(x+y) = (x+y)(a+b)</div>
-
-    <h3>3. Differenza di quadrati</h3>
-    <p style="font-size:.9em">Due quadrati separati da un <strong>meno</strong>: <em>A&sup2; &minus; B&sup2;</em>.</p>
-    <div class="formula">A&sup2; &minus; B&sup2; = (A + B)(A &minus; B)</div>
-    <div class="warn">⚠️ La <strong>somma</strong> di quadrati A&sup2; + B&sup2; <strong>non</strong> si scompone (nei numeri reali)!</div>
-
-    <h3>4. Trinomio quadrato perfetto</h3>
-    <p style="font-size:.9em">Tre termini: due quadrati e in mezzo il <strong>doppio prodotto</strong>.</p>
-    <div class="formula">A&sup2; &plusmn; 2AB + B&sup2; = (A &plusmn; B)&sup2;</div>
-    <div class="tip">✔ Test: il termine centrale deve essere <strong>2&middot;&radic;(1&deg;)&middot;&radic;(3&deg;)</strong>. Es: x&sup2;+6x+9 &rarr; 2&middot;x&middot;3 = 6x ✔ &rarr; (x+3)&sup2;.</div>
-
-    <h3>5. Trinomio caratteristico (somma e prodotto)</h3>
-    <p style="font-size:.9em">x&sup2; + sx + p: cerca due numeri la cui <strong>somma</strong> sia <em>s</em> e il cui <strong>prodotto</strong> sia <em>p</em>.</p>
-    <div class="formula">x&sup2; + 5x + 6 = (x + 2)(x + 3) &nbsp; <span style="color:var(--muted);font-size:.8em">[2+3=5, 2&middot;3=6]</span></div>
-
-    <h3>6. Somma e differenza di cubi</h3>
-    <div class="formula">A&sup3; + B&sup3; = (A+B)(A&sup2; &minus; AB + B&sup2;)</div>
-    <div class="formula">A&sup3; &minus; B&sup3; = (A&minus;B)(A&sup2; + AB + B&sup2;)</div>
-  </div>
-
-  <!-- Diagramma decisionale -->
-  <div class="card">
-    <h2>Schema decisionale interattivo</h2>
-    <p class="lead">Clicca su un nodo per vedere quale metodo usare.</p>
-    <div class="map-scroll" style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:.9rem .5rem">
-      <svg id="dtree" viewBox="0 0 560 310" style="min-width:480px;width:100%;height:auto;display:block" role="img">
-        <defs>
-          <marker id="darr" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#1565c0"/></marker>
-        </defs>
-        <!-- ── linee ── -->
-        <!-- START → fattore comune -->
-        <line x1="280" y1="38" x2="280" y2="68" stroke="#1565c0" stroke-width="1.5" marker-end="url(#darr)"/>
-        <!-- fattore comune → SÌ (sx) -->
-        <line x1="230" y1="90" x2="130" y2="120" stroke="#00897b" stroke-width="1.5" marker-end="url(#darr)"/>
-        <!-- fattore comune → NO (dx) -->
-        <line x1="330" y1="90" x2="430" y2="120" stroke="#e53935" stroke-width="1.5" marker-end="url(#darr)"/>
-        <!-- NO → quanti termini -->
-        <line x1="430" y1="150" x2="430" y2="178" stroke="#1565c0" stroke-width="1.5" marker-end="url(#darr)"/>
-        <!-- quanti termini → 2 -->
-        <line x1="385" y1="200" x2="180" y2="238" stroke="#888" stroke-width="1.5" marker-end="url(#darr)"/>
-        <!-- quanti termini → 3 -->
-        <line x1="430" y1="210" x2="430" y2="238" stroke="#888" stroke-width="1.5" marker-end="url(#darr)"/>
-        <!-- quanti termini → 4 -->
-        <line x1="475" y1="200" x2="530" y2="238" stroke="#888" stroke-width="1.5" marker-end="url(#darr)"/>
-        <!-- label sì/no -->
-        <text x="168" y="112" font-size="11" fill="#00897b" font-weight="700">Sì</text>
-        <text x="442" y="112" font-size="11" fill="#e53935" font-weight="700">No</text>
-        <text x="370" y="222" font-size="10" fill="#555">2</text>
-        <text x="434" y="222" font-size="10" fill="#555">3</text>
-        <text x="492" y="222" font-size="10" fill="#555">4</text>
-
-        <!-- ── nodi cliccabili ── -->
-        <!-- START -->
-        <rect x="200" y="10" width="160" height="28" rx="8" fill="var(--primary)" id="dn-start" class="dtree-node" style="cursor:pointer"/>
-        <text x="280" y="29" text-anchor="middle" font-size="12" fill="#fff" font-weight="700" pointer-events="none">Hai un polinomio da scomporre</text>
-
-        <!-- Fattore comune? -->
-        <rect x="195" y="68" width="170" height="28" rx="8" fill="#e8f0fd" stroke="#1565c0" stroke-width="2" id="dn-fc" class="dtree-node" style="cursor:pointer"/>
-        <text x="280" y="87" text-anchor="middle" font-size="12" fill="#0d47a1" font-weight="700" pointer-events="none">Fattore comune a tutti?</text>
-
-        <!-- SÌ → raccoglimento totale -->
-        <rect x="46" y="118" width="168" height="38" rx="8" fill="#d0f0ec" stroke="#00897b" stroke-width="2" id="dn-rt" class="dtree-node" style="cursor:pointer"/>
-        <text x="130" y="134" text-anchor="middle" font-size="11" fill="#00695c" font-weight="700" pointer-events="none">Raccoglimento totale</text>
-        <text x="130" y="148" text-anchor="middle" font-size="10" fill="#00695c" pointer-events="none">poi riapplica lo schema</text>
-
-        <!-- Quanti termini -->
-        <rect x="345" y="178" width="170" height="28" rx="8" fill="#e8f0fd" stroke="#1565c0" stroke-width="2" id="dn-qt" class="dtree-node" style="cursor:pointer"/>
-        <text x="430" y="197" text-anchor="middle" font-size="12" fill="#0d47a1" font-weight="700" pointer-events="none">Quanti termini?</text>
-
-        <!-- 2 termini -->
-        <rect x="80" y="238" width="190" height="50" rx="8" fill="#fff3e0" stroke="#f57c00" stroke-width="2" id="dn-2t" class="dtree-node" style="cursor:pointer"/>
-        <text x="175" y="256" text-anchor="middle" font-size="11" fill="#e65100" font-weight="700" pointer-events="none">2 termini</text>
-        <text x="175" y="270" text-anchor="middle" font-size="10" fill="#e65100" pointer-events="none">A²−B² o A³±B³</text>
-        <text x="175" y="282" text-anchor="middle" font-size="9.5" fill="#e65100" pointer-events="none">(diff. quadrati / cubi)</text>
-
-        <!-- 3 termini -->
-        <rect x="345" y="238" width="170" height="50" rx="8" fill="#fde8e8" stroke="#e53935" stroke-width="2" id="dn-3t" class="dtree-node" style="cursor:pointer"/>
-        <text x="430" y="256" text-anchor="middle" font-size="11" fill="#b71c1c" font-weight="700" pointer-events="none">3 termini</text>
-        <text x="430" y="270" text-anchor="middle" font-size="10" fill="#b71c1c" pointer-events="none">quad. perfetto</text>
-        <text x="430" y="282" text-anchor="middle" font-size="9.5" fill="#b71c1c" pointer-events="none">o somma-prodotto</text>
-
-        <!-- 4 termini -->
-        <rect x="482" y="238" width="72" height="50" rx="8" fill="#f3e5f5" stroke="#7b1fa2" stroke-width="2" id="dn-4t" class="dtree-node" style="cursor:pointer"/>
-        <text x="518" y="256" text-anchor="middle" font-size="11" fill="#6a1b9a" font-weight="700" pointer-events="none">4 termini</text>
-        <text x="518" y="270" text-anchor="middle" font-size="10" fill="#6a1b9a" pointer-events="none">raccoglim.</text>
-        <text x="518" y="282" text-anchor="middle" font-size="9.5" fill="#6a1b9a" pointer-events="none">parziale</text>
-      </svg>
-    </div>
-    <div id="dtreeInfo" style="min-height:3.2em;background:var(--primary-l);border-left:3px solid var(--primary);border-radius:0 8px 8px 0;padding:.55rem .9rem;margin-top:.6rem;font-size:.9em;display:none"></div>
-  </div>
-<div id="sq-scompo" class="sq-widget card" style="margin-top:.2rem"></div>
-
+  <div class="card"><h2>Esercizi svolti</h2><div id="ex-divisione"></div></div>
+  <div id="sq-divisione" class="card"></div>
 </section>
-
 
 </main>
 
 <script>
-/* ===== Navigation ===== */
-const SCENES = ['home','monomi','monopoli','polipoli','notevoli','scompo'];
-function goTo(id, btn) {
-  document.querySelectorAll('.scene').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('nav.main button').forEach(b => b.classList.remove('active'));
+/* ===================================================================
+   NAVIGAZIONE
+=================================================================== */
+const SCENES = ['home','monomi','monopoli','polipoli','notevoli','divisione'];
+function goTo(id, btn){
+  document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('nav.main button').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  if (btn) btn.classList.add('active');
-  window.scrollTo({top: 0, behavior: 'smooth'});
-  if (id === 'monomi') { renderMonomioDemo(); updateMonomioCalc(); }
-  if (id === 'monopoli') { initMpDemo(); }
-  if (id === 'polipoli') { initPpDemo(); }
-  if (id === 'notevoli') { updateN(0); updateN(1); }
-  if (id === 'scompo') { initScompo(); setTimeout(initDtree, 50); }
-  if (id !== 'home') { initSQ(id); }
+  if(btn) btn.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  initSection(id);
 }
-function goToNav(id) {
-  const idx = SCENES.indexOf(id);
-  goTo(id, document.querySelectorAll('nav.main button')[idx]);
+function goToNav(id){ goTo(id, document.querySelectorAll('nav.main button')[SCENES.indexOf(id)]); }
+
+function initSection(id){
+  if(id==='monomi'){ simReset('monosomma'); simReset('monoprod'); simReset('monopot'); renderExercises('monomi'); initSQ('monomi'); }
+  if(id==='monopoli'){ simReset('mp'); renderExercises('monopoli'); initSQ('monopoli'); }
+  if(id==='polipoli'){ simReset('pp'); renderExercises('polipoli'); initSQ('polipoli'); }
+  if(id==='notevoli'){ simReset('dq'); simReset('qb'); simReset('qt'); simReset('cubi'); renderExercises('notevoli'); initSQ('notevoli'); }
+  if(id==='divisione'){ simReset('lunga'); simReset('ruffini'); simReset('resto'); renderExercises('divisione'); initSQ('divisione'); }
 }
 
-/* ===== Notable groups filter ===== */
-function showNotGroup(g, btn) {
-  document.querySelectorAll('#notTab .tab-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  document.querySelectorAll('.notable-card').forEach(c => {
-    c.style.display = (g === 'all' || c.dataset.group === g) ? '' : 'none';
-  });
-}
-
-/* ===== Helpers ===== */
-function esc(s){ return String(s).replace(/</g,'&lt;').replace(/>/g,'&gt;') }
-function termHtml(txt, cls, delay){
-  const d = delay ? `animation-delay:${delay}s` : '';
-  return `<span class="term ${cls} pop" style="${d}">${txt}</span>`;
-}
-function opHtml(t){ return `<span class="term op">${t}</span>`; }
-function eqHtml(){ return `<span class="term eq">=</span>`; }
-
-/* ===================================================================
-   MONOMI x MONOMI
-=================================================================== */
-const MONO_EX = [
-  {
-    label: '3x&sup2; &times; 2x&sup3;',
-    steps: [
-      'Scrivi i due monomi affiancati',
-      'Moltiplica i coefficienti: <strong>3 &times; 2 = 6</strong>',
-      'Somma gli esponenti di x: <strong>2 + 3 = 5</strong>',
-      'Risultato finale: <strong>6x&sup5;</strong>'
-    ],
-    result: '6x⁵'
-  },
-  {
-    label: '5a&sup2;b &times; (&minus;2ab&sup3;)',
-    steps: [
-      'Scrivi i due monomi',
-      'Coefficienti: <strong>5 &times; (&minus;2) = &minus;10</strong>',
-      'Esponenti di a: <strong>2 + 1 = 3</strong>',
-      'Esponenti di b: <strong>1 + 3 = 4</strong>',
-      'Risultato: <strong>&minus;10a³b⁴</strong>'
-    ],
-    result: '&minus;10a³b⁴'
-  },
-  {
-    label: '&minus;4x&sup3;y&sup2; &times; 3xy&sup4;',
-    steps: [
-      'Scrivi i due monomi',
-      'Coefficienti: <strong>(&minus;4) &times; 3 = &minus;12</strong>',
-      'Esponenti di x: <strong>3 + 1 = 4</strong>',
-      'Esponenti di y: <strong>2 + 4 = 6</strong>',
-      'Risultato: <strong>&minus;12x⁴y⁶</strong>'
-    ],
-    result: '&minus;12x⁴y⁶'
-  }
-];
-
-let curMonomioEx = 0;
-let monomioStep = -1;
-
-function setMonomioEx(idx, btn) {
-  curMonomioEx = idx;
-  monomioStep = -1;
-  if (btn) {
-    document.querySelectorAll('#monomioTabs .tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  renderMonomioDemo();
-}
-
-function renderMonomioDemo() {
-  const ex = MONO_EX[curMonomioEx];
-  let html = `<div class="step-area">
-    <div class="step-title">Espressione</div>
-    <div class="term-row">${ex.label}</div>
-  </div>`;
-  html += `<ul class="steps-list">`;
-  ex.steps.forEach((s, i) => {
-    html += `<li style="opacity:${i <= monomioStep ? 1 : .22}">${s}</li>`;
-  });
-  html += `</ul>`;
-  if (monomioStep >= ex.steps.length - 1) {
-    html += `<div class="formula" style="animation:popIn .4s both">${ex.result}</div>`;
-  }
-  document.getElementById('monomioDemo').innerHTML = html;
-}
-
-function animateMonomio() {
-  const ex = MONO_EX[curMonomioEx];
-  if (monomioStep >= ex.steps.length - 1) { monomioStep = -1; renderMonomioDemo(); return; }
-  monomioStep++;
-  renderMonomioDemo();
-}
-
-/* Simple monomial calculator */
-function parseMono(s) {
-  s = s.trim().replace(/\s/g, '').toLowerCase();
-  const m = s.match(/^([+-]?\d*\.?\d*)([a-z^\d]*)/);
-  if (!m) return null;
-  let cs = m[1];
-  let c = cs === '' || cs === '+' ? 1 : cs === '-' ? -1 : parseFloat(cs);
-  if (isNaN(c)) return null;
-  const lit = m[2];
-  const vars = {};
-  for (const v of lit.matchAll(/([a-z])\^?(\d*)/g)) {
-    if (v[1]) vars[v[1]] = (vars[v[1]] || 0) + (v[2] ? parseInt(v[2]) : 1);
-  }
-  return { c, vars };
-}
-function monoToHtml(c, vars) {
-  let s = c === 1 ? '' : c === -1 ? '&minus;' : (c < 0 ? '&minus;' + Math.abs(c) : String(c));
-  const SUPS = ['⁰','¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹'];
-  const sup = n => String(n).split('').map(d => SUPS[+d] || '').join('');
-  for (const [k, e] of Object.entries(vars)) {
-    s += k + (e > 1 ? sup(e) : '');
-  }
-  return s || '0';
-}
-function updateMonomioCalc() {
-  const a = parseMono(document.getElementById('m1in').value);
-  const b = parseMono(document.getElementById('m2in').value);
-  const out = document.getElementById('monomioCalcOut');
-  if (!a || !b) {
-    out.innerHTML = '<p style="color:var(--muted);font-size:.88em">Formato non riconosciuto &mdash; usa es: 3x^2</p>';
-    return;
-  }
-  const rc = a.c * b.c;
-  const rv = { ...a.vars };
-  for (const [k, e] of Object.entries(b.vars)) rv[k] = (rv[k] || 0) + e;
-  const aH = monoToHtml(a.c, a.vars);
-  const bH = monoToHtml(b.c, b.vars);
-  const rH = monoToHtml(rc, rv);
-  out.innerHTML = `
-    <div class="demo-expr">
-      <span class="term a">${aH}</span>
-      <span class="term op">&times;</span>
-      <span class="term b">${bH}</span>
-      <span class="term eq">=</span>
-      <span class="term c pop">${rH}</span>
-    </div>
-    <div class="tip" style="font-size:.84em;margin-top:.4rem">
-      Coefficienti: ${a.c} &times; ${b.c} = <strong>${rc}</strong>
-      &nbsp;&nbsp;Esponenti sommati per ogni lettera
-    </div>
-  `;
+/* Sotto-schede */
+function showSub(group, key, btn){
+  const tabs = btn.parentElement;
+  tabs.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const map = {
+    mono:['mono-somma','mono-prod','mono-pot'],
+    not:['not-dq','not-qb','not-qt','not-cubi'],
+    div:['div-lunga','div-ruffini','div-resto']
+  };
+  const prefix = {mono:'mono-',not:'not-',div:'div-'}[group];
+  map[group].forEach(id=>document.getElementById(id).classList.remove('active'));
+  document.getElementById(prefix+key).classList.add('active');
+  // reinizializza la simulazione appena mostrata
+  const simKeyMap = {
+    'mono-somma':'monosomma','mono-prod':'monoprod','mono-pot':'monopot',
+    'not-dq':'dq','not-qb':'qb','not-qt':'qt','not-cubi':'cubi',
+    'div-lunga':'lunga','div-ruffini':'ruffini','div-resto':'resto'
+  };
+  const sk = simKeyMap[prefix+key];
+  if(sk) simReset(sk);
 }
 
 /* ===================================================================
-   MONOMIO x POLINOMIO
+   MOTORE SIMULAZIONE PASSO-PASSO
 =================================================================== */
-const MP_EX = [
-  {
-    monoH: '2x',
-    polyTerms: ['3x', '+4'],
-    polyColors: ['b', 'c'],
-    steps: [
-      { txt: 'Parti dal monomio <strong>2x</strong>; sar&agrave; moltiplicato per ogni termine', hi: -1 },
-      { txt: '<strong>2x &times; 3x = 6x&sup2;</strong>', hi: 0, res: '6x²' },
-      { txt: '<strong>2x &times; 4 = 8x</strong>', hi: 1, res: '8x' },
-      { txt: 'Somma i risultati: <strong>6x² + 8x</strong>', hi: -1, final: true, result: '6x² + 8x' }
-    ]
-  },
-  {
-    monoH: '&minus;3a&sup2;',
-    polyTerms: ['2a', '&minus;5'],
-    polyColors: ['b', 'c'],
-    steps: [
-      { txt: 'Parti dal monomio <strong>&minus;3a&sup2;</strong>', hi: -1 },
-      { txt: '<strong>&minus;3a&sup2; &times; 2a = &minus;6a&sup3;</strong>', hi: 0, res: '&minus;6a³' },
-      { txt: '<strong>&minus;3a&sup2; &times; (&minus;5) = +15a&sup2;</strong>', hi: 1, res: '+15a²' },
-      { txt: 'Risultato: <strong>&minus;6a³ + 15a&sup2;</strong>', hi: -1, final: true, result: '&minus;6a³ + 15a²' }
-    ]
-  },
-  {
-    monoH: 'x&sup2;',
-    polyTerms: ['x&sup2;', '&minus;3x', '+1'],
-    polyColors: ['b', 'c', 'd'],
-    steps: [
-      { txt: 'Parti dal monomio <strong>x&sup2;</strong>', hi: -1 },
-      { txt: '<strong>x&sup2; &times; x&sup2; = x⁴</strong>', hi: 0, res: 'x⁴' },
-      { txt: '<strong>x&sup2; &times; (&minus;3x) = &minus;3x&sup3;</strong>', hi: 1, res: '&minus;3x³' },
-      { txt: '<strong>x&sup2; &times; 1 = x&sup2;</strong>', hi: 2, res: 'x²' },
-      { txt: 'Risultato: <strong>x⁴ &minus; 3x³ + x&sup2;</strong>', hi: -1, final: true, result: 'x⁴ &minus; 3x³ + x²' }
-    ]
-  }
-];
-
-let curMpEx = 0;
-let mpStep = -1;
-let mpAccum = [];
-
-function initMpDemo() { setMpEx(0, null); }
-
-function setMpEx(idx, btn) {
-  curMpEx = idx; mpStep = -1; mpAccum = [];
-  if (btn) {
-    document.querySelectorAll('#mpTabs .tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  renderMpDemo();
-}
-function resetMp() { mpStep = -1; mpAccum = []; renderMpDemo(); }
-
-function renderMpDemo() {
-  const ex = MP_EX[curMpEx];
-  let polySpans = '';
-  ex.polyTerms.forEach((t, i) => {
-    const hi = mpStep > 0 && ex.steps[mpStep] && ex.steps[mpStep].hi === i;
-    const style = hi ? 'transform:scale(1.15);box-shadow:0 0 0 3px var(--primary)' : '';
-    polySpans += `<span class="term ${ex.polyColors[i]}" style="${style};transition:transform .2s,box-shadow .2s">${t}</span>`;
-  });
-
-  let stepsHtml = '<ul class="steps-list">';
-  ex.steps.forEach((s, i) => {
-    const vis = i <= mpStep;
-    stepsHtml += `<li style="opacity:${vis ? 1 : .22}">${s.txt}${vis && s.res ? ` <span class="term c" style="margin-left:.4rem">${s.res}</span>` : ''}</li>`;
-  });
-  stepsHtml += '</ul>';
-
-  let accumHtml = '';
-  if (mpAccum.length > 0 && !(ex.steps[mpStep] && ex.steps[mpStep].final)) {
-    accumHtml = `<div class="step-area" style="margin-top:.45rem">
-      <div class="step-title">Risultati parziali</div>
-      <div class="term-row">${mpAccum.map(r => `<span class="term c pop">${r}</span>`).join('<span class="term op">+</span>')}</div>
-    </div>`;
-  }
-
-  let finalHtml = '';
-  if (mpStep >= 0 && ex.steps[mpStep]?.final) {
-    finalHtml = `<div class="formula" style="animation:popIn .4s both">${ex.steps[mpStep].result}</div>`;
-  }
-
-  document.getElementById('mpDemo').innerHTML = `
-    <div class="step-area">
-      <div class="step-title">Espressione</div>
-      <div class="term-row">
-        <span class="term a">${ex.monoH}</span>
-        <span class="term op">&times;</span>
-        <span class="term op">(</span>
-        ${polySpans}
-        <span class="term op">)</span>
-      </div>
-    </div>
-    ${stepsHtml}
-    ${accumHtml}
-    ${finalHtml}
-  `;
-}
-
-function animateMp() {
-  const ex = MP_EX[curMpEx];
-  if (mpStep >= ex.steps.length - 1) { mpStep = -1; mpAccum = []; renderMpDemo(); return; }
-  mpStep++;
-  const s = ex.steps[mpStep];
-  if (s && s.res) mpAccum.push(s.res);
-  if (s && s.final) mpAccum = [];
-  renderMpDemo();
-}
-
-/* ===================================================================
-   POLINOMIO x POLINOMIO
-=================================================================== */
-const PP_EX = [
-  {
-    p1: ['x', '+2'], p2: ['x', '+3'],
-    label: '(x + 2)(x + 3)',
-    cells: [['x²', '3x'], ['2x', '6']],
-    partial: ['x²', '3x', '2x', '6'],
-    similar: '3x + 2x = <strong>5x</strong>',
-    result: 'x² + 5x + 6'
-  },
-  {
-    p1: ['2x', '+1'], p2: ['x', '&minus;4'],
-    label: '(2x + 1)(x &minus; 4)',
-    cells: [['2x²', {v:'&minus;8x',neg:true}], ['x', {v:'&minus;4',neg:true}]],
-    partial: ['2x²', '&minus;8x', 'x', '&minus;4'],
-    similar: '&minus;8x + x = <strong>&minus;7x</strong>',
-    result: '2x² &minus; 7x &minus; 4'
-  },
-  {
-    p1: ['x', '+y'], p2: ['x', '&minus;y', '+2'],
-    label: '(x + y)(x &minus; y + 2)',
-    cells: [['x²', {v:'&minus;xy',neg:true}, '2x'], ['xy', {v:'&minus;y²',neg:true}, '2y']],
-    partial: ['x²', '&minus;xy', '2x', 'xy', '&minus;y²', '2y'],
-    similar: '&minus;xy + xy = <strong>0</strong> (si cancellano!)',
-    result: 'x² &minus; y² + 2x + 2y'
-  }
-];
-
-let curPpEx = 0;
-let ppLit = false;
-
-function initPpDemo() { setPpEx(0, null); }
-
-function setPpEx(idx, btn) {
-  curPpEx = idx; ppLit = false;
-  if (btn) {
-    document.querySelectorAll('#ppTabs .tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-  renderPpDemo();
-}
-
-function renderPpDemo() {
-  const ex = PP_EX[curPpEx];
-  const nc = ex.p2.length, nr = ex.p1.length;
-  let g = `<div class="area-grid" style="grid-template-columns:70px repeat(${nc},1fr)">`;
-  g += `<div class="area-cell empty"></div>`;
-  ex.p2.forEach(t => g += `<div class="area-cell hdr">${t}</div>`);
-  ex.p1.forEach((rt, ri) => {
-    g += `<div class="area-cell hdr">${rt}</div>`;
-    ex.cells[ri].forEach((cell, ci) => {
-      const d = ppLit ? `animation-delay:${(ri * nc + ci) * 0.1}s` : '';
-      const isNeg = cell && typeof cell === 'object' && cell.neg;
-      const val = isNeg ? cell.v : cell;
-      const negCls = (isNeg && ppLit) ? ' neg' : '';
-      g += `<div class="area-cell${ppLit ? ' lit' : ''}${negCls}" style="${d}">${val}</div>`;
-    });
-  });
-  g += '</div>';
-
-  let res = ppLit ? `
-    <div class="tip" style="margin-top:.5rem"><strong>Termini simili:</strong> ${ex.similar}</div>
-    <div class="formula" style="animation:popIn .5s .4s both">${ex.result}</div>
-  ` : '';
-
-  document.getElementById('ppAreaModel').innerHTML =
-    `<p class="lead" style="margin-bottom:.4rem">${ex.label}</p>${g}${res}`;
-}
-
-function animatePp() { ppLit = true; renderPpDemo(); }
-
-/* ===================================================================
-   PRODOTTI NOTEVOLI
-=================================================================== */
-function updateN(idx) {
-  const ae = document.getElementById(`na${idx}`);
-  const be = document.getElementById(`nb${idx}`);
-  if (!ae || !be) return;
-  const a = parseInt(ae.value), b = parseInt(be.value);
-  document.getElementById(`nv${idx}a`).textContent = a;
-  document.getElementById(`nv${idx}b`).textContent = b;
-  const num = document.getElementById(`nNum${idx}`);
-  if (!num) return;
-  num.style.display = 'block';
-  if (idx === 0) {
-    const lhs = (a + b) * (a - b), rhs = a * a - b * b;
-    num.innerHTML = `✅ Verifica: (${a}+${b})(${a}&minus;${b}) = ${a+b}&times;${a-b} = <strong>${lhs}</strong> &nbsp;|&nbsp; ${a}&sup2;&minus;${b}&sup2; = ${a*a}&minus;${b*b} = <strong>${rhs}</strong>`;
-  } else if (idx === 1) {
-    const lhs = (a + b) * (a + b), rhs = a * a + 2 * a * b + b * b;
-    num.innerHTML = `✅ Verifica: (${a}+${b})&sup2; = ${a+b}&sup2; = <strong>${lhs}</strong> &nbsp;|&nbsp; ${a}&sup2;+2&middot;${a}&middot;${b}+${b}&sup2; = ${a*a}+${2*a*b}+${b*b} = <strong>${rhs}</strong>`;
-  }
-}
-
-const NOT_STEPS = [
-  /* 0 somma-diff */
-  ['Distribuisci il primo fattore: <strong>(a+b)(a&minus;b)</strong>',
-   '<strong>a</strong> &times; (a&minus;b) = <strong>a&sup2; &minus; ab</strong>',
-   '<strong>b</strong> &times; (a&minus;b) = <strong>ab &minus; b&sup2;</strong>',
-   'Somma: a² &minus; ab + ab &minus; b² = <strong>a² &minus; b²</strong> (i termini <em>ab</em> si cancellano!)'],
-  /* 1 quad-somma */
-  ['(a+b)&sup2; = (a+b)(a+b)',
-   '<strong>a</strong> &times; (a+b) = <strong>a² + ab</strong>',
-   '<strong>b</strong> &times; (a+b) = <strong>ab + b²</strong>',
-   'Somma: a² + ab + ab + b² = <strong>a² + 2ab + b²</strong>'],
-  /* 2 quad-diff */
-  ['(a&minus;b)&sup2; = (a&minus;b)(a&minus;b)',
-   '<strong>a</strong> &times; (a&minus;b) = <strong>a² &minus; ab</strong>',
-   '<strong>&minus;b</strong> &times; (a&minus;b) = <strong>&minus;ab + b²</strong>',
-   'Somma: a² &minus; ab &minus; ab + b² = <strong>a² &minus; 2ab + b²</strong>'],
-  /* 3 falso (handled separately) */
-  [],
-  /* 4 cubo-somma */
-  ['(a+b)³ = (a+b)² &middot; (a+b)',
-   '(a+b)² = <strong>a² + 2ab + b²</strong>',
-   '(a²+2ab+b²)(a+b): distribuisci termine per termine',
-   'Risultato: <strong>a³ + 3a²b + 3ab² + b³</strong> (coefficienti: 1,3,3,1)'],
-  /* 5 cubo-diff */
-  ['(a&minus;b)³ = (a&minus;b)² &middot; (a&minus;b)',
-   '(a&minus;b)² = <strong>a² &minus; 2ab + b²</strong>',
-   '(a²&minus;2ab+b²)(a&minus;b): distribuisci',
-   'Risultato: <strong>a³ &minus; 3a²b + 3ab² &minus; b³</strong>'],
-  /* 6 somma cubi */
-  ['Distribuisci il fattore (a+b) su (a²&minus;ab+b²)',
-   'a &middot; (a²&minus;ab+b²) = <strong>a³ &minus; a²b + ab²</strong>',
-   'b &middot; (a²&minus;ab+b²) = <strong>a²b &minus; ab² + b³</strong>',
-   'Somma: a³ &minus; a²b + ab² + a²b &minus; ab² + b³ = <strong>a³ + b³</strong>'],
-  /* 7 diff cubi */
-  ['Distribuisci (a&minus;b) su (a²+ab+b²)',
-   'a &middot; (a²+ab+b²) = <strong>a³ + a²b + ab²</strong>',
-   '&minus;b &middot; (a²+ab+b²) = <strong>&minus;a²b &minus; ab² &minus; b³</strong>',
-   'Somma: a³ + a²b + ab² &minus; a²b &minus; ab² &minus; b³ = <strong>a³ &minus; b³</strong>']
-];
-
-const NOT_RESULTS = [
-  ['(a+b)','&times;','(a&minus;b)','=','a²','&minus;','b²'],
-  ['(a+b)²','=','a²','+','2ab','+','b²'],
-  ['(a&minus;b)²','=','a²','&minus;','2ab','+','b²'],
-  [],
-  ['(a+b)³','=','a³','+','3a²b','+','3ab²','+','b³'],
-  ['(a&minus;b)³','=','a³','&minus;','3a²b','+','3ab²','&minus;','b³'],
-  ['(a+b)','&middot;','(a²&minus;ab+b²)','=','a³+b³'],
-  ['(a&minus;b)','&middot;','(a²+ab+b²)','=','a³&minus;b³']
-];
-
-const NOT_COLORS = ['a','op','b','eq','c','op','d','op','e'];
-
-const notStep = {};
-
-function animateNotevole(idx, btn) {
-  const el = document.getElementById(`nDemo${idx}`);
-  if (!el) return;
-
-  if (notStep[idx] === undefined) notStep[idx] = -1;
-
-  // ----- Caso speciale: falso quadrato (idx 3) -> 3 fasi a click -----
-  if (idx === 3) {
-    notStep[idx]++;
-    const ph = notStep[idx];
-    if (ph > 2) { notStep[idx] = -1; el.innerHTML = ''; setNotBtn(btn, '▶ Confronta corretto vs sbagliato'); return; }
-    let h = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.6rem 0">';
-    h += `<div style="opacity:${ph>=0?1:.15};transition:opacity .4s">
-      <div class="step-title">❌ Errore frequente (falso quadrato)</div>
-      <div class="term-row">
-        <span class="term a pop">(a+b)²</span><span class="term eq">=</span>
-        <span class="term b pop" style="animation-delay:.1s">a²</span>
-        <span class="term op">+</span>
-        <span class="term d pop" style="animation-delay:.2s">b²</span>
-      </div>
-      <p style="font-size:.82em;color:#b71c1c;margin-top:.3rem">Manca il <strong>doppio prodotto 2ab</strong>!</p>
-    </div>`;
-    h += `<div style="opacity:${ph>=1?1:.15};transition:opacity .4s">
-      <div class="step-title">✅ Formula corretta</div>
-      <div class="term-row">
-        <span class="term a${ph>=1?' pop':''}">(a+b)²</span><span class="term eq">=</span>
-        <span class="term b${ph>=1?' pop':''}" style="animation-delay:.1s">a²</span>
-        <span class="term op">+</span>
-        <span class="term c${ph>=1?' pop':''}" style="animation-delay:.2s">2ab</span>
-        <span class="term op">+</span>
-        <span class="term d${ph>=1?' pop':''}" style="animation-delay:.3s">b²</span>
-      </div>
-      <p style="font-size:.82em;color:#1b5e20;margin-top:.3rem">Sempre con il <strong>2ab</strong>!</p>
-    </div></div>`;
-    if (ph >= 2) {
-      h += `<div class="err" style="margin-top:.3rem;animation:fadeSlideUp .4s both">
-        Esempio numerico: (3+2)² = 25 &nbsp;≠&nbsp; 3²+2² = 13<br>
-        Mancano proprio <strong>2&middot;3&middot;2 = 12</strong></div>`;
-    }
-    el.innerHTML = h;
-    setNotBtn(btn, ph >= 2 ? '↺ Ricomincia' : '▶ Passo successivo');
-    return;
-  }
-
-  // ----- Casi standard: un passo della spiegazione per ogni click -----
-  const res = NOT_RESULTS[idx];
-  const steps = NOT_STEPS[idx];
-  const total = steps.length;            // numero di passaggi
-  notStep[idx]++;
-  if (notStep[idx] > total) {            // dopo il risultato -> reset
-    notStep[idx] = -1; el.innerHTML = '';
-    setNotBtn(btn, '▶ Mostra sviluppo');
-    return;
-  }
-
-  let stepsHtml = '<ul class="steps-list" style="margin-top:.5rem">';
-  for (let i = 0; i < Math.min(notStep[idx] + 1, total); i++) {
-    stepsHtml += `<li style="animation:fadeSlideUp .45s both">${steps[i]}</li>`;
-  }
-  stepsHtml += '</ul>';
-
-  let rowHtml = '';
-  if (notStep[idx] >= total) {           // tutti i passaggi visti -> risultato
-    rowHtml = '<div class="term-row" style="flex-wrap:wrap;margin-top:.6rem">';
-    res.forEach((t, i) => {
-      const isOp = t === '&times;' || t === '&middot;' || t === '+' || t === '&minus;';
-      const isEq = t === '=';
-      const cls = isOp ? 'op' : isEq ? 'eq' : NOT_COLORS[i] || 'c';
-      rowHtml += `<span class="term ${cls}${(isOp||isEq)?'':' pop'}" style="${(isOp||isEq)?'':'animation-delay:'+(i*0.12)+'s'}">${t}</span>`;
-    });
-    rowHtml += '</div>';
-  }
-
-  el.innerHTML = stepsHtml + rowHtml;
-  setNotBtn(btn, notStep[idx] >= total ? '↺ Ricomincia' : '▶ Passo successivo');
-}
-
-function setNotBtn(btn, label) { if (btn) btn.textContent = label; }
-
-/* ===================================================================
-   SCOMPOSIZIONE (player animato passo-passo, fattori lampeggianti)
-=================================================================== */
-const SCOMPO_EX = [
-  {
-    title: 'Raccoglimento totale',
-    pill: '🧩 Raccoglimento totale',
-    desc: 'Metti in evidenza il fattore comune a tutti i termini.',
-    frames: [
-      { html: '6x² + 4x', note: 'Cerco un fattore comune presente in <b>ogni</b> termine.' },
-      { html: '<span class="blink">6</span>x² + <span class="blink">4</span>x', note: 'MCD dei coefficienti 6 e 4 = <b>2</b>.', step: 'Coefficienti: MCD(6,4) = 2' },
-      { html: '6<span class="blink">x</span>² + 4<span class="blink">x</span>', note: 'Lettera comune con esponente minimo: <b>x</b>.', step: 'Parte letterale comune: x (esponente minimo 1)' },
-      { html: '<span class="blink-g">2x</span> &middot; ( 3x + 2 )', note: 'Divido ogni termine per 2x: 6x²:2x=3x, 4x:2x=2.', step: 'Fattore comune raccolto: 2x' },
-      { html: '<span class="blink-g">2x(3x + 2)</span>', note: '✓ Verifica: 2x&middot;3x = 6x², 2x&middot;2 = 4x.', step: 'Risultato: 2x(3x + 2)' }
-    ]
-  },
-  {
-    title: 'Raccoglimento parziale',
-    pill: '🧩 Raccoglimento a gruppi',
-    desc: '4 termini senza fattore comune a tutti: raggruppa a due a due.',
-    frames: [
-      { html: 'ax + ay + bx + by', note: '4 termini, nessun fattore comune a tutti → <b>raggruppo</b>.' },
-      { html: '( <span class="blink">a</span>x + <span class="blink">a</span>y ) + ( <span class="blink">b</span>x + <span class="blink">b</span>y )', note: 'Primo gruppo ha <b>a</b> in comune, secondo ha <b>b</b>.', step: 'Gruppi: (ax+ay) + (bx+by)' },
-      { html: 'a<span class="blink-g">(x + y)</span> + b<span class="blink-g">(x + y)</span>', note: 'Raccolgo a e b: compare lo stesso binomio <b>(x+y)</b>!', step: 'a(x+y) + b(x+y)' },
-      { html: '<span class="blink-g">(x + y)(a + b)</span>', note: 'Raccolgo il binomio comune (x+y).', step: 'Risultato: (x+y)(a+b)' }
-    ]
-  },
-  {
-    title: 'Differenza di quadrati',
-    pill: '⭐ Differenza di quadrati',
-    desc: 'Due quadrati separati da un meno: A² − B² = (A+B)(A−B).',
-    frames: [
-      { html: '9x² &minus; 16', note: 'Due termini con il segno <b>meno</b>: possibile differenza di quadrati?' },
-      { html: '<span class="blink">9x²</span> &minus; <span class="blink">16</span>', note: '9x² = (3x)², 16 = 4². Entrambi quadrati ✔', step: 'A = 3x, B = 4' },
-      { html: '(3x)² &minus; 4²', note: 'Riscrivo come A² − B².', step: 'Forma: A² − B²' },
-      { html: '<span class="blink-g">(3x + 4)(3x &minus; 4)</span>', note: 'A² − B² = (A+B)(A−B).', step: 'Risultato: (3x+4)(3x−4)' }
-    ]
-  },
-  {
-    title: 'Trinomio quadrato perfetto',
-    pill: '⭐ Quadrato perfetto',
-    desc: 'Due quadrati + il doppio prodotto: A² ± 2AB + B² = (A ± B)².',
-    frames: [
-      { html: 'x² + 6x + 9', note: 'Tre termini: controllo se è un quadrato perfetto.' },
-      { html: '<span class="blink">x²</span> + 6x + <span class="blink">9</span>', note: 'Primo e terzo sono quadrati: √(x²)=x, √9=3.', step: 'A = x, B = 3' },
-      { html: 'x² + <span class="blink-g">6x</span> + 9', note: 'Termine centrale = 2&middot;A&middot;B = 2&middot;x&middot;3 = 6x ✔', step: 'Doppio prodotto 2·x·3 = 6x ✔' },
-      { html: '<span class="blink-g">(x + 3)²</span>', note: 'È il quadrato di (A+B).', step: 'Risultato: (x+3)²' }
-    ]
-  },
-  {
-    title: 'Trinomio caratteristico',
-    pill: '🧩 Somma e prodotto',
-    desc: 'x² + sx + p: due numeri con somma s e prodotto p.',
-    frames: [
-      { html: 'x² + 5x + 6', note: 'Cerco due numeri con <b>somma 5</b> e <b>prodotto 6</b>.' },
-      { html: 'x² + <span class="blink">5</span>x + <span class="blink">6</span>', note: 'Coppie con prodotto 6: 1&middot;6, 2&middot;3. Somma 5? → <b>2 e 3</b> ✔', step: '2 + 3 = 5  e  2 · 3 = 6' },
-      { html: '<span class="blink-g">(x + 2)(x + 3)</span>', note: 'I due numeri diventano i termini noti.', step: 'Risultato: (x+2)(x+3)' }
-    ]
-  },
-  {
-    title: 'Caso completo (più metodi)',
-    pill: '🏆 Strategia combinata',
-    desc: 'Prima il raccoglimento totale, poi un prodotto notevole.',
-    frames: [
-      { html: '2x² &minus; 8', note: '<b>Sempre per primo</b>: cerco un fattore comune.' },
-      { html: '<span class="blink">2</span>x² &minus; <span class="blink">8</span>', note: 'Fattore comune ai coefficienti: 2.', step: 'Raccolgo 2' },
-      { html: '2<span class="blink-g">(x² &minus; 4)</span>', note: 'Dentro la parentesi: x² − 4… è una differenza di quadrati!', step: '2(x² − 4)' },
-      { html: '2&middot;( <span class="blink">x²</span> &minus; <span class="blink">4</span> )', note: 'x² = x², 4 = 2². ✔', step: 'A = x, B = 2' },
-      { html: '<span class="blink-g">2(x + 2)(x &minus; 2)</span>', note: 'Scomposizione <b>completa</b>: nessun fattore è più scomponibile.', step: 'Risultato: 2(x+2)(x−2)' }
-    ]
-  }
-];
-
-let curScompo = 0;
-let scompoFrame = 0;
-
-function initScompo() {
-  const tabs = document.getElementById('scompoTabs');
-  if (tabs && !tabs.dataset.built) {
-    tabs.innerHTML = SCOMPO_EX.map((e, i) =>
-      `<button class="tab-btn${i === 0 ? ' active' : ''}" onclick="setScompo(${i},this)">${e.title}</button>`
-    ).join('');
-    tabs.dataset.built = '1';
-  }
-  setScompo(curScompo, null);
-}
-
-function setScompo(idx, btn) {
-  curScompo = idx;
-  scompoFrame = 0;
-  if (btn) {
-    document.querySelectorAll('#scompoTabs .tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  } else {
-    document.querySelectorAll('#scompoTabs .tab-btn').forEach((b, i) =>
-      b.classList.toggle('active', i === idx));
-  }
-  renderScompo();
-}
-
-function scompoReset() { scompoFrame = 0; renderScompo(); }
-
-function scompoStepNext() {
-  const ex = SCOMPO_EX[curScompo];
-  if (scompoFrame >= ex.frames.length - 1) { scompoFrame = 0; renderScompo(); return; }
-  scompoFrame++;
-  renderScompo();
-}
-
-function renderScompo() {
-  const ex = SCOMPO_EX[curScompo];
-  const fr = ex.frames[scompoFrame];
-  document.getElementById('scompoTitle').textContent = ex.title;
-  document.getElementById('scompoPill').textContent = ex.pill;
-  document.getElementById('scompoDesc').innerHTML = ex.desc;
-  document.getElementById('scompoStage').innerHTML = fr.html;
-  document.getElementById('scompoNote').innerHTML = fr.note || '';
-
-  let steps = '';
-  for (let i = 0; i <= scompoFrame; i++) {
-    const s = ex.frames[i].step;
-    if (s) steps += `<li style="animation:fadeSlideUp .4s both">${s}</li>`;
-  }
-  document.getElementById('scompoSteps').innerHTML = steps;
-
-  const last = scompoFrame >= ex.frames.length - 1;
-  document.getElementById('scompoNext').textContent =
-    last ? '↺ Ricomincia' : `▶ Passo ${scompoFrame + 1} di ${ex.frames.length - 1}`;
-}
-
-/* ===================================================================
-   QUIZ
-=================================================================== */
-const QUIZ = [
-  {
-    q: 'Qual &egrave; il risultato di 3x² &middot; 2x³ ?',
-    opts: ['6x⁵', '5x⁶', '6x⁶', '5x⁵'],
-    ans: 0,
-    exp: 'Coefficienti: 3&times;2=6. Esponenti di x: 2+3=5. Risultato: <strong>6x⁵</strong>.'
-  },
-  {
-    q: 'Quanto fa (&minus;2a) &middot; (5a³) ?',
-    opts: ['&minus;10a⁴', '10a⁴', '&minus;10a³', '3a⁴'],
-    ans: 0,
-    exp: '(&minus;2)&times;5=&minus;10, esponente di a: 1+3=4. Risultato: <strong>&minus;10a⁴</strong>.'
-  },
-  {
-    q: 'Applicando la distributiva, 3x(x + 4) = ?',
-    opts: ['3x² + 12x', '3x² + 4', '3x + 12x', '3x² + 12'],
-    ans: 0,
-    exp: '3x&middot;x = 3x² e 3x&middot;4 = 12x. Risultato: <strong>3x² + 12x</strong>.'
-  },
-  {
-    q: 'Quale formula &egrave; SBAGLIATA?',
-    opts: ['(a+b)² = a² + b²', '(a+b)(a&minus;b) = a²&minus;b²', '(a+b)² = a²+2ab+b²', '(a&minus;b)² = a²&minus;2ab+b²'],
-    ans: 0,
-    exp: 'Il <strong>falso quadrato</strong>! (a+b)² &ne; a²+b². Manca il doppio prodotto <strong>2ab</strong>.'
-  },
-  {
-    q: '(x + 3)(x &minus; 3) = ?',
-    opts: ['x² &minus; 9', 'x² + 9', 'x² &minus; 6x + 9', 'x² &minus; 3'],
-    ans: 0,
-    exp: 'Somma &times; Differenza: a=x, b=3 &rarr; x² &minus; 9.'
-  },
-  {
-    q: '(x + 2)² = ?',
-    opts: ['x² + 4x + 4', 'x² + 4', 'x² + 2x + 4', 'x² + 4x + 2'],
-    ans: 0,
-    exp: '(a+b)² = a²+2ab+b². a=x, b=2 &rarr; x² + 2&middot;x&middot;2 + 4 = <strong>x² + 4x + 4</strong>.'
-  },
-  {
-    q: 'Quanto fa (2x &minus; 1)² ?',
-    opts: ['4x² &minus; 4x + 1', '4x² + 1', '4x² &minus; 2x + 1', '2x² &minus; 4x + 1'],
-    ans: 0,
-    exp: '(a&minus;b)²: a=2x, b=1 &rarr; 4x² &minus; 2&middot;2x&middot;1 + 1 = <strong>4x² &minus; 4x + 1</strong>.'
-  },
-  {
-    q: '(a+b)(a²&minus;ab+b²) = ?',
-    opts: ['a³ + b³', 'a³ &minus; b³', 'a² + b²', 'a³ + 2b³'],
-    ans: 0,
-    exp: 'Formula della <strong>somma di cubi</strong>: (a+b)(a²&minus;ab+b²) = a³+b³.'
-  },
-  {
-    q: 'Quanti prodotti parziali si ottengono da (a+b+c)(x+y)?',
-    opts: ['6', '3', '4', '5'],
-    ans: 0,
-    exp: '3 termini &times; 2 termini = <strong>6</strong> prodotti parziali: ax, ay, bx, by, cx, cy.'
-  },
-  {
-    q: '(a &minus; b)³ = ?',
-    opts: ['a³ &minus; 3a²b + 3ab² &minus; b³', 'a³ &minus; b³', 'a³ &minus; 3ab + b³', 'a³ + 3a²b &minus; b³'],
-    ans: 0,
-    exp: 'Cubo diff.: coefficienti 1,3,3,1 con segni alternati &rarr; <strong>a³ &minus; 3a²b + 3ab² &minus; b³</strong>.'
-  },
-  /* ---- Scomposizione: pratica ---- */
-  {
-    q: 'Scomponi con raccoglimento totale: 6x² + 9x',
-    opts: ['3x(2x + 3)', '3(2x² + 3x)', 'x(6x + 9)', '3x(2x + 9)'],
-    ans: 0,
-    exp: 'MCD(6,9)=3 e lettera comune x &rarr; fattore <strong>3x</strong>. 6x²:3x=2x, 9x:3x=3 &rarr; <strong>3x(2x+3)</strong>.'
-  },
-  {
-    q: 'Scomponi: x² &minus; 25',
-    opts: ['(x + 5)(x &minus; 5)', '(x &minus; 5)²', '(x + 5)²', 'x(x &minus; 25)'],
-    ans: 0,
-    exp: 'Differenza di quadrati: A=x, B=5 &rarr; <strong>(x+5)(x&minus;5)</strong>.'
-  },
-  {
-    q: 'Scomponi il trinomio: x² + 7x + 12',
-    opts: ['(x + 3)(x + 4)', '(x + 2)(x + 6)', '(x + 5)(x + 2)', '(x + 12)(x + 1)'],
-    ans: 0,
-    exp: 'Servono due numeri con somma 7 e prodotto 12: <strong>3 e 4</strong> &rarr; (x+3)(x+4).'
-  },
-  {
-    q: 'Quale &egrave; un trinomio quadrato perfetto?',
-    opts: ['x² + 10x + 25', 'x² + 10x + 20', 'x² + 7x + 25', 'x² &minus; 25'],
-    ans: 0,
-    exp: 'x²+10x+25: √(x²)=x, √25=5, doppio prodotto 2&middot;x&middot;5=10x ✔ &rarr; <strong>(x+5)²</strong>.'
-  },
-  {
-    q: 'Scomponi completamente: 2x² &minus; 18',
-    opts: ['2(x + 3)(x &minus; 3)', '2(x² &minus; 9)', '(2x + 6)(x &minus; 3)', '2(x &minus; 3)²'],
-    ans: 0,
-    exp: 'Prima il raccoglimento totale: 2(x²&minus;9); poi x²&minus;9 &egrave; diff. di quadrati &rarr; <strong>2(x+3)(x&minus;3)</strong>.'
-  },
-  {
-    q: 'Con il raccoglimento parziale, ax + ay + bx + by = ?',
-    opts: ['(x + y)(a + b)', '(a + b)(a &minus; b)', 'ab(x + y)', '(x + a)(y + b)'],
-    ans: 0,
-    exp: 'A gruppi: a(x+y)+b(x+y) &rarr; raccolgo (x+y) &rarr; <strong>(x+y)(a+b)</strong>.'
-  },
-  /* ---- Teoria ---- */
-  {
-    q: 'TEORIA: cosa significa &ldquo;scomporre&rdquo; un polinomio?',
-    opts: ['Scriverlo come prodotto di fattori', 'Sommare i termini simili', 'Calcolarne il valore numerico', 'Trovare il grado'],
-    ans: 0,
-    exp: 'Scomporre = fattorizzare = scrivere il polinomio come <strong>prodotto</strong> di polinomi pi&ugrave; semplici.'
-  },
-  {
-    q: 'TEORIA: qual &egrave; il PRIMO metodo da provare sempre?',
-    opts: ['Il raccoglimento totale', 'La differenza di quadrati', 'Il trinomio caratteristico', 'Il raccoglimento parziale'],
-    ans: 0,
-    exp: 'Si parte sempre cercando un <strong>fattore comune a tutti i termini</strong> (raccoglimento totale).'
-  },
-  {
-    q: 'TEORIA: la somma di due quadrati A² + B²&hellip;',
-    opts: ['non si scompone nei numeri reali', 'è uguale a (A+B)²', 'è uguale a (A+B)(A&minus;B)', 'è sempre un quadrato perfetto'],
-    ans: 0,
-    exp: 'Solo la <strong>differenza</strong> A²&minus;B² si scompone. La somma A²+B² &egrave; irriducibile nei reali.'
-  },
-  {
-    q: 'TEORIA: quale operazione &egrave; l&apos;inversa della proprietà distributiva?',
-    opts: ['Il raccoglimento a fattor comune', 'Il quadrato del binomio', 'La somma di cubi', 'Il prodotto notevole'],
-    ans: 0,
-    exp: 'Distribuire m(a+b)=ma+mb; <strong>raccogliere</strong> fa il percorso inverso: ma+mb = m(a+b).'
-  },
-  {
-    q: 'TEORIA: per il trinomio x² + sx + p cerco due numeri tali che&hellip;',
-    opts: ['somma = s e prodotto = p', 'somma = p e prodotto = s', 'differenza = s', 'somma = s e differenza = p'],
-    ans: 0,
-    exp: 'Regola somma-prodotto: i due numeri hanno <strong>somma s</strong> e <strong>prodotto p</strong>.'
-  },
-  {
-    q: 'TEORIA: con 4 termini e nessun fattore comune a tutti, conviene&hellip;',
-    opts: ['il raccoglimento parziale a gruppi', 'la differenza di quadrati', 'il quadrato del binomio', 'rinunciare: non si scompone'],
-    ans: 0,
-    exp: 'Con 4 termini si tenta il <strong>raccoglimento parziale</strong>: si raggruppa a due a due.'
-  }
-];
-
-
-
-/* ===================================================================
-   QUIZ PER SEZIONE — widget riutilizzabile con navigazione avanti/indietro
-=================================================================== */
-const SQ = {
-  monomi: [
-    { q: 'Quanto fa 3x² &middot; 2x³?',
-      opts: ['6x⁵','5x⁶','6x⁶','5x⁵'], ans: 0,
-      exp: 'Coefficienti 3&times;2=6; esponenti di x: 2+3=5 &rarr; <strong>6x⁵</strong>.' },
-    { q: 'Quanto fa (&minus;2a) &middot; (5a³)?',
-      opts: ['&minus;10a⁴','10a⁴','&minus;10a³','3a⁴'], ans: 0,
-      exp: '(&minus;2)&times;5=&minus;10; esponente a: 1+3=4 &rarr; <strong>&minus;10a⁴</strong>.' },
-    { q: 'Qual è il grado del monomio 4x³y²?',
-      opts: ['5','3','2','6'], ans: 0,
-      exp: 'Il grado è la <strong>somma</strong> degli esponenti: 3+2=<strong>5</strong>.' },
-    { q: 'TEORIA: nel prodotto tra monomi, cosa si fa con gli esponenti della stessa lettera?',
-      opts: ['Si sommano','Si moltiplicano','Si sottraggono','Rimangono uguali'], ans: 0,
-      exp: 'La regola è: <strong>stessa lettera → somma esponenti</strong>. Es: x²·x³ = x⁵.' },
-    { q: 'Quanto fa (&minus;3x²y) &middot; (&minus;2xy³)?',
-      opts: ['6x³y⁴','&minus;6x³y⁴','6x²y³','5x³y⁴'], ans: 0,
-      exp: '(&minus;3)&times;(&minus;2)=6; x²·x=x³; y·y³=y⁴ &rarr; <strong>6x³y⁴</strong>.' }
+const SIM = {
+  /* --- Monomi: somma/differenza --- */
+  monosomma:[
+    {s:'<span class="term a">3x²y</span><span class="term op">+</span><span class="term a">5x²y</span>', n:'Vogliamo sommare due monomi. Primo controllo: sono <b>simili</b>?'},
+    {s:'3<span class="hl">x²y</span><span class="term op">+</span>5<span class="hl">x²y</span>', n:'La parte letterale è <b>x²y</b> in entrambi: i monomi sono <b>simili</b>. Si possono sommare.'},
+    {s:'(<span class="hl-b">3+5</span>)x²y', n:'Sommo solo i <b>coefficienti</b>: 3 + 5 = 8. La parte letterale resta invariata.'},
+    {s:'<span class="term c">8x²y</span>', n:'Risultato: <b>8x²y</b>. ✓'},
+    {s:'3x²<span class="term op">+</span>2x', n:'Attenzione al controesempio: qui le parti letterali (x² e x) sono <b>diverse</b>.'},
+    {s:'3x²<span class="term op">+</span>2x', n:'I monomi <b>non sono simili</b>: la somma resta indicata, non si semplifica. ✓'}
   ],
-  monopoli: [
-    { q: 'Applicando la distributiva, 3x(x + 4) = ?',
-      opts: ['3x² + 12x','3x² + 4','3x + 12x','3x² + 12'], ans: 0,
-      exp: '3x&middot;x=3x² e 3x&middot;4=12x &rarr; <strong>3x²+12x</strong>.' },
-    { q: '&minus;2a²(3a &minus; 5) = ?',
-      opts: ['&minus;6a³ + 10a²','&minus;6a³ &minus; 10a²','6a³ &minus; 10a²','&minus;6a² + 10a'], ans: 0,
-      exp: '&minus;2a²&times;3a=&minus;6a³; &minus;2a²&times;(&minus;5)=+10a² &rarr; <strong>&minus;6a³+10a²</strong>.' },
-    { q: 'TEORIA: cosa significa "distribuire" un monomio su un polinomio?',
-      opts: ['Moltiplicare il monomio per ogni termine del polinomio','Sommare il monomio a ogni termine','Dividere ogni termine per il monomio','Estrarre il fattore comune'], ans: 0,
-      exp: 'La <strong>proprietà distributiva</strong>: m(a+b+c) = ma+mb+mc.' },
-    { q: 'TEORIA: il raccoglimento a fattor comune è l\'inversa di…',
-      opts: ['La proprietà distributiva','Il prodotto tra monomi','La somma di polinomi','Il quadrato del binomio'], ans: 0,
-      exp: 'Distribuire: m(a+b)→ma+mb. Raccogliere: ma+mb→m(a+b). Operazioni <strong>inverse</strong>.' },
-    { q: 'x²(x² &minus; 3x + 1) = ?',
-      opts: ['x⁴ &minus; 3x³ + x²','x⁴ &minus; 3x² + x','x³ &minus; 3x² + x','x⁴ + 3x³ + x²'], ans: 0,
-      exp: 'x²·x²=x⁴; x²·(&minus;3x)=&minus;3x³; x²·1=x² &rarr; <strong>x⁴&minus;3x³+x²</strong>.' }
+  /* --- Monomi: prodotto/divisione --- */
+  monoprod:[
+    {s:'<span class="term a">3x²</span><span class="term op">·</span><span class="term a">2x³</span>', n:'Moltiplichiamo due monomi. Nel prodotto non serve che siano simili.'},
+    {s:'(<span class="hl-b">3·2</span>)·x²·x³', n:'Moltiplico i <b>coefficienti</b>: 3 · 2 = 6.'},
+    {s:'6·x<span class="hl">2+3</span>', n:'Per la stessa lettera x <b>sommo gli esponenti</b>: 2 + 3 = 5.'},
+    {s:'<span class="term c">6x⁵</span>', n:'Prodotto: <b>6x⁵</b>. ✓'},
+    {s:'<span class="term a">6x⁵</span><span class="term op">:</span><span class="term a">2x²</span>', n:'Ora una divisione tra monomi.'},
+    {s:'(<span class="hl-b">6:2</span>)·x⁵:x²', n:'Divido i <b>coefficienti</b>: 6 : 2 = 3.'},
+    {s:'3·x<span class="hl">5−2</span>', n:'Per la lettera x <b>sottraggo gli esponenti</b>: 5 − 2 = 3.'},
+    {s:'<span class="term c">3x³</span>', n:'Quoziente: <b>3x³</b>. ✓'}
   ],
-  polipoli: [
-    { q: 'Quanti prodotti parziali si ottengono da (a+b+c)(x+y)?',
-      opts: ['6','3','4','5'], ans: 0,
-      exp: '3 termini &times; 2 termini = <strong>6</strong> prodotti: ax,ay,bx,by,cx,cy.' },
-    { q: '(x+2)(x+3) = ?',
-      opts: ['x²+5x+6','x²+6x+5','x²+5x+5','x²+6x+6'], ans: 0,
-      exp: 'x·x=x²; x·3+2·x=5x; 2·3=6 &rarr; <strong>x²+5x+6</strong>.' },
-    { q: '(2x+1)(x &minus; 4) = ?',
-      opts: ['2x²&minus;7x&minus;4','2x²+7x&minus;4','2x²&minus;8x&minus;4','2x²&minus;7x+4'], ans: 0,
-      exp: '2x·x=2x²; 2x·(&minus;4)+1·x=&minus;7x; 1·(&minus;4)=&minus;4 &rarr; <strong>2x²&minus;7x&minus;4</strong>.' },
-    { q: 'TEORIA: per raccogliere i termini simili bisogna che abbiano…',
-      opts: ['La stessa parte letterale','Lo stesso coefficiente','Lo stesso segno','Lo stesso grado totale'], ans: 0,
-      exp: 'Termini simili = stessa <strong>parte letterale</strong> (es. 3x² e &minus;5x² si sommano).' },
-    { q: 'TEORIA: nel modello ad area (tabella), le righe sono i termini di…',
-      opts: ['Il primo fattore','Il secondo fattore','Il risultato','I termini simili'], ans: 0,
-      exp: 'Righe = termini del <strong>primo fattore</strong>; colonne = termini del secondo.' }
+  /* --- Monomi: potenze --- */
+  monopot:[
+    {s:'(<span class="term a">2x²y</span>)³', n:'Eleviamo un monomio alla terza potenza.'},
+    {s:'<span class="hl-b">2³</span>·(x²)³·(y)³', n:'Elevo il <b>coefficiente</b>: 2³ = 8.'},
+    {s:'8·x<span class="hl">2·3</span>·(y)³', n:'Per ogni lettera <b>moltiplico</b> l\'esponente per 3: x → 2·3 = 6.'},
+    {s:'8·x⁶·y<span class="hl">1·3</span>', n:'Anche per y: 1·3 = 3.'},
+    {s:'<span class="term c">8x⁶y³</span>', n:'Risultato: <b>8x⁶y³</b>. ✓'}
   ],
-  notevoli: [
-    { q: 'Quale formula è SBAGLIATA?',
-      opts: ['(a+b)² = a²+b²','(a+b)(a&minus;b)=a²&minus;b²','(a+b)²=a²+2ab+b²','(a&minus;b)²=a²&minus;2ab+b²'], ans: 0,
-      exp: 'Il <strong>falso quadrato</strong>: manca il doppio prodotto <strong>2ab</strong>.' },
-    { q: '(x+3)(x&minus;3) = ?',
-      opts: ['x²&minus;9','x²+9','x²&minus;6x+9','x²&minus;3'], ans: 0,
-      exp: 'Somma&times;Differenza: a=x, b=3 &rarr; <strong>x²&minus;9</strong>.' },
-    { q: '(x+2)² = ?',
-      opts: ['x²+4x+4','x²+4','x²+2x+4','x²+4x+2'], ans: 0,
-      exp: '(a+b)²=a²+2ab+b²; a=x, b=2 &rarr; <strong>x²+4x+4</strong>.' },
-    { q: '(2x&minus;1)² = ?',
-      opts: ['4x²&minus;4x+1','4x²+1','4x²&minus;2x+1','2x²&minus;4x+1'], ans: 0,
-      exp: '(a&minus;b)²: a=2x, b=1 &rarr; 4x²&minus;4x+1. Doppio prodotto: 2·2x·1=4x.' },
-    { q: '(a+b)(a²&minus;ab+b²) = ?',
-      opts: ['a³+b³','a³&minus;b³','a²+b²','a³+2b³'], ans: 0,
-      exp: 'Formula della <strong>somma di cubi</strong>: (a+b)(a²&minus;ab+b²)=a³+b³.' },
-    { q: '(a&minus;b)³ = ?',
-      opts: ['a³&minus;3a²b+3ab²&minus;b³','a³&minus;b³','a³&minus;3ab+b³','a³+3a²b&minus;b³'], ans: 0,
-      exp: 'Cubo differenza: coefficienti 1,3,3,1 con segni alternati.' },
-    { q: 'TEORIA: nel quadrato del binomio (a+b)², quanti termini produce lo sviluppo?',
-      opts: ['3','2','4','1'], ans: 0,
-      exp: 'a²+2ab+b² → <strong>3 termini</strong>: quadrato del primo, doppio prodotto, quadrato del secondo.' },
-    { q: 'TEORIA: da cosa vengono i coefficienti 1,3,3,1 nel cubo del binomio?',
-      opts: ['Dal triangolo di Tartaglia','Dal teorema di Pitagora','Dalla somma di cubi','Sono arbitrari'], ans: 0,
-      exp: 'I coefficienti del cubo (riga 3 del <strong>triangolo di Tartaglia</strong>): 1,3,3,1.' }
+  /* --- Monomio x polinomio --- */
+  mp:[
+    {s:'<span class="term a">2x</span><span class="term op">·</span>(<span class="term b">3x</span><span class="term op">+</span><span class="term d">4</span>)', n:'Il monomio 2x va moltiplicato per ogni termine dentro la parentesi.'},
+    {s:'<span class="hl-b">2x·3x</span><span class="term op">+</span>2x·4', n:'Primo termine: 2x · 3x = 6x².'},
+    {s:'6x²<span class="term op">+</span><span class="hl-b">2x·4</span>', n:'Secondo termine: 2x · 4 = 8x.'},
+    {s:'<span class="term c">6x²</span><span class="term op">+</span><span class="term c">8x</span>', n:'Risultato: <b>6x² + 8x</b>. Non ci sono termini simili da sommare. ✓'}
   ],
-  scompo: [
-    { q: 'Scomponi con raccoglimento totale: 6x²+9x',
-      opts: ['3x(2x+3)','3(2x²+3x)','x(6x+9)','3x(2x+9)'], ans: 0,
-      exp: 'MCD(6,9)=3, lettera comune x &rarr; <strong>3x</strong>. Risultato: <strong>3x(2x+3)</strong>.' },
-    { q: 'Scomponi: x²&minus;25',
-      opts: ['(x+5)(x&minus;5)','(x&minus;5)²','(x+5)²','x(x&minus;25)'], ans: 0,
-      exp: 'Differenza di quadrati: A=x, B=5 &rarr; <strong>(x+5)(x&minus;5)</strong>.' },
-    { q: 'Scomponi il trinomio: x²+7x+12',
-      opts: ['(x+3)(x+4)','(x+2)(x+6)','(x+5)(x+2)','(x+12)(x+1)'], ans: 0,
-      exp: 'Somma 7, prodotto 12: <strong>3 e 4</strong> &rarr; (x+3)(x+4).' },
-    { q: 'Quale è un trinomio quadrato perfetto?',
-      opts: ['x²+10x+25','x²+10x+20','x²+7x+25','x²&minus;25'], ans: 0,
-      exp: '√(x²)=x, √25=5, doppio prodotto 2·x·5=10x ✔ &rarr; <strong>(x+5)²</strong>.' },
-    { q: 'Scomponi completamente: 2x²&minus;18',
-      opts: ['2(x+3)(x&minus;3)','2(x²&minus;9)','(2x+6)(x&minus;3)','2(x&minus;3)²'], ans: 0,
-      exp: 'Prima raccogli 2: 2(x²&minus;9); poi diff. di quadrati &rarr; <strong>2(x+3)(x&minus;3)</strong>.' },
-    { q: 'ax+ay+bx+by = ?',
-      opts: ['(x+y)(a+b)','(a+b)(a&minus;b)','ab(x+y)','(x+a)(y+b)'], ans: 0,
-      exp: 'Raccoglimento parziale: a(x+y)+b(x+y) &rarr; <strong>(x+y)(a+b)</strong>.' },
-    { q: 'TEORIA: cosa significa "scomporre" un polinomio?',
-      opts: ['Scriverlo come prodotto di fattori','Sommare i termini simili','Calcolarne il valore','Trovarne il grado'], ans: 0,
-      exp: 'Scomporre = <strong>fattorizzare</strong>: esprimere come prodotto di polinomi più semplici.' },
-    { q: 'TEORIA: qual è il PRIMO passo da tentare sempre?',
-      opts: ['Raccoglimento totale','Differenza di quadrati','Trinomio caratteristico','Raccoglimento parziale'], ans: 0,
-      exp: 'Si parte <strong>sempre</strong> cercando il fattore comune a tutti i termini.' },
-    { q: 'TEORIA: la somma A²+B² nei numeri reali…',
-      opts: ['Non si scompone','= (A+B)²','= (A+B)(A&minus;B)','= (A+B)(A+B)'], ans: 0,
-      exp: 'Solo la <strong>differenza</strong> si scompone. A²+B² è irriducibile nei reali.' },
-    { q: 'TEORIA: per il trinomio x²+sx+p cerco due numeri con…',
-      opts: ['somma s e prodotto p','somma p e prodotto s','differenza s','prodotto s+p'], ans: 0,
-      exp: 'Regola <strong>somma-prodotto</strong>: i due numeri hanno somma s e prodotto p.' },
-    { q: 'TEORIA: con 4 termini senza fattore comune a tutti, il metodo è…',
-      opts: ['Raccoglimento parziale a gruppi','Differenza di quadrati','Quadrato del binomio','Non si scompone'], ans: 0,
-      exp: 'Con 4 termini si tenta il <strong>raccoglimento parziale</strong>: si raggruppa a due a due.' }
+  /* --- Polinomio x polinomio --- */
+  pp:[
+    {s:'(<span class="term a">x</span><span class="term op">+</span><span class="term b">2</span>)(<span class="term d">x</span><span class="term op">+</span><span class="term e">3</span>)', n:'Ogni termine del primo per ogni termine del secondo: saranno 2×2 = 4 prodotti.'},
+    {s:'<span class="hl">x·x</span> …', n:'x · x = x².'},
+    {s:'x² <span class="hl">+ x·3</span> …', n:'x · 3 = 3x.'},
+    {s:'x² + 3x <span class="hl">+ 2·x</span> …', n:'2 · x = 2x.'},
+    {s:'x² + 3x + 2x <span class="hl">+ 2·3</span>', n:'2 · 3 = 6.'},
+    {s:'x² + <span class="hl-b">3x + 2x</span> + 6', n:'Ora sommo i termini simili: 3x + 2x = 5x.'},
+    {s:'<span class="term c">x² + 5x + 6</span>', n:'Risultato: <b>x² + 5x + 6</b>. ✓'}
+  ],
+  /* --- Differenza di quadrati --- */
+  dq:[
+    {s:'(<span class="term a">a</span><span class="term op">+</span><span class="term b">b</span>)(<span class="term a">a</span><span class="term op">−</span><span class="term b">b</span>)', n:'Somma per differenza degli stessi due termini.'},
+    {s:'<span class="hl">a·a</span> − a·b + b·a − b·b', n:'Svolgo tutti i prodotti: a·a = a².'},
+    {s:'a² <span class="hl-r">− ab + ab</span> − b²', n:'I due termini centrali, −ab e +ab, sono <b>opposti</b>.'},
+    {s:'a² <span class="hl-r">0</span> − b²', n:'−ab + ab = 0: si <b>annullano</b>.'},
+    {s:'<span class="term c">a² − b²</span>', n:'Restano solo i quadrati: <b>a² − b²</b>. ✓'}
+  ],
+  /* --- Quadrato del binomio --- */
+  qb:[
+    {s:'(<span class="term a">a</span><span class="term op">+</span><span class="term b">b</span>)²', n:'Il quadrato di un binomio: (a+b)² significa (a+b)(a+b).'},
+    {s:'(a+b)(a+b)', n:'Lo riscrivo come prodotto e applico la distributiva.'},
+    {s:'<span class="hl">a·a</span> + a·b + b·a + b·b', n:'a·a = a² (quadrato del primo).'},
+    {s:'a² <span class="hl-b">+ ab + ab</span> + b²', n:'I due prodotti misti a·b e b·a sono uguali: insieme fanno il <b>doppio prodotto</b>.'},
+    {s:'a² + <span class="hl-b">2ab</span> + b²', n:'ab + ab = 2ab.'},
+    {s:'<span class="term c">a² + 2ab + b²</span>', n:'Risultato: quadrato del primo + doppio prodotto + quadrato del secondo. ✓'}
+  ],
+  /* --- Quadrato del trinomio --- */
+  qt:[
+    {s:'(<span class="term a">a</span><span class="term op">+</span><span class="term b">b</span><span class="term op">+</span><span class="term d">c</span>)²', n:'Il quadrato di un trinomio a tre termini.'},
+    {s:'<span class="hl">a² + b² + c²</span> …', n:'Prima i tre <b>quadrati</b>: a², b², c².'},
+    {s:'a²+b²+c² <span class="hl-b">+ 2ab</span> …', n:'Poi il doppio prodotto della prima coppia: 2·a·b.'},
+    {s:'… <span class="hl-b">+ 2ac</span> …', n:'Doppio prodotto della seconda coppia: 2·a·c.'},
+    {s:'… <span class="hl-b">+ 2bc</span>', n:'Doppio prodotto della terza coppia: 2·b·c.'},
+    {s:'<span class="term c">a²+b²+c²+2ab+2ac+2bc</span>', n:'I tre quadrati più i doppi prodotti di tutte le coppie. ✓'}
+  ],
+  /* --- Somma/differenza di cubi --- */
+  cubi:[
+    {s:'<span class="term a">a³</span><span class="term op">+</span><span class="term b">b³</span>', n:'La somma di due cubi si può scrivere come prodotto.'},
+    {s:'(<span class="hl">a + b</span>)( … )', n:'Primo fattore: la <b>somma</b> delle basi, (a + b).'},
+    {s:'(a+b)(<span class="hl">a² − ab + b²</span>)', n:'Secondo fattore: a² − ab + b². Il segno di <b>ab</b> è opposto a quello del primo fattore (qui −).'},
+    {s:'<span class="term c">(a+b)(a²−ab+b²)</span>', n:'a³ + b³ = (a+b)(a²−ab+b²). ✓'},
+    {s:'<span class="term a">a³</span><span class="term op">−</span><span class="term b">b³</span>', n:'Per la differenza di cubi cambiano i segni.'},
+    {s:'(<span class="hl">a − b</span>)(a² + ab + b²)', n:'Primo fattore (a − b); nel secondo il segno di ab diventa <b>+</b>.'},
+    {s:'<span class="term c">(a−b)(a²+ab+b²)</span>', n:'a³ − b³ = (a−b)(a²+ab+b²). ✓'}
+  ],
+  /* --- Divisione lunga --- */
+  lunga:[
+    {s:'<span class="longdiv">x² + 5x + 6 | x + 2</span>', n:'Dividiamo x² + 5x + 6 per x + 2. A sinistra il dividendo, a destra il divisore.'},
+    {s:'<span class="longdiv">x² + 5x + 6 | x + 2\n<span class="hl">x²</span> : <span class="hl">x</span> = <span class="hl-g">x</span></span>', n:'Divido il primo termine del dividendo per il primo del divisore: x² : x = <b>x</b>. È il primo termine del quoziente.'},
+    {s:'<span class="longdiv">x² + 5x + 6 | x + 2\n<span class="hl-b">x²+2x</span>       | <span class="hl-g">x</span></span>', n:'Moltiplico x per (x+2) = x² + 2x e lo scrivo sotto.'},
+    {s:'<span class="longdiv">x² + 5x + 6 | x + 2\n−(x²+2x)   | x\n<span class="hl-r">   3x + 6</span></span>', n:'Sottraggo: (x²+5x) − (x²+2x) = 3x. Abbasso il +6: resta <b>3x + 6</b>.'},
+    {s:'<span class="longdiv">   3x + 6 | x + 2\n<span class="hl">3x</span> : <span class="hl">x</span> = <span class="hl-g">3</span></span>', n:'Ripeto: 3x : x = <b>3</b>. Secondo termine del quoziente.'},
+    {s:'<span class="longdiv">   3x + 6 | x + 2\n   <span class="hl-b">3x+6</span> | x + <span class="hl-g">3</span></span>', n:'Moltiplico 3 per (x+2) = 3x + 6 e sottraggo.'},
+    {s:'<span class="longdiv">Quoziente: <span class="hl-g">x + 3</span>\nResto: <span class="hl-r">0</span></span>', n:'La sottrazione dà 0: <b>quoziente x + 3, resto 0</b>. La divisione è esatta. ✓'}
+  ],
+  /* --- Ruffini --- (renderizzato con griglia dedicata) */
+  ruffini:'RUFFINI',
+  /* --- Regola del resto --- */
+  resto:[
+    {s:'P(x) = x² + 5x + 6', n:'Vogliamo il resto della divisione di P(x) per (x + 2), senza fare la divisione.'},
+    {s:'(x + 2) = (x − (<span class="hl">−2</span>))', n:'Riscrivo x + 2 come x − k: qui <b>k = −2</b>.'},
+    {s:'Resto = P(<span class="hl">−2</span>)', n:'Per la regola del resto basta calcolare <b>P(k) = P(−2)</b>.'},
+    {s:'P(−2) = (<span class="hl-b">−2</span>)² + 5(<span class="hl-b">−2</span>) + 6', n:'Sostituisco x = −2 nel polinomio.'},
+    {s:'= 4 <span class="term op">−</span> 10 <span class="term op">+</span> 6', n:'Calcolo: (−2)² = 4, 5·(−2) = −10, poi +6.'},
+    {s:'= <span class="term c">0</span>', n:'4 − 10 + 6 = <b>0</b>: il resto è 0.'},
+    {s:'Resto = 0 → (x+2) <span class="hl-g">divide</span> P(x)', n:'Poiché P(−2) = 0, il binomio (x + 2) è un <b>divisore esatto</b> di P(x). ✓'}
   ]
 };
 
-const sqState = {};
-
-function shuffled(n) {
-  const arr = Array.from({ length: n }, (_, i) => i);
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
+/* Ruffini: frame costruiti con griglia. Dividiamo x²+5x+6 per (x+2), k=-2 */
+function ruffiniFrames(){
+  // coefficienti: 1, 5, 6 ; k = -2
+  // riga1: [k | 1  5  6]
+  // riga2: [  |    -2 -6]
+  // riga3: [1  3  0]
+  const F=[];
+  const cell=(t,cls,now)=>`<div class="rf-cell ${cls||''} ${now?'now':''}">${t}</div>`;
+  function grid(rows){
+    return '<div class="ruffini-grid" style="grid-template-columns:repeat(4,auto)">'+rows.join('')+'</div>';
   }
-  return arr;
+  // stato progressivo
+  F.push({s:grid([
+    cell('','blank'),cell('1','coef'),cell('5','coef'),cell('6','coef'),
+    cell('−2','root'),cell('','blank'),cell('','blank'),cell('','blank'),
+    cell('','blank'),cell('','blank'),cell('','blank'),cell('','blank')
+  ]), n:'Scrivo i <b>coefficienti</b> del dividendo (1, 5, 6) in alto e la radice <b>k = −2</b> a sinistra.'});
+  F.push({s:grid([
+    cell('','blank'),cell('1','coef'),cell('5','coef'),cell('6','coef'),
+    cell('−2','root'),cell('','blank'),cell('','blank'),cell('','blank'),
+    cell('','blank'),cell('1','res now'),cell('','blank'),cell('','blank')
+  ]), n:'Abbasso il primo coefficiente così com\'è: <b>1</b>.'});
+  F.push({s:grid([
+    cell('','blank'),cell('1','coef'),cell('5','coef'),cell('6','coef'),
+    cell('−2','root'),cell('','blank'),cell('−2','carry now'),cell('','blank'),
+    cell('','blank'),cell('1','res'),cell('','blank'),cell('','blank')
+  ]), n:'Moltiplico 1 per la radice −2: 1·(−2) = <b>−2</b>. Lo scrivo sotto il 5.'});
+  F.push({s:grid([
+    cell('','blank'),cell('1','coef'),cell('5','coef'),cell('6','coef'),
+    cell('−2','root'),cell('','blank'),cell('−2','carry'),cell('','blank'),
+    cell('','blank'),cell('1','res'),cell('3','res now'),cell('','blank')
+  ]), n:'Sommo in colonna: 5 + (−2) = <b>3</b>.'});
+  F.push({s:grid([
+    cell('','blank'),cell('1','coef'),cell('5','coef'),cell('6','coef'),
+    cell('−2','root'),cell('','blank'),cell('−2','carry'),cell('−6','carry now'),
+    cell('','blank'),cell('1','res'),cell('3','res'),cell('','blank')
+  ]), n:'Moltiplico 3 per −2 = <b>−6</b>, sotto il 6.'});
+  F.push({s:grid([
+    cell('','blank'),cell('1','coef'),cell('5','coef'),cell('6','coef'),
+    cell('−2','root'),cell('','blank'),cell('−2','carry'),cell('−6','carry'),
+    cell('','blank'),cell('1','res'),cell('3','res'),cell('0','res now')
+  ]), n:'Sommo: 6 + (−6) = <b>0</b>. È l\'ultimo numero: il <b>resto</b>.'});
+  F.push({s:grid([
+    cell('','blank'),cell('1','coef'),cell('5','coef'),cell('6','coef'),
+    cell('−2','root'),cell('','blank'),cell('−2','carry'),cell('−6','carry'),
+    cell('','blank'),cell('1','res'),cell('3','res'),cell('0','res')
+  ])+'<div style="margin-top:.6rem;font-size:.95em">Quoziente: <span class="hl-g">x + 3</span> &nbsp; Resto: <span class="hl-r">0</span></div>',
+    n:'Gli ultimi numeri (1, 3) sono i coefficienti del <b>quoziente x + 3</b> (grado in meno). Il resto è <b>0</b>. ✓'});
+  return F;
 }
-function buildOrders(qs) {
-  // per ogni domanda, un ordine casuale delle opzioni
-  return qs.map(q => shuffled(q.opts.length));
+
+const simIdx = {};
+function frames(key){ return key==='ruffini' ? (SIM._ruffini || (SIM._ruffini=ruffiniFrames())) : SIM[key]; }
+
+function simRender(key){
+  const F = frames(key);
+  const i = simIdx[key];
+  const f = F[i];
+  const stage = document.getElementById('sim-'+key);
+  const note = document.getElementById('note-'+key);
+  const bar = document.getElementById('bar-'+key);
+  const cnt = document.getElementById('cnt-'+key);
+  if(!stage) return;
+  stage.innerHTML = f.s;
+  stage.style.animation='none'; void stage.offsetWidth; stage.style.animation='fadeSlideUp .3s both';
+  if(note) note.innerHTML = f.n;
+  if(bar) bar.style.width = Math.round(i/(F.length-1)*100)+'%';
+  if(cnt) cnt.textContent = `Passo ${i+1} di ${F.length}`;
 }
-function initSQ(sid) {
-  const qs = SQ[sid];
-  if (!qs) return;
-  const el = document.getElementById('sq-' + sid);
-  if (!el) return;
-  if (!sqState[sid]) sqState[sid] = { idx: 0, answers: new Array(qs.length).fill(null), orders: buildOrders(qs) };
+function simReset(key){ simIdx[key]=0; simRender(key); }
+function simNext(key){ const F=frames(key); if(simIdx[key]<F.length-1){ simIdx[key]++; simRender(key);} }
+function simPrev(key){ if(simIdx[key]>0){ simIdx[key]--; simRender(key);} }
+
+/* ===================================================================
+   ESERCIZI SVOLTI
+=================================================================== */
+const EXE = {
+  monomi:[
+    {q:'Semplifica: 7a²b − 3a²b + a²b', s:'Sono tutti simili (parte letterale a²b). Sommo i coefficienti: 7 − 3 + 1 = <b>5</b> → <b>5a²b</b>.'},
+    {q:'Calcola: (−4x³) · (2x²)', s:'Coefficienti: (−4)·2 = −8. Esponenti di x: 3 + 2 = 5 → <b>−8x⁵</b>.'},
+    {q:'Calcola: 12x⁵y³ : 4x²y', s:'Coefficienti: 12 : 4 = 3. Esponenti: x: 5−2=3, y: 3−1=2 → <b>3x³y²</b>.'},
+    {q:'Calcola: (−3x²y)²', s:'Coefficiente: (−3)² = 9 (esponente pari → positivo). Esponenti: x: 2·2=4, y: 1·2=2 → <b>9x⁴y²</b>.'}
+  ],
+  monopoli:[
+    {q:'Svolgi: 3x(2x² − 4x + 1)', s:'3x·2x² = 6x³; 3x·(−4x) = −12x²; 3x·1 = 3x → <b>6x³ − 12x² + 3x</b>.'},
+    {q:'Svolgi: −2a²(a − 3)', s:'−2a²·a = −2a³; −2a²·(−3) = +6a² → <b>−2a³ + 6a²</b>.'}
+  ],
+  polipoli:[
+    {q:'Svolgi: (x + 4)(x − 2)', s:'x·x=x²; x·(−2)=−2x; 4·x=4x; 4·(−2)=−8. Sommo i simili: −2x+4x=2x → <b>x² + 2x − 8</b>.'},
+    {q:'Svolgi: (2x − 1)(x + 3)', s:'2x·x=2x²; 2x·3=6x; −1·x=−x; −1·3=−3. Simili: 6x−x=5x → <b>2x² + 5x − 3</b>.'}
+  ],
+  notevoli:[
+    {q:'Svolgi con il prodotto notevole: (x + 5)(x − 5)', s:'Somma per differenza: a=x, b=5 → <b>x² − 25</b>.'},
+    {q:'Svolgi: (2x + 3)²', s:'Quadrato del binomio: (2x)² + 2·2x·3 + 3² = <b>4x² + 12x + 9</b>.'},
+    {q:'Svolgi: (x − 4)²', s:'(x)² − 2·x·4 + 4² = <b>x² − 8x + 16</b>.'},
+    {q:'Scrivi come prodotto: x³ + 8', s:'Somma di cubi con a=x, b=2: (x+2)(x² − 2x + 4).'}
+  ],
+  divisione:[
+    {q:'Dividi (x² + 7x + 12) : (x + 3)', s:'Divisione lunga o Ruffini con k=−3: quoziente <b>x + 4</b>, resto <b>0</b>.'},
+    {q:'Con Ruffini dividi (x² − x − 6) : (x − 3)', s:'k=3. Coefficienti 1, −1, −6. Abbasso 1; 1·3=3, −1+3=2; 2·3=6, −6+6=0. Quoziente <b>x + 2</b>, resto <b>0</b>.'},
+    {q:'Trova il resto di (x² + 3x − 1) : (x − 2) senza dividere', s:'Regola del resto: P(2) = 4 + 6 − 1 = <b>9</b>. Il resto è 9.'}
+  ]
+};
+function renderExercises(sec){
+  const box = document.getElementById('ex-'+sec);
+  if(!box) return;
+  box.innerHTML = EXE[sec].map((e,i)=>`
+    <div class="ex-card">
+      <div class="ex-q">${i+1}. ${e.q}</div>
+      <button class="btn sec" style="font-size:.82em;padding:.32rem .7rem" onclick="toggleSol('${sec}',${i},this)">Mostra soluzione</button>
+      <div class="ex-sol" id="sol-${sec}-${i}">${e.s}</div>
+    </div>`).join('');
+}
+function toggleSol(sec,i,btn){
+  const el = document.getElementById(`sol-${sec}-${i}`);
+  const open = el.classList.toggle('show');
+  btn.textContent = open ? 'Nascondi soluzione' : 'Mostra soluzione';
+}
+
+/* ===================================================================
+   MINI-QUIZ (con shuffle e commenti incoraggianti)
+=================================================================== */
+const SQ = {
+  monomi:[
+    {q:'Semplifica 6a²b + 2a²b.', opts:['8a²b','8a⁴b²','8a²b²','12a²b'], ans:0, exp:'Sono simili: sommo i coefficienti 6+2=8, parte letterale invariata → 8a²b.'},
+    {q:'Quanto fa 3x² + 4x?', opts:['Non si semplifica','7x²','7x³','12x³'], ans:0, exp:'Le parti letterali (x² e x) sono diverse: i monomi non sono simili, restano così.'},
+    {q:'Calcola (−2x³)·(5x²).', opts:['−10x⁵','10x⁵','−10x⁶','−7x⁵'], ans:0, exp:'Coefficienti (−2)·5=−10; esponenti 3+2=5 → −10x⁵.'},
+    {q:'Calcola 15x⁶ : 3x².', opts:['5x⁴','5x³','12x⁴','5x⁸'], ans:0, exp:'Coefficienti 15:3=5; esponenti 6−2=4 → 5x⁴.'},
+    {q:'Quanto vale (3x²y)²?', opts:['9x⁴y²','6x⁴y²','9x²y','3x⁴y²'], ans:0, exp:'Coefficiente 3²=9; esponenti x:2·2=4, y:1·2=2 → 9x⁴y².'},
+    {q:'TEORIA: due monomi si possono sommare solo se…', opts:['Hanno la stessa parte letterale','Hanno lo stesso coefficiente','Hanno lo stesso segno','Hanno grado diverso'], ans:0, exp:'Si sommano solo monomi simili, cioè con la stessa parte letterale.'}
+  ],
+  monopoli:[
+    {q:'Svolgi 2x(x + 3).', opts:['2x² + 6x','2x² + 3','2x + 6x','2x² + 6'], ans:0, exp:'2x·x=2x² e 2x·3=6x → 2x²+6x.'},
+    {q:'Svolgi −3a(2a − 4).', opts:['−6a² + 12a','−6a² − 12a','6a² − 12a','−6a + 12'], ans:0, exp:'−3a·2a=−6a²; −3a·(−4)=+12a → −6a²+12a.'},
+    {q:'TEORIA: moltiplicare un monomio per un polinomio significa…', opts:['Moltiplicarlo per ogni termine','Sommarlo a ogni termine','Moltiplicarlo solo per il primo termine','Dividerlo per ogni termine'], ans:0, exp:'La proprietà distributiva: m(a+b+c)=ma+mb+mc.'},
+    {q:'Svolgi x²(x² − 2x + 5).', opts:['x⁴ − 2x³ + 5x²','x⁴ − 2x² + 5x','x³ − 2x² + 5','x⁴ + 2x³ + 5x²'], ans:0, exp:'x²·x²=x⁴; x²·(−2x)=−2x³; x²·5=5x² → x⁴−2x³+5x².'}
+  ],
+  polipoli:[
+    {q:'Svolgi (x + 2)(x + 5).', opts:['x² + 7x + 10','x² + 10x + 7','x² + 7x + 7','x² + 10'], ans:0, exp:'x²; x·5+2·x=7x; 2·5=10 → x²+7x+10.'},
+    {q:'Svolgi (x − 3)(x + 4).', opts:['x² + x − 12','x² − x − 12','x² + 7x − 12','x² − 12'], ans:0, exp:'x²; −3x+4x=x; −12 → x²+x−12.'},
+    {q:'Quanti prodotti parziali dà (a+b+c)(x+y)?', opts:['6','5','3','4'], ans:0, exp:'3 termini × 2 termini = 6 prodotti.'},
+    {q:'TEORIA: dopo aver svolto i prodotti, i termini simili…', opts:['Si sommano tra loro','Si moltiplicano','Restano sempre separati','Si eliminano'], ans:0, exp:'I termini con la stessa parte letterale si sommano.'}
+  ],
+  notevoli:[
+    {q:'(x + 6)(x − 6) = ?', opts:['x² − 36','x² + 36','x² − 12x + 36','x² − 6'], ans:0, exp:'Differenza di quadrati: x²−6²=x²−36.'},
+    {q:'(x + 3)² = ?', opts:['x² + 6x + 9','x² + 9','x² + 3x + 9','x² + 6x + 3'], ans:0, exp:'x²+2·x·3+3²=x²+6x+9.'},
+    {q:'(2a − 1)² = ?', opts:['4a² − 4a + 1','4a² + 1','4a² − 2a + 1','2a² − 4a + 1'], ans:0, exp:'(2a)²−2·2a·1+1²=4a²−4a+1.'},
+    {q:'(a + b + c)² contiene il termine…', opts:['2ab','ab','3ab','a²b'], ans:0, exp:'Il quadrato del trinomio ha i doppi prodotti 2ab, 2ac, 2bc.'},
+    {q:'x³ − 27 si scrive come…', opts:['(x − 3)(x² + 3x + 9)','(x + 3)(x² − 3x + 9)','(x − 3)³','(x − 3)(x² − 9)'], ans:0, exp:'Differenza di cubi con a=x, b=3: (x−3)(x²+3x+9).'},
+    {q:'TEORIA: nel quadrato del binomio, il termine centrale è…', opts:['Il doppio prodotto','La somma dei quadrati','La differenza dei quadrati','Il prodotto dei quadrati'], ans:0, exp:'(a±b)²=a²±2ab+b²: il centrale è il doppio prodotto 2ab.'}
+  ],
+  divisione:[
+    {q:'Nella relazione fondamentale, Dividendo = …', opts:['Divisore·Quoziente + Resto','Divisore + Quoziente','Quoziente·Resto','Divisore·Resto'], ans:0, exp:'Dividendo = Divisore · Quoziente + Resto.'},
+    {q:'Per dividere con Ruffini per (x + 5), il valore k è…', opts:['−5','5','1','0'], ans:0, exp:'x+5 = x−(−5), quindi k = −5.'},
+    {q:'Il resto di P(x):(x−k) è uguale a…', opts:['P(k)','P(0)','P(1)','k'], ans:0, exp:'Regola del resto: il resto è P(k).'},
+    {q:'Se P(3) = 0, allora (x − 3)…', opts:['divide esattamente P(x)','ha resto 3','non è un divisore','raddoppia P(x)'], ans:0, exp:'Se P(k)=0 il resto è 0, quindi (x−k) è divisore esatto.'},
+    {q:'Dividendo (x²+2x−3):(x−1) con Ruffini (k=1): resto?', opts:['0','−3','2','1'], ans:0, exp:'P(1)=1+2−3=0 → resto 0 (infatti x²+2x−3=(x−1)(x+3)).'},
+    {q:'TEORIA: la regola di Ruffini serve a dividere per…', opts:['un binomio del tipo (x − k)','qualsiasi polinomio','un monomio','un numero'], ans:0, exp:'Ruffini si usa quando il divisore è un binomio di primo grado (x − k).'}
+  ]
+};
+const sqState = {};
+function shuffled(n){const a=Array.from({length:n},(_,i)=>i);for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function buildOrders(qs){return qs.map(q=>shuffled(q.opts.length));}
+function initSQ(sid){
+  const qs=SQ[sid]; if(!qs) return;
+  const el=document.getElementById('sq-'+sid); if(!el) return;
+  if(!sqState[sid]) sqState[sid]={idx:0,answers:new Array(qs.length).fill(null),orders:buildOrders(qs)};
   renderSQ(sid);
 }
-
-function renderSQ(sid) {
-  const el = document.getElementById('sq-' + sid);
-  const qs = SQ[sid];
-  const st = sqState[sid];
-  const q = qs[st.idx];
-  const given = st.answers[st.idx];
-  const reviewing = given !== null;
-  const answered = st.answers.filter(a => a !== null).length;
-  const pct = Math.round(st.idx / qs.length * 100);
-
-  const order = st.orders[st.idx];
-  let optsHtml = '';
-  order.forEach(origIdx => {
-    let cls = 'quiz-btn';
-    if (reviewing) cls += origIdx === q.ans ? ' correct' : (origIdx === given ? ' wrong' : '');
-    optsHtml += `<button class="${cls}" ${reviewing ? 'disabled' : ''} onclick="answerSQ('${sid}',${origIdx})">${q.opts[origIdx]}</button>`;
+function renderSQ(sid){
+  const el=document.getElementById('sq-'+sid), qs=SQ[sid], st=sqState[sid];
+  const q=qs[st.idx], given=st.answers[st.idx], reviewing=given!==null;
+  const answered=st.answers.filter(a=>a!==null).length;
+  const pct=Math.round(st.idx/qs.length*100);
+  const order=st.orders[st.idx];
+  let optsHtml='';
+  order.forEach(oi=>{
+    let cls='quiz-btn';
+    if(reviewing) cls+= oi===q.ans?' correct':(oi===given?' wrong':'');
+    optsHtml+=`<button class="${cls}" ${reviewing?'disabled':''} onclick="answerSQ('${sid}',${oi})">${q.opts[oi]}</button>`;
   });
-
-  let expHtml = '';
-  if (reviewing) {
-    const ok = given === q.ans;
-    const praise = ['Bravo! 🎉', 'Perfetto! 👏', 'Esatto, ottimo lavoro!', 'Ottimo! Ci sei. 💪', 'Proprio così! ⭐', 'Grande, risposta giusta!'];
-    const cheer = ['Non ti scoraggiare, ci sei quasi! 💪', 'Nessun problema, si impara anche così. 🌱', 'Capita a tutti: guarda la spiegazione e riprova!', 'Quasi! Rileggi il passaggio qui sotto. 🔍', 'Tranquillo, ora capiamo insieme il perché.'];
-    const pick = arr => arr[Math.floor(Math.random() * arr.length)];
-    const msg = ok ? pick(praise) : pick(cheer);
-    const icon = ok ? '✅' : '💡';
-    expHtml = `<div class="quiz-exp" style="animation:fadeSlideUp .3s both">
-      <strong>${icon} ${msg}</strong><br>${q.exp}</div>`;
+  let expHtml='';
+  if(reviewing){
+    const ok=given===q.ans;
+    const praise=['Bravo! 🎉','Perfetto! 👏','Esatto, ottimo lavoro!','Ottimo! Ci sei. 💪','Proprio così! ⭐','Grande, risposta giusta!'];
+    const cheer=['Non ti scoraggiare, ci sei quasi! 💪','Nessun problema, si impara anche così. 🌱','Capita a tutti: guarda la spiegazione e riprova!','Quasi! Rileggi il passaggio qui sotto. 🔍','Tranquillo, ora capiamo insieme il perché.'];
+    const pick=a=>a[Math.floor(Math.random()*a.length)];
+    expHtml=`<div class="quiz-exp"><strong>${ok?'✅ '+pick(praise):'💡 '+pick(cheer)}</strong><br>${q.exp}</div>`;
   }
-
-  const hasPrev = st.idx > 0;
-  const hasNext = st.idx < qs.length - 1;
-  const allDone = st.idx === qs.length - 1 && reviewing;
-
-  let navHtml = `<div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap;align-items:center">`;
-  if (hasPrev) navHtml += `<button class="btn sec" onclick="prevSQ('${sid}')">← Indietro</button>`;
-  if (reviewing && hasNext) navHtml += `<button class="btn" onclick="nextSQ('${sid}')">Avanti →</button>`;
-  if (allDone) {
-    const score = st.answers.filter((a,i) => a === qs[i].ans).length;
-    navHtml += `<span style="font-weight:700;color:var(--primary-d);margin-left:.3rem">
-      Punteggio: ${score}/${qs.length} &nbsp;
-      <button class="btn sec" onclick="resetSQ('${sid}')" style="font-size:.82em">↺ Rifai</button>
-    </span>`;
+  const hasPrev=st.idx>0, hasNext=st.idx<qs.length-1, allDone=st.idx===qs.length-1&&reviewing;
+  let nav=`<div style="display:flex;gap:.5rem;margin-top:.5rem;flex-wrap:wrap;align-items:center">`;
+  if(hasPrev) nav+=`<button class="btn sec" onclick="prevSQ('${sid}')">← Indietro</button>`;
+  if(reviewing&&hasNext) nav+=`<button class="btn" onclick="nextSQ('${sid}')">Avanti →</button>`;
+  if(allDone){
+    const score=st.answers.filter((a,i)=>a===qs[i].ans).length;
+    nav+=`<span style="font-weight:700;color:var(--primary-d);margin-left:.3rem">Punteggio: ${score}/${qs.length} &nbsp;<button class="btn sec" onclick="resetSQ('${sid}')" style="font-size:.82em">↺ Rifai</button></span>`;
   }
-  navHtml += '</div>';
-
-  el.innerHTML = `
-    <div style="border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:.7rem;
-      display:flex;justify-content:space-between;align-items:center">
+  nav+='</div>';
+  el.innerHTML=`
+    <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);padding-bottom:.6rem;margin-bottom:.7rem">
       <span style="font-weight:700;color:var(--primary-d);font-size:1.04em">🧠 Mini-quiz</span>
       <span style="font-size:.8em;color:var(--muted)">Domanda ${st.idx+1}/${qs.length} &middot; ${answered} rispost${answered===1?'a':'e'}</span>
     </div>
-    <div class="quiz-bar-wrap" style="margin-bottom:.75rem">
-      <div class="quiz-bar-fill" style="width:${pct}%"></div>
-    </div>
+    <div class="quiz-bar-wrap"><div class="quiz-bar-fill" style="width:${pct}%"></div></div>
     <div class="quiz-q">${q.q}</div>
     <div class="quiz-opts">${optsHtml}</div>
-    ${expHtml}
-    ${navHtml}
-  `;
+    ${expHtml}${nav}`;
 }
+function answerSQ(sid,c){const st=sqState[sid];if(st.answers[st.idx]!==null)return;st.answers[st.idx]=c;renderSQ(sid);}
+function prevSQ(sid){const st=sqState[sid];if(st.idx>0){st.idx--;renderSQ(sid);}}
+function nextSQ(sid){const st=sqState[sid];if(st.idx<SQ[sid].length-1){st.idx++;renderSQ(sid);}}
+function resetSQ(sid){const qs=SQ[sid];sqState[sid]={idx:0,answers:new Array(qs.length).fill(null),orders:buildOrders(qs)};renderSQ(sid);}
 
-function answerSQ(sid, chosen) {
-  const st = sqState[sid];
-  if (st.answers[st.idx] !== null) return;
-  st.answers[st.idx] = chosen;
-  renderSQ(sid);
-}
-function prevSQ(sid) {
-  const st = sqState[sid];
-  if (st.idx > 0) { st.idx--; renderSQ(sid); }
-}
-function nextSQ(sid) {
-  const st = sqState[sid];
-  if (st.idx < SQ[sid].length - 1) { st.idx++; renderSQ(sid); }
-}
-function resetSQ(sid) {
-  const qs = SQ[sid];
-  sqState[sid] = { idx: 0, answers: new Array(qs.length).fill(null), orders: buildOrders(qs) };
-  renderSQ(sid);
-}
-
-/* ===================================================================
-   PROVA GEOMETRICA (a+b)²
-=================================================================== */
-let geoPhase = 0;
-const GEO_NOTES = [
-  'Il quadrato grande ha lato (a+b): area = (a+b)².',
-  'Regione rossa: a × a = <strong>a²</strong>.',
-  'Regione teal: b × b = <strong>b²</strong>.',
-  'Regione arancione: a × b = <strong>ab</strong> (ce ne sono <em>due</em>: ecco da dove viene il <strong>2ab</strong>!)',
-  'Totale: a² + ab + ab + b² = <strong>a² + 2ab + b²</strong> — il falso quadrato mancava proprio queste due rettangoli!'
-];
-function geoStep() {
-  if (geoPhase > 4) { geoReset(); return; }
-  const ids = ['gp0','gp1','gp2','gp3'];
-  const tids = ['gt0','gt1','gt2','gt3'];
-  // show all up to geoPhase-1
-  for (let i = 0; i < 4; i++) {
-    const show = geoPhase > i;
-    ['gp','gt'].forEach((p,j) => {
-      const el = document.getElementById(p+i);
-      if (el) el.style.opacity = show ? 1 : 0;
-    });
-  }
-  document.getElementById('geoNote').innerHTML = GEO_NOTES[geoPhase] || '';
-  document.getElementById('geoBtn').textContent =
-    geoPhase >= 4 ? '↺ Ricomincia' : `▶ Passo ${geoPhase + 1} di 4`;
-  geoPhase++;
-}
-function geoReset() {
-  geoPhase = 0;
-  for (let i = 0; i < 4; i++) {
-    ['gp','gt'].forEach(p => {
-      const el = document.getElementById(p+i);
-      if (el) el.style.opacity = 0;
-    });
-  }
-  document.getElementById('geoNote').innerHTML = '';
-  document.getElementById('geoBtn').textContent = '▶ Mostra le regioni una a una';
-}
-
-/* ===================================================================
-   DECISION TREE INTERATTIVO
-=================================================================== */
-const DTREE_INFO = {
-  'dn-start': 'Inizia sempre da qui: guarda il polinomio nel suo insieme prima di scegliere il metodo.',
-  'dn-fc':    '🔍 <strong>Fattore comune?</strong> Guarda se c\'è un numero e/o lettera presente in <em>ogni</em> termine. Se sì, raccoglilo sempre per primo!',
-  'dn-rt':    '✅ <strong>Raccoglimento totale</strong>: metti in evidenza il fattore comune. Es: 6x²+9x = <strong>3x</strong>(2x+3). Poi controlla se la parentesi è ancora scomponibile.',
-  'dn-qt':    '🔢 <strong>Quanti termini</strong> rimangono dopo aver raccolto il fattore comune? Clicca sulle foglie per vedere il metodo.',
-  'dn-2t':    '✦ <strong>2 termini</strong>: controlla se è A²−B² (differenza di quadrati) o A³±B³ (somma/differenza di cubi). La <em>somma</em> di quadrati A²+B² non si scompone!',
-  'dn-3t':    '✦ <strong>3 termini</strong>: (1) è A²±2AB+B²? → quadrato perfetto (A±B)². (2) è x²+sx+p? → cerca due numeri con somma s e prodotto p.',
-  'dn-4t':    '✦ <strong>4 termini</strong>: raggruppa a due a due, raccogli da ogni coppia, poi raccogli il binomio comune. Es: ax+ay+bx+by → a(x+y)+b(x+y) → (x+y)(a+b).'
-};
-function initDtree() {
-  document.querySelectorAll('.dtree-node').forEach(el => {
-    el.addEventListener('click', () => {
-      const info = document.getElementById('dtreeInfo');
-      const msg = DTREE_INFO[el.id];
-      if (!msg) return;
-      // highlight selected
-      document.querySelectorAll('.dtree-node').forEach(n => n.style.filter = '');
-      el.style.filter = 'drop-shadow(0 0 6px rgba(21,101,192,.7))';
-      info.innerHTML = msg;
-      info.style.display = 'block';
-      info.style.animation = 'fadeSlideUp .3s both';
-    });
-  });
-}
-
-/* ===== Init ===== */
-updateMonomioCalc();
-renderMonomioDemo();
-renderPpDemo();
-updateN(0);
-updateN(1);
+/* ===== Avvio ===== */
+initSection('home');
 </script>
 </body>
 </html>
