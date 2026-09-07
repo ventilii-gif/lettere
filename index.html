@@ -203,6 +203,18 @@ html[data-theme="dark"] .card{box-shadow:0 1px 3px rgba(0,0,0,.4)}
   html:not([data-theme="light"]) .hl-b{background:#15273a;box-shadow:0 0 0 1.5px #3b82c9;color:#9cc3ec}
   html:not([data-theme="light"]) .card{box-shadow:0 1px 3px rgba(0,0,0,.4)}
 }
+
+.ex-check{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:.5rem 0 .2rem}
+.ex-in{font-family:ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace;font-size:.95em;padding:.4rem .7rem;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);min-width:180px;flex:1 1 180px;max-width:320px}
+.ex-in:focus{outline:none;border-color:var(--primary)}
+.ex-fb{font-size:.86em;font-weight:600;display:inline-flex;align-items:center;gap:6px;flex-basis:100%}
+.ex-fb.ok{color:#1d70bf}
+.ex-fb.no{color:#c9752a}
+.ex-fb.warn{color:var(--muted)}
+.ex-fb svg{width:15px;height:15px}
+html[data-theme="dark"] .ex-fb.ok{color:#9cc3ec}
+html[data-theme="dark"] .ex-fb.no{color:#e0975a}
+@media(prefers-color-scheme:dark){html:not([data-theme="light"]) .ex-fb.ok{color:#9cc3ec}html:not([data-theme="light"]) .ex-fb.no{color:#e0975a}}
 </style>
 </head>
 <body>
@@ -739,11 +751,110 @@ const EXE = {
     {q:'Resto di (x² + 3x − 1) : (x − 2)', s:'Regola del resto: P(2) = 4 + 6 − 1 = <b>9</b>.'}
   ]
 };
+/* ===== Algebraic answer checker (shared: page + tests) ===== */
+function algEval(str, vmap){
+  str=String(str);
+  var sup={'⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9'};
+  str=str.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,function(c){return '^'+sup[c];});
+  str=str.replace(/·|×|∙|•/g,'*').replace(/−/g,'-').replace(/\*\*/g,'^').replace(/\s+/g,'');
+  if(str==='')throw new Error('empty');
+  var i=0;
+  function peek(){return str[i];}
+  function isDigit(c){return c>='0'&&c<='9';}
+  function isVar(c){return c==='a'||c==='b'||c==='x'||c==='y';}
+  function parseExpr(){
+    var v=parseTerm();
+    while(peek()==='+'||peek()==='-'){var op=str[i++];var r=parseTerm();v=op==='+'?v+r:v-r;}
+    return v;
+  }
+  function parseTerm(){
+    var v=parseUnary();
+    for(;;){
+      var c=peek();
+      if(c==='*'||c==='/'){i++;var r=parseUnary();v=c==='*'?v*r:v/r;}
+      else if(c==='('||isVar(c)||isDigit(c)||c==='.'){var r2=parseUnary();v=v*r2;}
+      else break;
+    }
+    return v;
+  }
+  function parseUnary(){
+    var c=peek();
+    if(c==='+'){i++;return parseUnary();}
+    if(c==='-'){i++;return -parseUnary();}
+    return parsePower();
+  }
+  function parsePower(){
+    var v=parseBase();
+    if(peek()==='^'){i++;var e=parseUnary();v=Math.pow(v,e);}
+    return v;
+  }
+  function parseBase(){
+    var c=peek();
+    if(c==='('){i++;var v=parseExpr();if(peek()!==')')throw new Error('paren');i++;return v;}
+    if(isDigit(c)||c==='.'){var s='';while(i<str.length&&(isDigit(str[i])||str[i]==='.'))s+=str[i++];var n=parseFloat(s);if(isNaN(n))throw new Error('num');return n;}
+    if(isVar(c)){i++;if(!(c in vmap))throw new Error('var '+c);return vmap[c];}
+    throw new Error('unexpected '+(c===undefined?'end':c));
+  }
+  var val=parseExpr();
+  if(i<str.length)throw new Error('trailing '+str.slice(i));
+  return val;
+}
+/* ref: function(vmap)->number ; vars: array of var names present in the answer */
+function checkAlg(str, ref, vars){
+  if(String(str||'').trim()==='')return null;
+  var valid=0, matched=0;
+  for(var t=0;t<6;t++){
+    var vmap={};
+    for(var k=0;k<vars.length;k++){ vmap[vars[k]]= 2.3 + t*0.37 + k*1.9; }
+    var rv;
+    try{ rv=ref(vmap); }catch(e){ continue; }
+    if(!isFinite(rv))continue;
+    var uv;
+    try{ uv=algEval(str, vmap); }catch(e){ return null; } /* parse error -> invalid input */
+    if(!isFinite(uv))continue;
+    valid++;
+    if(Math.abs(uv-rv) <= 1e-6*(1+Math.abs(rv))) matched++;
+  }
+  if(valid===0)return false;
+  return (matched===valid && valid>=3);
+}
+/* Tabella risposte esercizi EXE di letterale-1 (sezione -> indice -> {vars,f,ph?}) */
+var EXE_ANS={
+  monomi:{
+    0:{vars:['a','b'],f:function(v){return 5*v.a*v.a*v.b;}},                 // 5a²b
+    1:{vars:['x'],f:function(v){return -8*Math.pow(v.x,5);}},                // −8x⁵
+    2:{vars:['x','y'],f:function(v){return 3*Math.pow(v.x,3)*v.y*v.y;}},     // 3x³y²
+    3:{vars:['x','y'],f:function(v){return 9*Math.pow(v.x,4)*v.y*v.y;}}      // 9x⁴y²
+  },
+  monopoli:{
+    0:{vars:['x'],f:function(v){return 6*Math.pow(v.x,3)-12*v.x*v.x+3*v.x;}},// 6x³−12x²+3x
+    1:{vars:['a'],f:function(v){return -2*Math.pow(v.a,3)+6*v.a*v.a;}}       // −2a³+6a²
+  },
+  polipoli:{
+    0:{vars:['x'],f:function(v){return v.x*v.x+2*v.x-8;}},                   // x²+2x−8
+    1:{vars:['x'],f:function(v){return 2*v.x*v.x+5*v.x-3;}}                  // 2x²+5x−3
+  },
+  notevoli:{
+    0:{vars:['x'],f:function(v){return v.x*v.x-25;}},                        // x²−25
+    1:{vars:['x'],f:function(v){return 4*v.x*v.x+12*v.x+9;}},                // 4x²+12x+9
+    2:{vars:['x'],f:function(v){return v.x*v.x-8*v.x+16;}},                  // x²−8x+16
+    3:{vars:['x'],f:function(v){return (v.x+2)*(v.x*v.x-2*v.x+4);}}          // (x+2)(x²−2x+4)
+  },
+  divisione:{
+    0:{vars:['x'],f:function(v){return v.x+4;},ph:'Il quoziente (es. x+4)'}, // quoziente x+4
+    1:{vars:['x'],f:function(v){return v.x+2;},ph:'Il quoziente (es. x+2)'}, // quoziente x+2
+    2:{vars:[],f:function(){return 9;},ph:'Il resto (un numero)'}           // resto 9
+  }
+};
+var EX_CHK="<svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'><path d='M20 6 9 17l-5-5'/></svg>";
+function exCheckHTML(sec,i){var m=(typeof EXE_ANS!=='undefined'&&EXE_ANS[sec])?EXE_ANS[sec][i]:null;if(!m)return '';var ph=m.ph||'La tua risposta (es. x^2+2x-8)';return '<div class=\'ex-check\'><input type=\'text\' class=\'ex-in\' placeholder=\''+ph+'\' aria-label=\'La tua risposta\'>'+'<button class=\'btn\' type=\'button\' onclick=\'verifyEx(\"'+sec+'\",'+i+',this)\'>Verifica</button><div class=\'ex-fb\'></div></div>';}
+function verifyEx(sec,i,btn){var m=(typeof EXE_ANS!=='undefined'&&EXE_ANS[sec])?EXE_ANS[sec][i]:null;if(!m)return;var card=btn.closest('.ex-card'),inp=card.querySelector('.ex-in'),fb=card.querySelector('.ex-fb');var r=checkAlg(inp.value,m.f,m.vars);if(r===null){fb.className='ex-fb warn';fb.textContent='Scrivi la risposta come espressione (usa ^ per le potenze, es. x^2).';return;}if(r){fb.className='ex-fb ok';fb.innerHTML=EX_CHK+' Corretto!';}else{fb.className='ex-fb no';fb.textContent='Non ancora — riprova o mostra la soluzione.';}}
 function renderExercises(sec){
   const box=document.getElementById('ex-'+sec); if(!box||!EXE[sec]) return;
   box.innerHTML=EXE[sec].map((e,i)=>`
     <div class="ex-card">
       <div class="ex-q">${i+1}. ${e.q}</div>
+      ${exCheckHTML(sec,i)}
       <button class="btn sec" style="font-size:.82em;padding:.32rem .7rem" onclick="toggleSol('${sec}',${i},this)">Mostra soluzione</button>
       <div class="ex-sol" id="sol-${sec}-${i}">${e.s}</div>
     </div>`).join('');
